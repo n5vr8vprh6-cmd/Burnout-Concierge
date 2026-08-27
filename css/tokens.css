@@ -1,0 +1,138 @@
+/* ============================================================================
+   BURNOUT CONCIERGE — BRAND TOKENS
+   ----------------------------------------------------------------------------
+   The SINGLE source of brand truth for every surface on burnoutconcierge.co.
+   Loaded first, before any component stylesheet. Never redefine these in a
+   component stylesheet — extend with new tokens here.
+
+   Values come from the Brand Manual (Founder's Edition v1.0), with three
+   additions forced by measurement rather than taste. See COLOUR below.
+   ========================================================================== */
+
+@import url('/assets/fonts/faces.css');
+
+:root {
+
+  /* ══════════════════════════════════════════════════════════════════════
+     COLOUR
+     ──────────────────────────────────────────────────────────────────────
+     The manual gives eight values. Two of them fail WCAG AA when they carry
+     text, which was measured during the comps rather than assumed:
+
+       · Copper #B26E3A with white text is 3.84:1. That is the primary call
+         to action on every page — the single most important element on the
+         site, failing on the most important element we have.
+       · Burnished Gold #C89D5A on Warm Ivory is 2.27:1, which rules it out
+         for eyebrows, labels and any small text on a light ground.
+
+     So each gains a text-only variant. The manual's own values are unchanged
+     and still used everywhere they are NOT carrying text: rules, icons,
+     decorative marks, and every use on obsidian, where gold measures 7.73:1.
+     ══════════════════════════════════════════════════════════════════════ */
+
+  /* Grounds */
+  --obsidian:       #0F0E10;   /* heroes, transitions, high-emotion moments  */
+  --obsidian-deep:  #0B0A0C;   /* the advisor band, one step further down    */
+  --ivory:          #F7F4ED;   /* the main reading ground, ~70% of a page    */
+  --ivory-dim:      #EFEBE1;   /* quiet insets and alternating panels        */
+
+  /* Accents — manual values */
+  --gold:           #C89D5A;   /* rules, icons, labels ON DARK, decoration   */
+  --copper:         #B26E3A;   /* emphasis only; never carrying small text   */
+
+  /* Accents — measured text-safe variants */
+  --gold-deep:      #82663A;   /* small text on light grounds     4.89:1     */
+  --copper-deep:    #A16434;   /* primary button fill             4.54:1     */
+  --copper-dark:    #8A5429;   /* primary button hover                       */
+  --copper-text:    #9E6133;   /* copper as a link on ivory       4.54:1     */
+
+  /* Pathway colours — which audience a section belongs to */
+  --olive:          #7C8A6C;   /* consumer and recovery pathways             */
+  --slate:          #26424B;   /* destination, partner, organization         */
+
+  /* Neutrals — warm-biased, never a flat grey */
+  --stone:          #B6B0A3;   /* body copy on obsidian                      */
+  --mist:           #DDE1DB;   /* quiet fills and dividers                   */
+  --ink:            #1A1815;   /* body copy on ivory             16.13:1     */
+  --ink-soft:       #57534B;   /* secondary copy on ivory         6.97:1     */
+  --ink-faint:      #736E65;   /* meta and captions on ivory      4.61:1     */
+
+  /* Lines — gold at low opacity, never a grey border */
+  --line:           rgba(200, 157,  90, .28);
+  --line-dim:       rgba(200, 157,  90, .20);
+  --hair:           rgba( 26,  24,  21, .11);
+  --hair-light:     rgba(247, 244, 237, .14);
+
+
+  /* ══════════════════════════════════════════════════════════════════════
+     TYPE — extreme contrast, and nothing in the middle
+     ──────────────────────────────────────────────────────────────────────
+     Every reference site studied for this build runs a display-to-meta ratio
+     between 6:1 and 17:1 with NO intermediate sizes. A 17px lead paragraph
+     sitting between the display and the body is what makes a page read as
+     "considered" rather than expensive.
+
+     So the lead is not a large body size — it is the smallest DISPLAY size,
+     set in the serif. That single move removes the dead zone.
+
+     Nothing is permitted between --t-body (17px) and --t-sub (24px).
+     ══════════════════════════════════════════════════════════════════════ */
+
+  --display: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --mono:    'DM Mono', 'SFMono-Regular', Consolas, monospace;
+
+  --t-xl:    clamp(3.4rem,  8.5vw, 8.5rem);   /* hero only                   */
+  --t-l:     clamp(2.4rem,  5vw,   4.25rem);  /* section headings            */
+  --t-m:     clamp(1.75rem, 3vw,   2.6rem);   /* secondary headings          */
+  --t-lede:  clamp(1.5rem,  2.4vw, 2rem);     /* the lead — serif, not sans  */
+  --t-sub:   1.5rem;                          /* sub-headings                */
+  --t-body:  1.0625rem;                       /* the ONE body size           */
+  --t-small: 0.9375rem;                       /* dense UI only               */
+  --t-ui:    0.83rem;                         /* buttons and links           */
+  --t-meta:  0.6875rem;                       /* mono labels, 0.22em tracked */
+
+  --lh-xl:    .98;
+  --lh-l:    1.06;
+  --lh-body: 1.7;
+
+  --track-xl:   -.03em;
+  --track-l:    -.022em;
+  --track-meta:  .22em;
+
+
+  /* ══════════════════════════════════════════════════════════════════════
+     SPACE — air is the luxury signal
+     ──────────────────────────────────────────────────────────────────────
+     The reference sites run 176–320px of vertical section padding. Roughly
+     45% of a viewport given over to nothing. This is the cheapest thing on
+     the page and it does more work than any effect.
+     ══════════════════════════════════════════════════════════════════════ */
+
+  --pad-y:     clamp(7rem, 14vh, 16rem);
+  --pad-x:     clamp(1.5rem, 6vw, 7rem);
+  --gap-block: clamp(3rem, 6vh, 6rem);
+  --wrap:      1240px;
+
+  --measure-body:    55ch;
+  --measure-display: 28ch;
+
+
+  /* ══════════════════════════════════════════════════════════════════════
+     MOTION
+     ──────────────────────────────────────────────────────────────────────
+     One ease, everywhere. A slow settle with no overshoot — the brand does
+     not bounce.
+     ══════════════════════════════════════════════════════════════════════ */
+
+  --ease:       cubic-bezier(.16, .84, .24, 1);
+  --dur-micro:  200ms;
+  --dur-std:    600ms;
+  --dur-reveal: 900ms;
+  --dur-trans: 1200ms;
+
+  /* Soft geometry — the radius scale derives from the lantern's own
+     rounded container. Nothing on this site has a hard corner. */
+  --r-sm: 2px;
+  --r-md: 4px;
+}

@@ -1,0 +1,309 @@
+/* ============================================================================
+   CHROME — header, footer, progress rail, threshold, and the reveal contract
+   ----------------------------------------------------------------------------
+   Everything that wraps the page rather than being part of it.
+   ========================================================================== */
+
+/* ── Reset and base ──────────────────────────────────────────────────────── */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--body);
+  font-weight: 300;
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+a   { color: inherit; text-decoration: none; }
+h1, h2, h3 { margin: 0; font-family: var(--display); font-weight: 300; text-wrap: balance; }
+p   { margin: 0; max-width: var(--measure-body); }
+ul, ol, dl, dd { margin: 0; padding: 0; }
+li { list-style: none; }
+
+:focus-visible { outline: 2px solid var(--copper-deep); outline-offset: 4px; }
+.is-dark :focus-visible, .hero :focus-visible, .final :focus-visible {
+  outline-color: var(--gold);
+}
+
+.skip {
+  position: absolute; left: -9999px; top: 0; z-index: 300;
+  background: var(--obsidian); color: var(--ivory);
+  padding: 1rem 1.5rem; font-size: var(--t-ui);
+}
+.skip:focus { left: 0; }
+
+
+/* ── Type roles ──────────────────────────────────────────────────────────── */
+
+.meta {
+  font-family: var(--mono);
+  font-size: var(--t-meta);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.xl { font-size: var(--t-xl); line-height: var(--lh-xl); letter-spacing: var(--track-xl); }
+.l  { font-size: var(--t-l);  line-height: var(--lh-l);  letter-spacing: var(--track-l); }
+.m  { font-size: var(--t-m);  line-height: 1.12; letter-spacing: -.018em; }
+
+/* The lead is the smallest DISPLAY size, set in the serif — not a large body
+   size. That is the move that removes the dead zone between 17px and 24px. */
+.lede {
+  font-family: var(--display);
+  font-size: var(--t-lede);
+  line-height: 1.4;
+  font-weight: 300;
+  letter-spacing: -.012em;
+  max-width: var(--measure-display);
+}
+
+
+/* ── Actions ─────────────────────────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex; align-items: center; gap: .7em;
+  font-size: var(--t-ui); font-weight: 500; letter-spacing: .05em;
+  padding: 1.05rem 1.9rem; min-height: 44px;
+  border: 1px solid transparent; border-radius: var(--r-sm);
+  transition: background var(--dur-micro) var(--ease),
+              border-color var(--dur-micro) var(--ease),
+              color var(--dur-micro) var(--ease);
+}
+
+/* Copper is spent once per page. This is the only element that gets it. */
+.btn--primary { background: var(--copper-deep); color: #FFF8EE; border-color: var(--copper-deep); }
+.btn--primary:hover { background: var(--copper-dark); border-color: var(--copper-dark); }
+
+.btn--quiet {
+  padding: 0; min-height: 44px; border: 0; border-radius: 0;
+  color: var(--gold-deep);
+  border-bottom: 1px solid var(--line);
+  align-items: center;
+}
+.btn--quiet:hover { color: var(--ink); border-bottom-color: currentColor; }
+.is-dark .btn--quiet, .hero .btn--quiet, .final .btn--quiet { color: var(--gold); }
+.is-dark .btn--quiet:hover, .hero .btn--quiet:hover, .final .btn--quiet:hover { color: var(--ivory); }
+
+.acts { display: flex; flex-wrap: wrap; align-items: center; gap: 1.1rem 1.75rem; margin-top: var(--gap-block); }
+
+/* A route that is not live. Never a dead link — a stated status. */
+.is-planned { color: var(--ink-faint); }
+.is-dark .is-planned, .foot .is-planned { color: var(--stone); }
+.is-planned i {
+  font-style: normal; font-family: var(--mono);
+  font-size: var(--t-meta); letter-spacing: .14em; text-transform: uppercase;
+  color: var(--gold-deep); margin-left: .5em;
+}
+.is-dark .is-planned i, .foot .is-planned i { color: var(--gold); }
+/* Inherits its size. At .8em it produced a different font-size in every
+   context it appeared in — four new steps on a scale designed to have nine. */
+.nav__ext { font-size: inherit; opacity: .7; }
+
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+
+/* SOLID BY DEFAULT, transparent only while over the hero.
+   The other way round is the obvious way to write it and it is wrong: the
+   transparent state would be the fallback, so with scripting disabled — or in
+   instant mode, where motion.js returns early — ivory nav text would sit on an
+   ivory section as soon as you scrolled. Defaulting to solid means the
+   scriptless page is merely less pretty, not unreadable. */
+.nav {
+  position: fixed; inset: 0 0 auto 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+  padding: 1.35rem var(--pad-x);
+  background: rgba(15, 14, 16, .94);
+  border-bottom: 1px solid rgba(247, 244, 237, .11);
+  backdrop-filter: blur(10px);
+  transition: transform 500ms var(--ease), background 500ms var(--ease),
+              border-color 500ms var(--ease);
+}
+.nav.is-over-hero {
+  background: transparent;
+  border-bottom-color: transparent;
+  backdrop-filter: none;
+}
+.nav.is-hidden { transform: translateY(-102%); }
+
+/* The logo is a link to the homepage, so it is a tap target like any other. */
+.nav__home { display: inline-flex; align-items: center; min-height: 44px; }
+.lockup { display: flex; align-items: center; gap: .8rem; flex: none; color: var(--gold); }
+.lockup__word { color: var(--ivory); display: block; }
+
+.nav__links { display: flex; gap: 2rem; }
+.nav__link {
+  font-size: var(--t-ui); color: rgba(247, 244, 237, .82);
+  display: inline-flex; align-items: center; min-height: 44px;
+  transition: color var(--dur-micro) var(--ease);
+}
+.nav__link:hover { color: var(--gold); }
+
+.nav__right { display: flex; align-items: center; gap: 1rem; flex: none; }
+.nav__cta { padding: .78rem 1.35rem; min-height: 40px; }
+
+/* The menu button exists only below the breakpoint. Above it the links are
+   already visible, and a second way to reach them would be noise. */
+.nav__toggle {
+  display: none; width: 44px; height: 44px; padding: 0;
+  background: none; border: 0; cursor: pointer;
+  flex-direction: column; justify-content: center; gap: 6px;
+}
+.nav__bar { display: block; width: 22px; height: 1px; background: var(--ivory);
+  transition: transform var(--dur-micro) var(--ease), opacity var(--dur-micro) var(--ease); }
+.nav__toggle[aria-expanded="true"] .nav__bar:first-child { transform: translateY(3.5px) rotate(45deg); }
+.nav__toggle[aria-expanded="true"] .nav__bar:last-child  { transform: translateY(-3.5px) rotate(-45deg); }
+
+@media (max-width: 1080px) {
+  .nav__toggle { display: flex; }
+
+  /* Hidden with `display`, so the links are genuinely out of the tab order
+     when collapsed rather than merely invisible and still focusable. */
+  .nav__links {
+    display: none;
+    position: absolute; inset: 100% 0 auto 0;
+    flex-direction: column; gap: 0;
+    background: rgba(15, 14, 16, .985);
+    border-bottom: 1px solid var(--hair-light);
+    padding: .5rem var(--pad-x) 1.5rem;
+    backdrop-filter: blur(10px);
+  }
+  .nav.is-open .nav__links { display: flex; }
+  .nav__links > * {
+    display: flex; align-items: center; min-height: 52px;
+    border-bottom: 1px solid rgba(247, 244, 237, .08);
+    font-size: var(--t-body);
+  }
+  .nav__links > *:last-child { border-bottom: 0; }
+  /* Open means opaque, even over the hero. */
+  .nav.is-open { background: rgba(15, 14, 16, .985); backdrop-filter: blur(10px); }
+}
+@media (max-width: 560px) { .nav__cta { display: none; } }
+
+/* Every action link is a tap target, including ones rendered by routeLink()
+   which carry no class of their own. */
+.acts a { display: inline-flex; align-items: center; min-height: 44px; }
+
+
+/* ── Progress rail ───────────────────────────────────────────────────────── */
+
+.rail {
+  position: fixed; top: 0; right: 0; bottom: 0; width: 1px;
+  background: var(--line-dim); z-index: 80; pointer-events: none;
+}
+.rail__fill { position: absolute; top: 0; left: 0; width: 100%; height: 0; background: var(--gold); }
+.rail__label {
+  position: fixed; right: 1.65rem; bottom: 2rem; z-index: 80;
+  color: var(--gold); writing-mode: vertical-rl; pointer-events: none;
+}
+@media (max-width: 900px) { .rail, .rail__label { display: none; } }
+
+
+/* ── Threshold — the lantern ignition ────────────────────────────────────── */
+
+.threshold { display: none; }
+
+[data-motion="full"] .threshold {
+  display: grid; place-items: center;
+  position: fixed; inset: 0; z-index: 200;
+  background: var(--obsidian);
+  color: #3A322A;
+  transition: opacity 700ms var(--ease), visibility 700ms;
+}
+[data-motion="full"] .threshold[data-done] { opacity: 0; visibility: hidden; pointer-events: none; }
+
+[data-motion="full"] .threshold[data-go] path,
+[data-motion="full"] .threshold[data-go] rect {
+  stroke-dasharray: var(--len);
+  stroke-dashoffset: var(--len);
+  animation: bc-draw 1150ms var(--ease) forwards;
+}
+[data-motion="full"] .threshold[data-go] svg { animation: bc-warm 1100ms var(--ease) 500ms forwards; }
+
+@keyframes bc-draw { to { stroke-dashoffset: 0; } }
+@keyframes bc-warm { to { color: var(--gold); } }
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   THE REVEAL CONTRACT
+   ──────────────────────────────────────────────────────────────────────────
+   Hiding happens ONLY under data-motion="full", which is set synchronously in
+   <head> before first paint. Three consequences, all deliberate:
+
+     · no scripting        → attribute never set → nothing is ever hidden
+     · reduced motion      → "instant"           → nothing is ever hidden
+     · automated agent     → "instant"           → nothing is ever hidden
+
+   And if the attribute IS "full" but the observer never fires — a backgrounded
+   tab, a prerender — js/motion.js snaps everything visible after 2.5s.
+
+   Animation may never be the reason content cannot be read.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+[data-motion="full"] [data-reveal] {
+  opacity: 0; transform: translateY(26px);
+  transition: opacity var(--dur-reveal) var(--ease), transform var(--dur-reveal) var(--ease);
+}
+[data-motion="full"] [data-reveal][data-in] { opacity: 1; transform: none; }
+
+[data-motion="full"] [data-wipe] {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path var(--dur-trans) var(--ease);
+}
+[data-motion="full"] [data-wipe][data-in] { clip-path: inset(0 0 0 0); }
+
+/* Line-by-line rise. The <br> the author wrote is where it breaks with or
+   without scripting, so the copy reads correctly either way. */
+.line { display: block; }
+[data-motion="full"] .line { overflow: hidden; }
+[data-motion="full"] .line > i {
+  display: block; font-style: inherit;
+  transform: translateY(105%);
+  transition: transform 950ms var(--ease);
+}
+[data-motion="full"] .line[data-in] > i { transform: none; }
+.line > i { font-style: inherit; }
+
+
+/* ── Footer ──────────────────────────────────────────────────────────────── */
+
+.foot { background: var(--obsidian); color: var(--stone); padding: var(--gap-block) var(--pad-x) 2.5rem; }
+.foot__inner {
+  max-width: var(--wrap); margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 2fr; gap: clamp(2.5rem, 6vw, 6rem);
+  padding-bottom: var(--gap-block);
+  border-bottom: 1px solid var(--hair-light);
+}
+.foot__line { margin-top: 1.4rem; font-family: var(--display); font-size: var(--t-sub); line-height: 1.35; color: var(--ivory); max-width: 24ch; }
+.foot__cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+.foot__head { color: var(--gold); display: block; margin: 0 0 1.1rem; }
+/* A list of links is navigation, not prose, so the inline-link exemption from
+   the minimum target size does not apply here. */
+.foot__col li { font-size: var(--t-small); }
+.foot__col a, .foot__col .is-planned {
+  color: var(--stone); display: inline-flex; align-items: center; min-height: 44px;
+  transition: color var(--dur-micro) var(--ease);
+}
+.foot__col a:hover { color: var(--ivory); }
+.foot__base {
+  max-width: var(--wrap); margin: 0 auto; padding-top: 2rem;
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem 2rem;
+}
+/* --ink-faint is tuned for ivory. On the obsidian footer it measures 3.8:1;
+   --stone is the designated body colour on dark and measures 8.9:1. Legal and
+   medical-boundary text is the last place to be quietly unreadable. */
+.foot__legal { font-size: var(--t-small); color: var(--stone); max-width: 62ch; }
+
+@media (max-width: 900px) {
+  .foot__inner { grid-template-columns: 1fr; }
+  .foot__cols { grid-template-columns: repeat(2, 1fr); gap: 2rem 1.5rem; }
+}

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 115 280" role="img" aria-label="Burnout Concierge">
+  <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M 2,71 A 54.5,55 0 0 1 111,71 L 111,207 A 54.5,57 0 0 1 2,207 Z"/>
+    <path d="M 25.5,71 A 31,55 0 0 1 87.5,71 L 87.5,207 A 31,57 0 0 1 25.5,207 Z"/>
+    <path d="M 56.5,16 L 56.5,264"/>
+    <rect x="41" y="2.5" width="31" height="11"/>
+    <rect x="41" y="266.5" width="31" height="11"/>
+  </g>
+</svg>

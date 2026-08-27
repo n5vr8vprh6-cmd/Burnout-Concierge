@@ -1,0 +1,274 @@
+/* ============================================================================
+   SITE — the sections
+   ----------------------------------------------------------------------------
+   One block per section type in lib/components.js, in the order they appear on
+   the page. Grounds alternate deliberately: ivory reads, obsidian punctuates,
+   roughly 70/30 across a page.
+   ========================================================================== */
+
+/* ── Shared ──────────────────────────────────────────────────────────────── */
+
+.band { padding: var(--pad-y) var(--pad-x); }
+.band--tight { padding-bottom: clamp(3rem, 6vh, 5rem); }
+.wrap { max-width: var(--wrap); margin: 0 auto; }
+
+.is-light { background: var(--ivory); color: var(--ink); }
+.is-dark  { background: var(--obsidian); color: var(--ivory); }
+.band--deepest { background: var(--obsidian-deep); border-top: 1px solid var(--line-dim); }
+
+.is-light .meta { color: var(--gold-deep); }
+.is-dark  .meta { color: var(--gold); }
+.is-light p     { color: var(--ink-soft); }
+.is-dark  p     { color: var(--stone); }
+.is-dark  h2, .is-dark h3 { color: var(--ivory); }
+
+.eyebrow { display: block; margin-bottom: 1.5rem; }
+.band h2 + .lede, .band .l + .lede { margin-top: 1.4rem; }
+.band .l, .band .m { margin-top: .2em; }
+
+/* A pathway tint. Colour says which audience a band belongs to, at a level
+   just above subliminal — olive for recovery, slate for institutions. */
+.band--olive { background:
+  linear-gradient(180deg, rgba(124, 138, 108, .09), rgba(124, 138, 108, 0) 70%), var(--ivory); }
+.band--slate { background:
+  linear-gradient(180deg, rgba(38, 66, 75, .06), rgba(38, 66, 75, 0) 70%), var(--ivory); }
+
+
+/* ── 1 · Hero ────────────────────────────────────────────────────────────── */
+
+.hero {
+  position: relative; min-height: 100svh;
+  display: flex; align-items: flex-end;
+  overflow: hidden; background: var(--obsidian);
+}
+.hero > img {
+  position: absolute; inset: -4% 0 0; width: 100%; height: 108%;
+  object-fit: cover; opacity: .52; will-change: transform;
+}
+.hero__veil {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg,
+    rgba(15,14,16,.72) 0%, rgba(15,14,16,.24) 38%, rgba(15,14,16,.97) 100%);
+}
+.hero__glow {
+  position: absolute; right: 8%; top: 14%;
+  width: min(30vw, 340px); height: min(50vh, 540px); pointer-events: none;
+  background: radial-gradient(ellipse at 50% 45%,
+    rgba(200,157,90,.26), rgba(200,157,90,0) 68%);
+}
+[data-motion="full"] .hero__glow { animation: bc-breathe 8s ease-in-out infinite; }
+@keyframes bc-breathe { 0%, 100% { opacity: .82; } 50% { opacity: 1; } }
+
+.hero__inner {
+  position: relative; width: 100%; max-width: var(--wrap); margin: 0 auto;
+  padding: 0 var(--pad-x) clamp(4rem, 9vh, 7rem);
+}
+.hero h1 { color: var(--ivory); max-width: 15ch; margin: .28em 0 .5em; }
+.hero .lede { color: rgba(247, 244, 237, .82); max-width: 46ch; }
+.hero .meta { color: var(--gold); }
+.hero__cue {
+  position: absolute; left: var(--pad-x); bottom: 2rem;
+  color: rgba(247, 244, 237, .42); z-index: 2;
+}
+
+
+/* ── 2 · Columns ─────────────────────────────────────────────────────────── */
+
+.cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(2.5rem, 5vw, 5.5rem); margin-top: var(--gap-block); }
+.col__k { display: block; margin-bottom: 1.1rem; }
+.col__h { font-size: var(--t-sub); line-height: 1.2; margin-bottom: .6rem; }
+
+
+/* ── 3 · Rungs ───────────────────────────────────────────────────────────── */
+
+.rungs {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  margin-top: var(--gap-block); border-top: 1px solid var(--line);
+}
+.rung {
+  padding: 2.6rem 2.2rem 2.6rem 0;
+  border-right: 1px solid var(--hair);
+  display: flex; flex-direction: column; gap: .9rem;
+}
+.rung:last-child { border-right: 0; }
+.rung:not(:first-child) { padding-left: 2.2rem; }
+.rung__h { font-size: var(--t-sub); line-height: 1.15; }
+.rung p { flex: 1; }
+.rung__go {
+  font-size: var(--t-ui); letter-spacing: .03em; color: var(--copper-text);
+  margin-top: .4rem; display: inline-flex; align-items: center; min-height: 44px;
+}
+.rung__go:hover { color: var(--copper-dark); }
+
+
+/* ── 4 · Collection — full-bleed alternating panels ──────────────────────── */
+
+.journey { display: grid; grid-template-columns: 56fr 44fr; min-height: 92svh; align-items: stretch; }
+.journey.is-flipped .journey__media { order: 2; }
+.journey.is-light { background: var(--ivory); }
+.journey.is-dark  { background: var(--obsidian); }
+
+.journey__media { position: relative; overflow: hidden; background: var(--ivory-dim); }
+.journey__media img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; will-change: transform;
+}
+.journey__body {
+  display: flex; flex-direction: column; justify-content: center; gap: 1.35rem;
+  padding: clamp(3rem, 7vh, 6rem) clamp(2rem, 5vw, 5rem);
+}
+.journey__dest { display: block; }
+.journey__name { margin: 0; }
+.journey .lede { max-width: 26ch; }
+
+.journey__meta {
+  display: flex; flex-wrap: wrap; gap: 1.25rem 2.25rem;
+  padding-top: 1.35rem; margin-top: .4rem; border-top: 1px solid var(--hair);
+}
+.journey.is-dark .journey__meta { border-top-color: var(--hair-light); }
+.journey__meta > div { display: flex; flex-direction: column; gap: .35rem; }
+.journey__meta dt {
+  font-family: var(--mono); font-size: var(--t-meta);
+  letter-spacing: .18em; text-transform: uppercase; color: var(--ink-faint);
+}
+.journey.is-dark .journey__meta dt { color: var(--stone); }
+.journey__meta dd { font-size: var(--t-small); }
+/* Status is information, so it takes the text-safe gold on light grounds. */
+.journey__meta dd.is-status { color: var(--gold-deep); }
+.journey.is-dark .journey__meta dd.is-status { color: var(--gold); }
+
+.partner {
+  border-left: 2px solid var(--slate); padding-left: .9rem;
+  font-size: var(--t-small); max-width: 34ch;
+}
+.journey.is-dark .partner { border-left-color: var(--gold); }
+
+
+/* ── 5 · Stages ──────────────────────────────────────────────────────────── */
+
+.stages { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: var(--gap-block); border-top: 1px solid var(--line-dim); }
+.stage { padding: 2.4rem 1.8rem 0 0; position: relative; }
+.stage::before {
+  content: ""; position: absolute; top: -4px; left: 0;
+  width: 7px; height: 7px; background: var(--gold); border-radius: 50%;
+}
+.stage__n { display: block; margin-bottom: .9rem; }
+.stage__h { font-size: var(--t-sub); margin-bottom: .5rem; }
+
+
+/* ── 6 · The two-inlet ladder ────────────────────────────────────────────── */
+
+.adv__top {
+  display: grid; grid-template-columns: 1.1fr .9fr;
+  gap: clamp(2.5rem, 6vw, 5.5rem); align-items: center; margin-bottom: var(--gap-block);
+}
+.adv__img img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+
+.ladder { display: grid; grid-template-columns: 1fr 252px; gap: 2.5rem; align-items: stretch; }
+.tracks { display: flex; flex-direction: column; gap: 1.25rem; }
+.track { border: 1px solid rgba(247, 244, 237, .16); padding: 1.6rem 1.8rem; }
+.track__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .9rem; margin-bottom: 1.2rem; }
+.track__who { font-size: var(--t-small); color: var(--stone); }
+
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: .7rem; }
+.step {
+  border: 1px solid rgba(247, 244, 237, .13);
+  background: rgba(247, 244, 237, .028);
+  padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: .5rem;
+  min-height: 44px;
+  transition: border-color var(--dur-micro) var(--ease), background var(--dur-micro) var(--ease);
+}
+a.step:hover { border-color: var(--gold); background: rgba(200, 157, 90, .07); }
+.step__t { font-size: var(--t-small); color: var(--ivory); line-height: 1.3; }
+.step__s {
+  font-family: var(--mono); font-size: var(--t-meta);
+  letter-spacing: .16em; text-transform: uppercase; color: var(--stone);
+}
+.step.is-ext .step__s { color: var(--gold); }
+
+.studio {
+  border: 1px solid var(--gold); padding: 2rem 1.8rem;
+  display: flex; flex-direction: column; gap: .8rem; justify-content: center;
+  background: linear-gradient(180deg, rgba(200,157,90,.13), rgba(200,157,90,.03));
+}
+.studio__h { font-size: var(--t-sub); line-height: 1.1; }
+.studio p { font-size: var(--t-small); }
+
+
+/* ── 7 & 8 · Pathways ────────────────────────────────────────────────────── */
+
+.paths {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 0; margin-top: var(--gap-block); border-top: 1px solid var(--line);
+}
+.path { padding: 2.2rem 2.5rem 2.2rem 0; border-bottom: 1px solid var(--hair); }
+.path:nth-child(odd)  { padding-right: 3rem; }
+.path:nth-child(even) { padding-left: 3rem; border-left: 1px solid var(--hair); }
+.path:nth-last-child(-n+2) { border-bottom: 0; }
+.path__h { font-size: var(--t-sub); line-height: 1.2; margin-bottom: .55rem; }
+
+
+/* ── 9 · Ecosystem ───────────────────────────────────────────────────────── */
+
+.nodes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: var(--gap-block); border-top: 1px solid var(--line-dim); }
+.node { padding: 2.4rem 2rem 0 0; border-right: 1px solid var(--hair-light); }
+.node:last-child { border-right: 0; }
+.node:not(:first-child) { padding-left: 2rem; }
+.node__role { display: block; margin-bottom: .9rem; }
+.node__h { font-size: var(--t-sub); margin-bottom: .55rem; }
+.node__h a { border-bottom: 1px solid var(--line); display: inline-flex; align-items: center; min-height: 44px; }
+.node__h a:hover { border-bottom-color: var(--gold); }
+/* The self node is stated, not decorated — it is simply where you already are. */
+.node.is-self .node__h { color: var(--gold); }
+
+
+/* ── 10 · Founder ────────────────────────────────────────────────────────── */
+
+.founder { display: grid; grid-template-columns: 1fr; gap: clamp(2.5rem, 6vw, 5rem); }
+.founder p + p { margin-top: 1.1rem; }
+
+
+/* ── 11 · Final ──────────────────────────────────────────────────────────── */
+
+.final {
+  position: relative; min-height: 88svh; display: flex; align-items: center;
+  overflow: hidden; background: var(--obsidian);
+}
+.final > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .30; will-change: transform; }
+.final__veil {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(15,14,16,.94), rgba(15,14,16,.78) 50%, rgba(15,14,16,.96));
+}
+.final__inner { position: relative; width: 100%; max-width: var(--wrap); margin: 0 auto; padding: var(--gap-block) var(--pad-x); }
+.final .meta { color: var(--gold); }
+.final .lede { color: rgba(247, 244, 237, .80); }
+.final .note {
+  margin-top: var(--gap-block); font-size: var(--t-small);
+  color: var(--ink-faint); max-width: 62ch;
+}
+
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .cols, .rungs, .stages, .steps, .paths, .nodes { grid-template-columns: 1fr; }
+
+  .rung { border-right: 0; border-bottom: 1px solid var(--hair); padding: 2rem 0; }
+  .rung:not(:first-child) { padding-left: 0; }
+  .rung:last-child { border-bottom: 0; }
+
+  .stage { padding: 2rem 0 0; }
+
+  .path, .path:nth-child(odd), .path:nth-child(even) {
+    padding: 1.8rem 0; padding-left: 0; border-left: 0;
+    border-bottom: 1px solid var(--hair);
+  }
+  .path:last-child { border-bottom: 0; }
+
+  .node, .node:not(:first-child) { padding: 2rem 0 0; padding-left: 0; border-right: 0; }
+
+  .journey, .journey.is-flipped { grid-template-columns: 1fr; min-height: 0; }
+  .journey .journey__media, .journey.is-flipped .journey__media { order: 0; min-height: 62svh; }
+
+  .adv__top, .ladder { grid-template-columns: 1fr; }
+}

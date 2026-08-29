@@ -32,6 +32,7 @@ const PAGES = [
   require('./content/collection-doc.js'),
   require('./content/advisors.js'),
   require('./content/advisor-prospectus.js'),
+  require('./content/venture-studio.js'),
   require('./content/thank-you.js')
 ].flat();
 

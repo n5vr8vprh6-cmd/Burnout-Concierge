@@ -1,8 +1,8 @@
 /* ============================================================================
    INTAKES — the question specs
    ----------------------------------------------------------------------------
-   Six intakes, one engine (js/intake.js). Each is a list of steps; the engine
-   knows nothing about any particular one.
+   Seven intakes, one engine (js/intake.js). Each is a list of steps; the
+   engine knows nothing about any particular one.
 
    THE GOVERNING PRINCIPLE
      The archetype "makes complexity disappear". So nothing here scores anybody,
@@ -21,6 +21,11 @@
      So, deliberately:
        · NO symptom questions, and no severity scales
        · NO open "tell us what you're experiencing" field anywhere
+
+     The single open field on the site is in the Studio intake, and it asks an
+     advisor about their own practice. That is a different act from asking a
+     depleted person to describe their state, and it is the distinction §14
+     actually turns on.
        · every traveller question is about CIRCUMSTANCE or LOGISTICS —
          timing, origin, companionship, whether an advisor is already involved
        · the one question that touches motivation offers fixed choices about
@@ -252,6 +257,66 @@ const INTAKES = {
       next: [
         { when: 'Now',    what: 'The Advisor Prospectus arrives — the category, the specialty, and both pathways.' },
         { when: '2 days', what: 'A note on where to start, based on what you told us.' }
+      ],
+      boundary: BOUNDARY
+    }
+  },
+
+  /* ── VENTURE STUDIO ────────────────────────────────────────────────────
+     The deepest rung, so the highest bar — and the only intake that asks
+     anything in the advisor's own words. That is deliberate and it is safe:
+     an advisor writing about their own practice is not a vulnerable person
+     disclosing a health history, which is the risk §14 actually guards
+     against. The field is capped and clearly scoped to the practice.
+
+     It is still not a score. Admission is by conversation, and the intake
+     exists so the conversation starts somewhere useful rather than at zero. */
+  studio: {
+    audience: 'advisor',
+    title: 'A Studio Conversation',
+    lead: 'The Studio admits by interview rather than enrolment, so this is the start of a conversation rather than an application form. Four questions, and one of them is open.',
+    steps: [
+      {
+        type: 'choice',
+        question: 'Where is your practice today?',
+        name: 'stage',
+        options: [
+          { value: 'established', label: 'Established, and wellness is already the specialty' },
+          { value: 'shifting',    label: 'Established, and deliberately shifting toward wellness' },
+          { value: 'building',    label: 'Building — the practice is younger than the ambition' },
+          { value: 'adjacent',    label: 'Adjacent — coaching, wellbeing or hospitality rather than travel' }
+        ]
+      },
+      {
+        type: 'choice',
+        question: 'How far along the pathway are you?',
+        note: 'There is no wrong answer. It changes what the conversation is about, not whether we have one.',
+        name: 'pathway',
+        options: [
+          { value: 'immersion',  label: 'I have completed the Saint Lucia WELL immersion' },
+          { value: 'foundations', label: 'I have done Foundations, not the immersion' },
+          { value: 'intro',      label: 'I have been to an introduction' },
+          { value: 'equivalent', label: 'Neither, but I have equivalent experience elsewhere' },
+          { value: 'none',       label: 'I am starting here' }
+        ]
+      },
+      {
+        type: 'text',
+        question: 'What would you want the Studio to help you build?',
+        note: 'A sentence is plenty. This is about your practice — what you would want to have that you do not have now.',
+        name: 'ambition',
+        placeholder: 'A defined offer, and the confidence to charge for the design',
+        maxlength: 300
+      },
+      CONTACT
+    ],
+    confirm: {
+      head: 'We’ll be in touch about a conversation.',
+      lead: 'Duncan reads these himself. If it looks like a fit from both sides, the next step is a conversation rather than an enrolment — and if it does not, he will say so plainly and point you somewhere better.',
+      next: [
+        { when: '2 days',     what: 'A reply, and honestly either way.' },
+        { when: 'If it fits', what: 'A conversation about your practice, not a sales call.' },
+        { when: 'After that', what: 'Admission, or a clear reason and a better route.' }
       ],
       boundary: BOUNDARY
     }

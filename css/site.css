@@ -385,3 +385,23 @@ a.step:hover { border-color: var(--gold); background: rgba(200, 157, 90, .07); }
   .numbered__n { padding-top: 0; }
   .pagehead { padding-top: 8rem; }
 }
+
+
+/* ── Studio block as a link ──────────────────────────────────────────────
+   Once the Studio has a page, the block that names it in the ladder should
+   go there. It is the terminus of both inlets, so it is the one place on the
+   diagram where a click is obviously wanted. */
+a.studio { text-decoration: none; }
+a.studio:hover { border-color: var(--gold); background:
+  linear-gradient(180deg, rgba(200,157,90,.20), rgba(200,157,90,.06)); }
+.studio__go {
+  margin-top: .4rem; font-size: var(--t-ui); letter-spacing: .04em; color: var(--gold);
+}
+
+/* A step whose marker is an em dash is not a sequence, it is a set of notes —
+   so the marker stays quiet rather than pretending to be an ordinal. */
+.numbered__go { margin-top: .7rem; font-size: var(--t-ui); }
+.numbered__go a { color: var(--copper-text); border-bottom: 1px solid var(--line);
+  display: inline-flex; align-items: center; min-height: 44px; }
+.numbered__go a:hover { color: var(--copper-dark); }
+.numbered__go .is-planned { display: inline-flex; align-items: center; min-height: 44px; }

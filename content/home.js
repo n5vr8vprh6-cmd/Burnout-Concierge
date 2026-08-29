@@ -267,7 +267,9 @@ module.exports = {
       studio: {
         label: 'Both inlets converge',
         head: 'Concierge<br>Venture Studio',
-        body: 'Selective admission. The deepest commitment in the ecosystem, and ours alone.'
+        body: 'Selective admission. The deepest commitment in the ecosystem, and ours alone.',
+        href: '/venture-studio',
+        cta: 'See the Studio'
       }
     },
 

@@ -29,9 +29,9 @@ Adding a page is a new `content/*.js` module and one line in `build.js`.
 
 ## The intake
 
-Six intakes, one engine. `content/intakes.js` is the single definition of what
-each form may ask; `js/intake.js` shows one question at a time; `api/intake.js`
-validates against the same spec and sends two emails.
+Seven intakes, one engine. `content/intakes.js` is the single definition of
+what each form may ask; `js/intake.js` shows one question at a time;
+`api/intake.js` validates against the same spec and sends two emails.
 
 Set `RESEND_API_KEY` to send for real — see `.env.example`. Without it the
 endpoint validates, logs the payload and reports success, so the whole flow can
@@ -83,12 +83,23 @@ faces are SIL OFL 1.1; see `assets/fonts/OFL.txt`.
 no result screen — the confirmation says a person is preparing something. The
 advisor intake decides Inlet A or B and shows the advisor none of it.
 
+**There is no price on the Venture Studio page, and a section explaining why.**
+The brief says publish pricing only once the offer and admission model are
+fixed. They are not. Saying nothing would read as evasion to exactly the person
+that page is for, so it says plainly that there is no price yet, why, and what
+happens instead. Remove that section only when a real number replaces it.
+
 **No question may ask about symptoms.** §14 forbids collecting health or
 emotional history through a marketing form. There are no textareas anywhere in
 the intake and no open "tell us what you're experiencing" field, and the
 endpoint drops any field the spec did not ask for — so a forged payload cannot
 put a medical history in the inbox either. If a new question cannot be answered
 by a calendar, a map, or a yes/no, it probably does not belong.
+
+The one open field on the site is in the Studio intake and asks an advisor
+about their own practice. That is a different act from asking a depleted person
+to describe their state, which is the distinction §14 actually turns on. It is
+capped at 300 characters server-side regardless of what is submitted.
 
 **Documents are HTML, not PDFs.** They are typeset to print specification and
 save to PDF from any browser. Making the build depend on Puppeteer would add

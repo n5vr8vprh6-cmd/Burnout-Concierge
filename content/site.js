@@ -47,6 +47,7 @@ module.exports = {
       head: 'Advisors',
       links: [
         { label: 'The advisor pathway',   href: '/for-advisors' },
+        { label: 'The Venture Studio',    href: '/venture-studio' },
         { label: 'Category introduction', route: 'dsw.intro' },
         { label: 'Foundations',           route: 'dsw.foundations' },
         { label: 'Immersion',             route: 'dsw.immersion' }

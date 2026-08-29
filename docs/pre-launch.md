@@ -67,7 +67,7 @@ Last updated: 29 August 2026 (design pass complete: all 22 pages)
 | ☑ | **Other pages checked after the spacing pass** | Scale now covers `site.css`, `chrome.css` and `intake.css`. All 22 pages walked at 1440x900 and 375x812: no horizontal overflow, exactly one `h1` each, no skipped heading levels. |
 | ☑ | **Intake `h1` matches `<title>`** | Derived from the page title rather than restated, so the two cannot drift. `spec.title` still names the document for the section label and progress rail. |
 | ☑ | **`/venture-studio` list repetition** | Judged per list: `#model` and `#admission` are real sequences and keep their numbers; `#gap` and `#pricing` are parallel and lost them. `#admission` moved to obsidian to separate the two remaining ordered lists. |
-| ⚠ | **`/venture-studio` ground balance** | Making `#admission` dark took the page from 20% to **36%** dark by height. Inside the rough 70/30 budget but at the top of it. Worth an eye — reverting is one line (`skin: 'light'`). |
+| ☐ | **`/venture-studio` reads as six ivory sections in a row** | The dark ground on `#admission` was tried and reverted, so `#model` and `#admission` are again two adjacent ordered lists of five inside a long ivory run. Not a defect, but the page's flattest stretch if it ever wants attention. |
 | ☐ | **Advisor gateway imagery** | 8,670px of page, one image, in the final CTA. Defensible for a functional-tier page, but the plan already flags the library as thin on *advisor conversations, journey mapping, small-group learning*. A content gap, not something to invent. |
 | ☐ | **`og-home.jpg` reviewed** | Social card is a crop of the hero. Fine, but worth a look. |
 

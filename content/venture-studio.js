@@ -189,12 +189,12 @@ module.exports = [
         /* Genuinely ordered — five rungs, with the first three living on Saint
            Lucia WELL. Numbers stay.
 
-           Dark, though. It sits between two other numbered lists in a run of
-           six consecutive ivory sections, and it is the same kind of object as
-           the advisor ladders on the homepage and /for-advisors, both of which
-           are obsidian. Giving it that ground separates the three lists and
-           matches how a ladder is treated everywhere else. */
-        skin: 'dark',
+           This was briefly obsidian, to separate it from #model above and to
+           break a run of six consecutive ivory sections. Reverted: it took the
+           page from 20% to 36% dark by height, which is at the top of §15's
+           rough 70/30 budget for a page nobody asked to make heavier. The two
+           adjacent ordered lists and the long ivory run are the accepted cost. */
+        skin: 'light',
         id: 'admission',
         label: 'Getting in',
         headline: 'How advisors reach the Studio.',

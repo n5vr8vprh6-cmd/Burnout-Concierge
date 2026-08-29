@@ -78,7 +78,6 @@ module.exports = {
     {
       type: 'columns',
       skin: 'light',
-      pin: true,
       id: 'difference',
       label: 'The difference',
       headline: 'Rest, wellness travel and guided recovery<br>are not the same thing.',

@@ -526,10 +526,11 @@ a.studio { text-decoration: none; }
      The stage is exactly one viewport tall and it does not scroll internally,
      so content taller than the stage would simply be cut off. Width alone does
      not predict that — a wide, short laptop window is the case that breaks. So
-     each mode declares the room it actually needs, measured against its real
-     content, and below that it is an ordinary band with the ordinary stagger
-     reveal. Losing the effect is nothing. Losing the bottom of the argument is
-     not.
+     the pin declares the room it actually needs, measured against real content,
+     and below that it is an ordinary band with the ordinary stagger reveal.
+     Losing the effect is nothing. Losing the bottom of a section is not.
+
+     Re-measure that gate if the pinned section ever gains content.
    ══════════════════════════════════════════════════════════════════════════ */
 
 /* The glide writes scroll position every frame; smooth anchor behaviour would
@@ -548,21 +549,19 @@ a.studio { text-decoration: none; }
 [data-pinned] [data-step] { transition: opacity .7s var(--ease), transform .7s var(--ease); }
 
 
-/* The activation mixin, written out per mode because CSS has no such thing.
-
-   svh, not vh. On mobile vh is the LARGE viewport, so a 100vh stage is taller
+/* svh, not vh. On mobile vh is the LARGE viewport, so a 100vh stage is taller
    than what is visible while the browser chrome shows, and its bottom is cut. */
 @media (min-height: 620px) {
-  [data-pinned] [data-pin-mode="replace"].band--pin { padding-top: 0; padding-bottom: 0; }
-  [data-pinned] [data-pin-mode="replace"] .pin__track { height: calc(100svh + var(--steps, 3) * var(--pin-step)); }
-  [data-pinned] [data-pin-mode="replace"] .pin__stage {
+  [data-pinned] .band--pin { padding-top: 0; padding-bottom: 0; }
+  [data-pinned] .band--pin .pin__track { height: calc(100svh + var(--steps, 3) * var(--pin-step)); }
+  [data-pinned] .band--pin .pin__stage {
     position: sticky; top: 0; height: 100svh;
     display: flex; align-items: center;
     padding-block: clamp(2.5rem, 6vh, 5.5rem);
   }
-  [data-pinned] [data-pin-mode="replace"] [data-step][data-state="future"] { opacity: 0; transform: translateY(24px); }
-  [data-pinned] [data-pin-mode="replace"] [data-step][data-state="past"]   { opacity: 0; transform: translateY(-24px); }
-  [data-pinned] [data-pin-mode="replace"] [data-step][data-state="active"] { opacity: 1; transform: none; }
+  [data-pinned] .band--pin [data-step][data-state="future"] { opacity: 0; transform: translateY(24px); }
+  [data-pinned] .band--pin [data-step][data-state="past"]   { opacity: 0; transform: translateY(-24px); }
+  [data-pinned] .band--pin [data-step][data-state="active"] { opacity: 1; transform: none; }
 
   /* One stage at a time, held at reading size. The four steps carry no links,
      so clearing three of them from view strands nobody in the tab order — the
@@ -575,28 +574,6 @@ a.studio { text-decoration: none; }
     max-width: 34ch;
   }
   [data-pinned] .stages--pin .stage__h { font-size: var(--t-m); margin-bottom: .7rem; }
-}
-
-
-/* Rest, then wellness travel, then guided recovery — each arriving and STAYING,
-   so the distinction is built rather than flashed. It ends with all three on
-   screen together, which is the comparison the section is making.
-
-   The tallest stage on the site: a headline, a lede and three columns. Measured
-   at 581px of content, so it needs a genuinely tall window and it asks for one
-   rather than clipping. */
-@media (min-width: 1000px) and (min-height: 780px) {
-  [data-pinned] [data-pin-mode="accumulate"].band--pin { padding-top: 0; padding-bottom: 0; }
-  [data-pinned] [data-pin-mode="accumulate"] .pin__track { height: calc(100svh + var(--steps, 3) * var(--pin-step)); }
-  [data-pinned] [data-pin-mode="accumulate"] .pin__stage {
-    position: sticky; top: 0; height: 100svh;
-    display: flex; align-items: center;
-    padding-block: clamp(2.5rem, 6vh, 5.5rem);
-  }
-  [data-pinned] [data-pin-mode="accumulate"] [data-step] { transition-duration: .8s; }
-  [data-pinned] [data-pin-mode="accumulate"] [data-step][data-state="future"] { opacity: 0; transform: translateY(24px); }
-  [data-pinned] [data-pin-mode="accumulate"] [data-step][data-state="active"] { opacity: 1; transform: none; }
-  [data-pinned] .cols--pin { align-items: start; }
 }
 
 

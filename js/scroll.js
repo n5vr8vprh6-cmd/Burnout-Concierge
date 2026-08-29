@@ -46,12 +46,18 @@
      set from here. Nothing in the stylesheet hides pinned content on its own.
 
    NOTHING FOCUSABLE IS EVER PINNED OUT OF VIEW
-     Both pinned sections on the homepage — the category distinction and the
-     four stages — contain no links or controls inside the advancing children.
-     That is a precondition, not a coincidence: hiding a focusable element from
-     sight while leaving it in the tab order strands keyboard users, exactly as
-     the mobile menu comment in js/site.js describes. Any future pin must clear
-     the same bar, and the focusin handler below is the backstop if one does not.
+     The one pinned section on the homepage — the four journey stages — carries
+     no links or controls inside its advancing children. That is a precondition,
+     not a coincidence: hiding a focusable element from sight while leaving it in
+     the tab order strands keyboard users, exactly as the mobile menu comment in
+     js/site.js describes. Any future pin must clear the same bar, and the
+     focusin handler below is the backstop if one does not.
+
+   ONE DEVICE, DELIBERATELY
+     A second pin mode was built and removed. It held the page for three screens
+     to arrive at a layout almost identical to the unpinned one, which is scroll
+     cost without a payoff. Pinning earns its keep where it genuinely transforms
+     a section, and a numbered process is the clearest such case.
    ========================================================================== */
 (function () {
   'use strict';
@@ -126,15 +132,13 @@
       sec: sec,
       stage: sec.querySelector('.pin__stage'),
       steps: Array.prototype.slice.call(sec.querySelectorAll('[data-step]')),
-      mode: sec.getAttribute('data-pin-mode') || 'replace',
       last: -1
     };
   }).filter(function (p) { return p.steps.length; });
 
-  function stateFor(p, i, active) {
-    /* accumulate — everything up to the active step stays on screen, so the
-       argument builds. replace — one at a time, the rest cleared away. */
-    if (p.mode === 'accumulate') return i <= active ? 'active' : 'future';
+  /* One at a time. Steps behind the active one leave upward, steps ahead of it
+     wait below, so the direction of travel matches the direction of scroll. */
+  function stateFor(i, active) {
     return i < active ? 'past' : i === active ? 'active' : 'future';
   }
 
@@ -164,7 +168,7 @@
       p.last = active;
 
       for (var i = 0; i < p.steps.length; i++) {
-        p.steps[i].setAttribute('data-state', stateFor(p, i, active));
+        p.steps[i].setAttribute('data-state', stateFor(i, active));
       }
     }
   }

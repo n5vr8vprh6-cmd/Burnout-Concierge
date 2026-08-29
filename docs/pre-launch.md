@@ -61,7 +61,7 @@ Last updated: 29 August 2026 (scroll hijacking reversed for the cinematic tier)
 | ☐ | **Assistive-technology testing with disabled users** | Listed as outstanding on `/accessibility`. The honest gap. |
 | ☐ | **200% zoom verified** | Every page, every breakpoint. Also listed as outstanding. |
 | ☐ | **The glide tested on real trackpads** | Wheel smoothing is the one thing a headless check cannot judge. Needs a Mac trackpad, a Windows precision trackpad and a notched mouse wheel. If it reads as lag rather than weight, lower `GLIDE` in `js/scroll.js` — it is one constant. |
-| ☐ | **Pinned sections walked on a real phone** | The pin rides native scroll so it should behave, but `svh` and browser chrome interact in ways only a device shows. `/` sections `#journey` (pins) and `#difference` (falls back under 1000×780). |
+| ☐ | **The pinned section walked on a real phone** | The pin rides native scroll so it should behave, but `svh` and browser chrome interact in ways only a device shows. One pinned section: `#journey` on `/`. |
 | ☐ | **Kling video** | 1 hero loop + 6 section motifs. ≤2.5 MB each, ≤8 MB total, `preload="none"` behind poster frames. The section schema already has the `video` field. |
 | ☐ | **`og-home.jpg` reviewed** | Social card is a crop of the hero. Fine, but worth a look. |
 
@@ -96,12 +96,20 @@ wrong, and each is cheap to re-check:
 |---|---|
 | Reduced motion exits to native scroll completely | Load `/?flat=1` — same code path. `data-pinned` absent, sections ordinary height, zero elements below full opacity. |
 | The no-JS floor holds | The tall-section CSS is gated on `<html data-pinned>`, set by `js/scroll.js` only after its engine runs. Delete that attribute in devtools: the page must become the pre-cinema page, not a broken one. |
-| Nothing focusable is pinned out of view | Both pinned sections carry no links inside their advancing children. **Any new pin must clear the same bar.** Tab through it. |
+| Nothing focusable is pinned out of view | The four journey stages carry no links. **Any new pin must clear the same bar.** Tab through it. |
 
 A pin is gated on viewport **height**, not just width. The stage is one viewport
-tall and does not scroll internally, so a wide short window is what clips —
-`#difference` needs 1000×780 and falls back below it. If you add content to a
-pinned section, re-measure the fit before assuming it still works.
+tall and does not scroll internally, so a wide short window is what clips. The
+gate is `min-height: 620px`, measured against the real content of the one pinned
+section. **If that section gains content, re-measure before assuming it still
+fits.**
+
+There is one pin device, and that is deliberate. A second — three columns
+arriving and accumulating — was built and removed: it held the page for three
+screens to arrive at a layout almost identical to the unpinned one, which is
+scroll cost without a payoff. Pinning earns its keep where it genuinely
+transforms a section. A numbered process does; a comparison of three things
+already visible together does not.
 
 ### Two conventions kept against skill guidance, with reasons
 

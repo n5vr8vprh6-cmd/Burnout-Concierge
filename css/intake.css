@@ -18,7 +18,7 @@
 .intake__wrap { width: 100%; max-width: 720px; }
 
 .intake__head { margin-bottom: clamp(2.5rem, 6vh, 4rem); }
-.intake__head .meta { display: block; color: var(--gold-deep); margin-bottom: 1.1rem; }
+.intake__head .meta { display: block; color: var(--gold-deep); margin-bottom: var(--s-4); }
 .intake__head .lede { color: var(--ink-soft); max-width: 46ch; }
 
 /* The step count is a quiet line of text, never a bar. A progress bar turns
@@ -30,28 +30,28 @@
 .intake__context { display: none; }
 :root[data-context="eclipse"] .intake__context[data-for-context="eclipse"] {
   display: block;
-  margin-top: 1.5rem; padding-left: 1rem;
+  margin-top: var(--s-6); padding-left: var(--s-4);
   border-left: 2px solid var(--slate);
   font-size: var(--t-small); color: var(--ink-soft); max-width: 46ch;
 }
 
 .intake__count {
-  display: block; margin-top: 1.6rem; color: var(--ink-faint);
+  display: block; margin-top: var(--s-6); color: var(--ink-faint);
 }
 /* Without scripting every step is visible at once, so a per-step counter would
    be a lie. It only appears once the engine has taken over. */
 .intake__form:not([data-enhanced]) .intake__count { display: none; }
 
-.step-q { border: 0; padding: 0; margin: 0 0 2.5rem; min-inline-size: 0; }
+.step-q { border: 0; padding: 0; margin: 0 0 var(--s-8); min-inline-size: 0; }
 .intake__form[data-enhanced] .step-q { margin-bottom: 0; }
 
 .q {
   font-family: var(--display); font-size: var(--t-m); font-weight: 300;
-  line-height: 1.15; letter-spacing: -.018em; padding: 0; margin: 0 0 .6rem;
+  line-height: 1.15; letter-spacing: -.018em; padding: 0; margin: 0 0 var(--s-2);
   color: var(--ink);
 }
-.q__note { font-size: var(--t-small); color: var(--ink-faint); margin: 0 0 2rem; max-width: 46ch; }
-.q + .opts, .q + .fields, .q + .field { margin-top: 2rem; }
+.q__note { font-size: var(--t-small); color: var(--ink-faint); margin: 0 0 var(--s-7); max-width: 46ch; }
+.q + .opts, .q + .fields, .q + .field { margin-top: var(--s-7); }
 
 /* Crossfade in, never slide. A carousel of questions feels like a form; a
    question replacing a question feels like a conversation. */
@@ -66,11 +66,11 @@
 /* ── Options ─────────────────────────────────────────────────────────────
    A real radio, visually replaced. Keeping the input means keyboard, screen
    reader and form semantics all work without being rebuilt by hand. */
-.opts { display: flex; flex-direction: column; gap: .7rem; max-width: 34rem; }
+.opts { display: flex; flex-direction: column; gap: var(--s-3); max-width: 34rem; }
 
 .opt {
-  position: relative; display: flex; align-items: center; gap: 1rem;
-  padding: 1.15rem 1.35rem; min-height: 56px; cursor: pointer;
+  position: relative; display: flex; align-items: center; gap: var(--s-4);
+  padding: var(--s-5) var(--s-5); min-height: 56px; cursor: pointer;
   border: 1px solid rgba(26, 24, 21, .16); border-radius: var(--r-sm);
   transition: border-color var(--dur-micro) var(--ease),
               background var(--dur-micro) var(--ease);
@@ -95,14 +95,14 @@
 /* ── Fields ──────────────────────────────────────────────────────────────
    Underline, not a box. A boxed input on an editorial page reads as software. */
 .fields { display: flex; flex-direction: column; gap: 1.75rem; max-width: 28rem; }
-.field { margin: 0; display: flex; flex-direction: column; gap: .5rem; max-width: 28rem; }
+.field { margin: 0; display: flex; flex-direction: column; gap: var(--s-2); max-width: 28rem; }
 .field__label {
   font-family: var(--mono); font-size: var(--t-meta); letter-spacing: .18em;
   text-transform: uppercase; color: var(--ink-faint);
 }
 .field__input {
   border: 0; border-bottom: 1px solid rgba(26, 24, 21, .28); background: transparent;
-  padding: .7rem 0; min-height: 44px;
+  padding: var(--s-3) 0; min-height: 44px;
   font-family: var(--body); font-size: var(--t-body); font-weight: 300; color: var(--ink);
   transition: border-color var(--dur-micro) var(--ease);
 }
@@ -111,7 +111,7 @@
 .field__input:focus-visible { outline: 2px solid var(--copper-deep); outline-offset: 6px; }
 
 .intake__acts {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.75rem;
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-4) 1.75rem;
   margin-top: clamp(2.5rem, 5vh, 3.5rem);
 }
 .intake__acts .btn--quiet { order: -1; }
@@ -122,25 +122,25 @@
    Confirms that a person is preparing something. It is not a result, it does
    not score anybody, and there is nothing here to interpret. */
 .confirm { max-width: 40rem; }
-.confirm > svg { color: var(--gold); margin-bottom: 2rem; }
-.confirm__head { margin-bottom: 1rem; }
+.confirm > svg { color: var(--gold); margin-bottom: var(--s-7); }
+.confirm__head { margin-bottom: var(--s-4); }
 .confirm .lede { color: var(--ink-soft); max-width: 44ch; }
 
 .confirm__next { margin: clamp(2rem, 5vh, 3rem) 0 0; padding: 0; }
 .confirm__next li {
-  display: flex; gap: 1.5rem; padding: 1.1rem 0;
+  display: flex; gap: var(--s-6); padding: var(--s-4) 0;
   border-top: 1px solid var(--hair); font-size: var(--t-body); color: var(--ink-soft);
 }
-.confirm__next .meta { color: var(--gold-deep); flex: none; width: 6.5rem; padding-top: .25rem; }
+.confirm__next .meta { color: var(--gold-deep); flex: none; width: 6.5rem; padding-top: var(--s-1); }
 
 .confirm__boundary {
-  margin-top: clamp(2rem, 5vh, 3rem); padding-top: 1.25rem;
+  margin-top: clamp(2rem, 5vh, 3rem); padding-top: var(--s-5);
   border-top: 1px solid var(--hair);
   font-size: var(--t-small); color: var(--ink-soft); max-width: 62ch;
 }
 
 @media (max-width: 640px) {
-  .confirm__next li { flex-direction: column; gap: .35rem; }
+  .confirm__next li { flex-direction: column; gap: var(--s-1); }
   .confirm__next .meta { width: auto; padding-top: 0; }
 }
 
@@ -157,31 +157,37 @@
 .doc__wrap { max-width: 46rem; margin: 0 auto; padding: clamp(3rem, 9vh, 7rem) var(--pad-x) clamp(4rem, 10vh, 8rem); }
 
 .doc__cover { padding-bottom: clamp(2.5rem, 6vh, 4rem); border-bottom: 1px solid var(--line); }
-.doc__cover > svg { color: var(--gold); margin-bottom: 2rem; }
-.doc__cover .meta { display: block; color: var(--gold-deep); margin-bottom: 1.5rem; }
-.doc__title { margin: 0 0 1.2rem; }
+.doc__cover > svg { color: var(--gold); margin-bottom: var(--s-7); }
+.doc__cover .meta { display: block; color: var(--gold-deep); margin-bottom: var(--s-6); }
+.doc__title { margin: 0 0 var(--s-5); }
 .doc__cover .lede { color: var(--ink-soft); }
 
 .doc__body { padding-top: clamp(2.5rem, 6vh, 4rem); }
-.doc__body > * + * { margin-top: 1.2rem; }
+.doc__body > * + * { margin-top: var(--s-5); }
 .doc__lead { color: var(--ink-soft); max-width: 34ch; }
+/* A section heading and an entry name were both --t-sub at weight 400 — the
+   same size, the same weight, the same family, separated only by which of them
+   happened to carry a rule. Two heading levels rendering identically flattens
+   the outline of the one thing a prospect reads carefully after giving us
+   their email. --t-m puts a real level between them, and weight 300 is what
+   the rest of the display system uses at this size. */
 .doc__h {
-  font-size: var(--t-sub); font-weight: 400; margin-top: clamp(2.5rem, 6vh, 4rem);
-  padding-bottom: .6rem; border-bottom: 1px solid var(--hair);
+  font-size: var(--t-m); font-weight: 300; margin-top: clamp(2.5rem, 6vh, 4rem);
+  padding-bottom: var(--s-3); border-bottom: 1px solid var(--hair);
 }
 .doc__body p { color: var(--ink-soft); }
 .doc__note { font-size: var(--t-small); color: var(--ink-faint); }
 
 .entry {
-  display: grid; grid-template-columns: 1fr 15rem; gap: 1.5rem 2.5rem;
+  display: grid; grid-template-columns: 1fr 15rem; gap: var(--s-6) var(--s-8);
   padding: 1.8rem 0; border-bottom: 1px solid var(--hair);
   margin-top: 0 !important;
 }
 .entry__head { grid-column: 1 / -1; }
-.entry__dest { display: block; color: var(--ink-faint); margin-bottom: .4rem; }
+.entry__dest { display: block; color: var(--ink-faint); margin-bottom: var(--s-2); }
 .entry__name { font-size: var(--t-sub); font-weight: 400; }
-.entry__meta { display: flex; flex-direction: column; gap: .8rem; }
-.entry__meta > div { display: flex; flex-direction: column; gap: .2rem; }
+.entry__meta { display: flex; flex-direction: column; gap: var(--s-3); }
+.entry__meta > div { display: flex; flex-direction: column; gap: var(--s-1); }
 .entry__meta dt {
   font-family: var(--mono); font-size: var(--t-meta); letter-spacing: .18em;
   text-transform: uppercase; color: var(--ink-faint);
@@ -189,7 +195,7 @@
 .entry__meta dd { font-size: var(--t-small); color: var(--ink-soft); }
 .entry__meta dd.is-status { color: var(--gold-deep); }
 
-.doc__foot { margin-top: clamp(3rem, 8vh, 5rem); padding-top: 1.5rem; border-top: 1px solid var(--line); }
+.doc__foot { margin-top: clamp(3rem, 8vh, 5rem); padding-top: var(--s-6); border-top: 1px solid var(--line); }
 
 @media (max-width: 700px) { .entry { grid-template-columns: 1fr; } }
 

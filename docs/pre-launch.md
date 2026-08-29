@@ -6,7 +6,7 @@ than in a message.
 
 **Status key** — ☐ not started · ◐ in progress · ☑ done · ⚠ needs a decision from Duncan
 
-Last updated: 29 August 2026 (design pass: homepage + advisor gateway)
+Last updated: 29 August 2026 (design pass complete: all 22 pages)
 
 ---
 
@@ -64,7 +64,8 @@ Last updated: 29 August 2026 (design pass: homepage + advisor gateway)
 | ☐ | **The pinned section walked on a real phone** | The pin rides native scroll so it should behave, but `svh` and browser chrome interact in ways only a device shows. One pinned section: `#journey` on `/`. |
 | ☐ | **Kling video** | 1 hero loop + 6 section motifs. ≤2.5 MB each, ≤8 MB total, `preload="none"` behind poster frames. The section schema already has the `video` field. |
 | ☐ | **Four off-scale spacing values decided with eyes on the page** | `1.75rem`, `1.8rem` (x7), `2.2rem` (x8), `2.25rem` are the only literals left in a margin, padding or gap. Snapping them to `--s-7` / `--s-8` moves things 3-8px rather than 1-2, so it needs looking at rather than calculating. `.rung`, `.stage`, `.track`, `.path`, `.acts`. |
-| ☐ | **Other pages spot-checked after the spacing pass** | The scale was applied across `site.css` and `chrome.css`, so all 22 pages shifted by up to 2px per value. Verified on `/` only: document height moved 4px in 17,479. Worth a look at `/for-advisors` and an intake before launch. |
+| ☑ | **Other pages checked after the spacing pass** | Scale now covers `site.css`, `chrome.css` and `intake.css`. All 22 pages walked at 1440x900 and 375x812: no horizontal overflow, exactly one `h1` each, no skipped heading levels. |
+| ☐ | **Intake `h1` wording reviewed** | Each intake's `h1` is the *document* being requested (`The Recovery-Ready Property Brief`) while `<title>` is the *action* (`Propose a Collaboration`). Both defensible, but worth deciding whether they should match. |
 | ☐ | **`/venture-studio` list repetition** | It carries **four** ordered `numbered` lists on one page — the same problem found and fixed on the advisor gateway, further along. Check whether each is genuinely a sequence; `ordered: false` is available for the ones that are not. |
 | ☐ | **Advisor gateway imagery** | 8,670px of page, one image, in the final CTA. Defensible for a functional-tier page, but the plan already flags the library as thin on *advisor conversations, journey mapping, small-group learning*. A content gap, not something to invent. |
 | ☐ | **`og-home.jpg` reviewed** | Social card is a crop of the hero. Fine, but worth a look. |

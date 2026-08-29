@@ -49,6 +49,7 @@ module.exports = {
       type: 'longform',
       skin: 'light',
       id: 'urgent',
+      level: 2,   /* a section here, not the page — the pageHeader owns the h1 */
       label: 'If it is urgent',
       eyebrow: 'Please read first',
       headline: 'If you need help now,<br>this is not the right place.',
@@ -102,6 +103,7 @@ module.exports = {
       type: 'longform',
       skin: 'light',
       id: 'details',
+      level: 2,   /* a section here, not the page — the pageHeader owns the h1 */
       label: 'Details',
       headline: 'Everything else.',
       reviewed: '29 August 2026',

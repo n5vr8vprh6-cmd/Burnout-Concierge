@@ -48,7 +48,10 @@ module.exports = [
         eyebrow: 'For organizations',
         headline: 'When rest is not enough,<br>recovery needs structure.',
         lead: 'For employers, founders and executive sponsors who have discovered that time off, on its own, does not bring people back.',
-        primary:   { label: 'Discuss an Organizational Pathway', href: '/organizations/briefing' },
+        /* Part 3 §J: one label per intent. All three routes to the briefing
+           intake now say the same thing, and only the document link mentions
+           the Infrastructure Brief by name. */
+        primary:   { label: 'Request an Executive Briefing', href: '/organizations/briefing' },
         primaryEvent: 'organization_inquiry',
         secondary: { label: 'See the four pathways', href: '#pathways' }
       },
@@ -97,7 +100,7 @@ module.exports = [
           { head: 'Advisor-supported recovery travel',
             body: 'Coordination through your existing travel programme or agency, with the burnout specialty layered on top rather than replacing what already works.' }
         ],
-        primary: { label: 'Request the Infrastructure Brief', href: '/organizations/briefing' },
+        primary: { label: 'Request an Executive Briefing', href: '/organizations/briefing' },
         event: 'organization_inquiry'
       },
 

@@ -63,7 +63,8 @@ module.exports = {
         'The earlier work ran as <em>Burnout Recovery Accelerator</em>. That brand is being folded into this one rather than run alongside it — a narrower, sharper thing rather than a broader one. Burnout is the most differentiated part of wellness travel, and doing that properly is more useful than doing everything adequately.',
         'So this is a specialty rather than an agency: the small, unglamorous work of understanding somebody’s circumstances first, and designing backwards from what they will come home to.'
       ],
-      primary: { label: 'Work with a concierge', href: '/work-with-a-concierge' }
+      /* Part 3 §J: the nav already calls this door by its name. */
+      primary: { label: 'Find Your Recovery Path', href: '/work-with-a-concierge' }
     },
 
     /* ── Values, from the Brand Manual ──────────────────────────────────── */

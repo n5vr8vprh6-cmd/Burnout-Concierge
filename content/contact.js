@@ -104,9 +104,12 @@ module.exports = {
       skin: 'light',
       id: 'details',
       level: 2,   /* a section here, not the page — the pageHeader owns the h1 */
+      /* No `reviewed` stamp. The crisis block above carries one because those
+         are external helpline details and whether they were checked recently
+         matters. Our own email address does not need a review date, and two
+         identical stamps on one page read as a template. */
       label: 'Details',
       headline: 'Everything else.',
-      reviewed: '29 August 2026',
       blocks: [
         { type: 'h', id: 'email', text: 'Email' },
         { type: 'p', text: 'General enquiries: <a href="mailto:hello@burnoutconcierge.co">hello@burnoutconcierge.co</a>. Media and speaking: the same address, and please say so in the subject line.' },

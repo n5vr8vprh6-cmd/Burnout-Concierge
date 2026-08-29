@@ -38,7 +38,9 @@ module.exports = {
     {
       head: 'Journeys',
       links: [
-        { label: 'The Recovery Collection', href: '/collection' },
+        /* The document itself is noindex now, so the footer offers the
+           request instead of the file. Same asset, correct door. */
+        { label: 'Request the Collection',  href: '/work-with-a-concierge/collection' },
         { label: 'Work with a concierge',   href: '/work-with-a-concierge' },
         { label: 'The concierge journey',   href: '/#journey' }
       ]
@@ -48,7 +50,7 @@ module.exports = {
       links: [
         { label: 'The advisor pathway',   href: '/for-advisors' },
         { label: 'The Venture Studio',    href: '/venture-studio' },
-        { label: 'The Advisor Prospectus', href: '/advisor-prospectus' },
+        { label: 'Request the Prospectus', href: '/for-advisors/prospectus' },
         { label: 'Category introduction', route: 'dsw.intro' },
         { label: 'Foundations',           route: 'dsw.foundations' },
         { label: 'Immersion',             route: 'dsw.immersion' }
@@ -77,8 +79,9 @@ module.exports = {
       links: [
         { label: 'Recovery infrastructure', href: '/organizations' },
         { label: 'The Infrastructure Brief', href: '/infrastructure-brief' },
-        { label: 'Partner with us',         href: '/partners' },
-        { label: 'The Property Brief',      href: '/property-brief' }
+        /* No separate entry for the Property Brief: 'Partner with us'
+           already leads to the intake that delivers it. */
+        { label: 'Partner with us',         href: '/partners' }
       ]
     }
   ]

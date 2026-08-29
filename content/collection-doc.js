@@ -27,6 +27,14 @@
 const { BOUNDARY } = require('./intakes.js');
 
 module.exports = {
+  /* noindex, and deliberately not in the footer. This document closes with
+     "Not for distribution", and that was untrue while it sat one footer click
+     away and in the sitemap. The intake is the door: api/intake.js emails the
+     link to whoever asks. Reachable by URL, just not advertised or crawled.
+
+     The Infrastructure Brief is the exception and stays public — it says
+     "Circulate freely inside your organisation", which is what it is for. */
+  noindex: true,
   key: 'collection-doc',
   path: '/collection',
   surface: 'consumer',

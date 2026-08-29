@@ -131,7 +131,7 @@ function build() {
   /* Pages */
   const built = [];
   for (const page of PAGES) {
-    const body = renderSections(page.sections);
+    const body = renderSections(page.sections, page, SITE);
     const html = render(page, SITE, body, versions);
     const out = outputPath(page.path);
     fs.mkdirSync(path.dirname(out), { recursive: true });

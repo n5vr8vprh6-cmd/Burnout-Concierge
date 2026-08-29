@@ -146,6 +146,10 @@ module.exports = {
        proof; saying why it is restrained is stronger still. */
     {
       type: 'numbered',
+      /* Four parallel statements about what is deliberately absent. No order —
+         and the em-dash markers these carried were the same admission made on
+         the Studio's pricing section. */
+      ordered: false,
       skin: 'light',
       id: 'proof',
       label: 'On proof',
@@ -154,22 +158,18 @@ module.exports = {
       lead: 'A page like this usually carries testimonials and partner logos. This one does not yet, and the reasons are worth stating.',
       items: [
         {
-          marker: '—',
           head: 'No testimonials',
           body: 'Recovery journeys are private, and a quote attributed to “a Chief People Officer” proves nothing while implying a great deal. When somebody consents in writing to being named, their words will appear with their name on them.'
         },
         {
-          marker: '—',
           head: 'No partner logos',
           body: 'Only relationships confirmed in writing get named. That is why journeys here list a destination and an intention rather than a property — the destinations are real and several of the venue relationships are still being agreed.'
         },
         {
-          marker: '—',
           head: 'No photographs of people',
           body: 'The imagery on this site is generated rather than photographed, which is fine as atmosphere and not fine beside a named person. There is no portrait here until there is a real one.'
         },
         {
-          marker: '—',
           head: 'Status stated on every journey',
           body: 'Each journey says plainly whether it is accepting enquiries, running private dates, forming a cohort, or still in development. Implying continuous availability would cost more trust than admitting a gap.'
         }

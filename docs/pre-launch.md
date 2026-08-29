@@ -46,7 +46,7 @@ Last updated: 29 August 2026 (design pass complete: all 22 pages)
 | ⚠ | **Reciprocal link on Saint Lucia WELL** | Their Eclipse page references an unnamed "concierge". Naming us there is the other half of a route this build creates. |
 | ⚠ | **Advisor commission structure** | The Prospectus says it is set per journey and agreed in writing. Confirm before an advisor reads it. |
 | ⚠ | **Studio pricing** | `/venture-studio` has a section explaining there is no price yet. Replace it with a real number when the offer is fixed — do not just delete it. |
-| ☐ | **Founder photograph** | There is deliberately no portrait: the image library is AI-generated and a synthetic face beside a named person is dishonest. Needs a real photograph. |
+| ☐ | **Founder photograph** | There is deliberately no portrait: the image library is AI-generated and a synthetic face beside a named person is dishonest. Needs a real photograph. **The layout is ready** — add `img` to the `founder` section and `:has()` gives it the second column and drops the heading to `--t-m` automatically. |
 | ☐ | **Testimonials** | None on the site by design. Each needs documented written consent and accurate attribution before it appears. |
 | ☐ | **Partner logos and references** | Only confirmed relationships get named. |
 

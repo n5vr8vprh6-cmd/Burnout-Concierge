@@ -245,8 +245,24 @@
 
 /* ── 10 · Founder ────────────────────────────────────────────────────────── */
 
+/* One column, because there is no portrait yet — see pre-launch.md. The
+   renderer emits the image block conditionally, so today the heading sits at
+   the full 1240px measure while carrying --t-m, the size reserved for headings
+   in a narrow column. On this page every other section heading is --t-l at the
+   same width, which made the founder block look quietly undersized for no
+   structural reason.
+
+   :has() sizes the heading to the column it is actually in: full measure now,
+   and back to --t-m the day a real portrait takes the second column. Without
+   :has() support the page keeps today's correct single-column state. */
 .founder { display: grid; grid-template-columns: 1fr; gap: clamp(2.5rem, 6vw, 5rem); }
+.founder h2 { font-size: var(--t-l); max-width: var(--measure-display); }
 .founder p + p { margin-top: var(--s-4); }
+
+@media (min-width: 901px) {
+  .founder:has(.founder__img) { grid-template-columns: 1.15fr .85fr; align-items: center; }
+  .founder:has(.founder__img) h2 { font-size: var(--t-m); }
+}
 
 
 /* ── 11 · Final ──────────────────────────────────────────────────────────── */

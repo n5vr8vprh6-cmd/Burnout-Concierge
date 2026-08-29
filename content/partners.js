@@ -62,6 +62,11 @@ module.exports = [
          normally hear from somebody selling them a programme. */
       {
         type: 'numbered',
+        /* Four parallel qualities, not four steps — the lead counts them and
+           then says three of them cost nothing, which is a set, not an order.
+           They appear in the same order in the Property Brief because that is
+           how they were written, not because the order means anything. */
+        ordered: false,
         skin: 'light',
         id: 'substance',
         label: 'What it means',

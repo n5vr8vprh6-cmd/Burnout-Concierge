@@ -22,8 +22,8 @@
 .is-dark  p     { color: var(--stone); }
 .is-dark  h2, .is-dark h3 { color: var(--ivory); }
 
-.eyebrow { display: block; margin-bottom: 1.5rem; }
-.band h2 + .lede, .band .l + .lede { margin-top: 1.4rem; }
+.eyebrow { display: block; margin-bottom: var(--s-6); }
+.band h2 + .lede, .band .l + .lede { margin-top: var(--s-6); }
 .band .l, .band .m { margin-top: .2em; }
 
 /* A pathway tint. Colour says which audience a band belongs to, at a level
@@ -75,8 +75,8 @@
 /* ── 2 · Columns ─────────────────────────────────────────────────────────── */
 
 .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(2.5rem, 5vw, 5.5rem); margin-top: var(--gap-block); }
-.col__k { display: block; margin-bottom: 1.1rem; }
-.col__h { font-size: var(--t-sub); line-height: 1.2; margin-bottom: .6rem; }
+.col__k { display: block; margin-bottom: var(--s-4); }
+.col__h { font-size: var(--t-sub); line-height: 1.2; margin-bottom: var(--s-2); }
 
 
 /* ── 3 · Rungs ───────────────────────────────────────────────────────────── */
@@ -86,9 +86,9 @@
   margin-top: var(--gap-block); border-top: 1px solid var(--line);
 }
 .rung {
-  padding: 2.6rem 2.2rem 2.6rem 0;
+  padding: var(--s-8) 2.2rem var(--s-8) 0;
   border-right: 1px solid var(--hair);
-  display: flex; flex-direction: column; gap: .9rem;
+  display: flex; flex-direction: column; gap: var(--s-4);
 }
 .rung:last-child { border-right: 0; }
 .rung:not(:first-child) { padding-left: 2.2rem; }
@@ -96,7 +96,7 @@
 .rung p { flex: 1; }
 .rung__go {
   font-size: var(--t-ui); letter-spacing: .03em; color: var(--copper-text);
-  margin-top: .4rem; display: inline-flex; align-items: center; min-height: 44px;
+  margin-top: var(--s-2); display: inline-flex; align-items: center; min-height: 44px;
 }
 
 
@@ -113,7 +113,7 @@
   object-fit: cover; will-change: transform;
 }
 .journey__body {
-  display: flex; flex-direction: column; justify-content: center; gap: 1.35rem;
+  display: flex; flex-direction: column; justify-content: center; gap: var(--s-5);
   padding: clamp(3rem, 7vh, 6rem) clamp(2rem, 5vw, 5rem);
 }
 .journey__dest { display: block; }
@@ -121,11 +121,11 @@
 .journey .lede { max-width: 26ch; }
 
 .journey__meta {
-  display: flex; flex-wrap: wrap; gap: 1.25rem 2.25rem;
-  padding-top: 1.35rem; margin-top: .4rem; border-top: 1px solid var(--hair);
+  display: flex; flex-wrap: wrap; gap: var(--s-5) 2.25rem;
+  padding-top: var(--s-5); margin-top: var(--s-2); border-top: 1px solid var(--hair);
 }
 .journey.is-dark .journey__meta { border-top-color: var(--hair-light); }
-.journey__meta > div { display: flex; flex-direction: column; gap: .35rem; }
+.journey__meta > div { display: flex; flex-direction: column; gap: var(--s-1); }
 .journey__meta dt {
   font-family: var(--mono); font-size: var(--t-meta);
   letter-spacing: .18em; text-transform: uppercase; color: var(--ink-faint);
@@ -136,23 +136,47 @@
 .journey__meta dd.is-status { color: var(--gold-deep); }
 .journey.is-dark .journey__meta dd.is-status { color: var(--gold); }
 
+/* A hairline above, not an accent bar beside. The 2px left border this used to
+   carry is the single most recognisable AI-UI tell there is, and the same one
+   already removed from the crisis callout. The rule reads as the same family as
+   .journey__meta's divider, which is what a related note should look like. */
 .partner {
-  border-left: 2px solid var(--slate); padding-left: .9rem;
-  font-size: var(--t-small); max-width: 34ch;
+  padding-top: var(--s-4); border-top: 1px solid var(--slate);
+  font-size: var(--t-small); max-width: 46ch;
 }
-.journey.is-dark .partner { border-left-color: var(--gold); }
+.journey.is-dark .partner { border-top-color: var(--gold); }
+
+
+/* ── The partner journey breaks the rhythm, and should ───────────────────────
+   Four journeys alternate media left / media right. A fifth mirror makes five
+   sections whose only difference is which side the picture is on — alternation
+   is not composition, and by the fourth repeat the eye has stopped reading and
+   started scanning.
+
+   Eclipse is the honest place to break it: it is the one journey that is not
+   ours. Full-bleed media across the whole width, then the body in the site's
+   standard measure beneath it. The change of shape carries information — this
+   is a Saint Lucia WELL journey we hold the integration for — rather than being
+   variety for its own sake. */
+.journey.is-partner { grid-template-columns: 1fr; min-height: 0; }
+.journey.is-partner .journey__media { min-height: 56svh; }
+.journey.is-partner .journey__body {
+  width: 100%; max-width: var(--wrap); margin-inline: auto;
+  padding-block: clamp(var(--s-9), 7vh, var(--s-11));
+}
+.journey.is-partner .lede { max-width: 40ch; }
 
 
 /* ── 5 · Stages ──────────────────────────────────────────────────────────── */
 
 .stages { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: var(--gap-block); border-top: 1px solid var(--line-dim); }
-.stage { padding: 2.4rem 1.8rem 0 0; position: relative; }
+.stage { padding: var(--s-8) 1.8rem 0 0; position: relative; }
 .stage::before {
   content: ""; position: absolute; top: -4px; left: 0;
   width: 7px; height: 7px; background: var(--gold); border-radius: 50%;
 }
-.stage__n { display: block; margin-bottom: .9rem; }
-.stage__h { font-size: var(--t-sub); margin-bottom: .5rem; }
+.stage__n { display: block; margin-bottom: var(--s-4); }
+.stage__h { font-size: var(--t-sub); margin-bottom: var(--s-2); }
 
 
 /* ── 6 · The two-inlet ladder ────────────────────────────────────────────── */
@@ -163,17 +187,17 @@
 }
 .adv__img img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
 
-.ladder { display: grid; grid-template-columns: 1fr 252px; gap: 2.5rem; align-items: stretch; }
-.tracks { display: flex; flex-direction: column; gap: 1.25rem; }
-.track { border: 1px solid rgba(247, 244, 237, .16); padding: 1.6rem 1.8rem; }
-.track__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .9rem; margin-bottom: 1.2rem; }
+.ladder { display: grid; grid-template-columns: 1fr 252px; gap: var(--s-8); align-items: stretch; }
+.tracks { display: flex; flex-direction: column; gap: var(--s-5); }
+.track { border: 1px solid rgba(247, 244, 237, .16); padding: var(--s-6) 1.8rem; }
+.track__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-4); margin-bottom: var(--s-5); }
 .track__who { font-size: var(--t-small); color: var(--stone); }
 
-.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: .7rem; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-3); }
 .step {
   border: 1px solid rgba(247, 244, 237, .13);
   background: rgba(247, 244, 237, .028);
-  padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: .5rem;
+  padding: var(--s-4) var(--s-4); display: flex; flex-direction: column; gap: var(--s-2);
   min-height: 44px;
   transition: border-color var(--dur-micro) var(--ease), background var(--dur-micro) var(--ease);
 }
@@ -185,8 +209,8 @@
 .step.is-ext .step__s { color: var(--gold); }
 
 .studio {
-  border: 1px solid var(--gold); padding: 2rem 1.8rem;
-  display: flex; flex-direction: column; gap: .8rem; justify-content: center;
+  border: 1px solid var(--gold); padding: var(--s-7) 1.8rem;
+  display: flex; flex-direction: column; gap: var(--s-3); justify-content: center;
   background: linear-gradient(180deg, rgba(200,157,90,.13), rgba(200,157,90,.03));
 }
 .studio__h { font-size: var(--t-sub); line-height: 1.1; }
@@ -199,21 +223,21 @@
   display: grid; grid-template-columns: repeat(2, 1fr);
   gap: 0; margin-top: var(--gap-block); border-top: 1px solid var(--line);
 }
-.path { padding: 2.2rem 2.5rem 2.2rem 0; border-bottom: 1px solid var(--hair); }
-.path:nth-child(odd)  { padding-right: 3rem; }
-.path:nth-child(even) { padding-left: 3rem; border-left: 1px solid var(--hair); }
+.path { padding: 2.2rem var(--s-8) 2.2rem 0; border-bottom: 1px solid var(--hair); }
+.path:nth-child(odd)  { padding-right: var(--s-9); }
+.path:nth-child(even) { padding-left: var(--s-9); border-left: 1px solid var(--hair); }
 .path:nth-last-child(-n+2) { border-bottom: 0; }
-.path__h { font-size: var(--t-sub); line-height: 1.2; margin-bottom: .55rem; }
+.path__h { font-size: var(--t-sub); line-height: 1.2; margin-bottom: var(--s-2); }
 
 
 /* ── 9 · Ecosystem ───────────────────────────────────────────────────────── */
 
 .nodes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: var(--gap-block); border-top: 1px solid var(--line-dim); }
-.node { padding: 2.4rem 2rem 0 0; border-right: 1px solid var(--hair-light); }
+.node { padding: var(--s-8) var(--s-7) 0 0; border-right: 1px solid var(--hair-light); }
 .node:last-child { border-right: 0; }
-.node:not(:first-child) { padding-left: 2rem; }
-.node__role { display: block; margin-bottom: .9rem; }
-.node__h { font-size: var(--t-sub); margin-bottom: .55rem; }
+.node:not(:first-child) { padding-left: var(--s-7); }
+.node__role { display: block; margin-bottom: var(--s-4); }
+.node__h { font-size: var(--t-sub); margin-bottom: var(--s-2); }
 .node__h a { border-bottom: 1px solid var(--line); display: inline-flex; align-items: center; min-height: 44px; }
 /* The self node is stated, not decorated — it is simply where you already are. */
 .node.is-self .node__h { color: var(--gold); }
@@ -222,7 +246,7 @@
 /* ── 10 · Founder ────────────────────────────────────────────────────────── */
 
 .founder { display: grid; grid-template-columns: 1fr; gap: clamp(2.5rem, 6vw, 5rem); }
-.founder p + p { margin-top: 1.1rem; }
+.founder p + p { margin-top: var(--s-4); }
 
 
 /* ── 11 · Final ──────────────────────────────────────────────────────────── */
@@ -250,11 +274,11 @@
 @media (max-width: 900px) {
   .cols, .rungs, .stages, .steps, .paths, .nodes { grid-template-columns: 1fr; }
 
-  .rung { border-right: 0; border-bottom: 1px solid var(--hair); padding: 2rem 0; }
+  .rung { border-right: 0; border-bottom: 1px solid var(--hair); padding: var(--s-7) 0; }
   .rung:not(:first-child) { padding-left: 0; }
   .rung:last-child { border-bottom: 0; }
 
-  .stage { padding: 2rem 0 0; }
+  .stage { padding: var(--s-7) 0 0; }
 
   .path, .path:nth-child(odd), .path:nth-child(even) {
     padding: 1.8rem 0; padding-left: 0; border-left: 0;
@@ -262,7 +286,7 @@
   }
   .path:last-child { border-bottom: 0; }
 
-  .node, .node:not(:first-child) { padding: 2rem 0 0; padding-left: 0; border-right: 0; }
+  .node, .node:not(:first-child) { padding: var(--s-7) 0 0; padding-left: 0; border-right: 0; }
 
   .journey, .journey.is-flipped { grid-template-columns: 1fr; min-height: 0; }
   .journey .journey__media, .journey.is-flipped .journey__media { order: 0; min-height: 62svh; }
@@ -285,7 +309,7 @@
    screen of atmosphere between an advisor and their answer is a cost. */
 .pagehead {
   padding: calc(var(--pad-y) * .75) var(--pad-x) calc(var(--pad-y) * .6);
-  padding-top: max(calc(var(--pad-y) * .75), 10rem);
+  padding-top: max(calc(var(--pad-y) * .75), var(--s-14));
 }
 .pagehead__inner { max-width: var(--wrap); margin: 0 auto; }
 .pagehead h1 { color: var(--ivory); max-width: 18ch; margin: .3em 0 .5em; }
@@ -300,13 +324,13 @@
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 0; margin-top: var(--gap-block); border-top: 1px solid var(--line);
 }
-.fit__col { padding: 2.4rem 3rem 0 0; }
-.fit__col--no { padding-left: 3rem; border-left: 1px solid var(--hair); }
-.fit__k { display: block; margin-bottom: 1.6rem; }
+.fit__col { padding: var(--s-8) var(--s-9) 0 0; }
+.fit__col--no { padding-left: var(--s-9); border-left: 1px solid var(--hair); }
+.fit__k { display: block; margin-bottom: var(--s-6); }
 .fit__col--yes .fit__k { color: var(--olive-deep); }
 .fit__col--no  .fit__k { color: var(--ink-faint); }
 
-.fit__list { display: flex; flex-direction: column; gap: 1.1rem; }
+.fit__list { display: flex; flex-direction: column; gap: var(--s-4); }
 .fit__list li {
   position: relative; padding-left: 1.8rem;
   font-size: var(--t-body); color: var(--ink-soft); max-width: 40ch;
@@ -322,7 +346,7 @@
 /* Shown only to a visitor arriving from that part of the ecosystem. */
 .ctxnote { display: none; }
 :root[data-context="dsw-immersion"] .ctxnote[data-for-context="dsw-immersion"] {
-  display: block; margin-top: 1.6rem; padding-left: 1rem;
+  display: block; margin-top: var(--s-6); padding-left: var(--s-4);
   border-left: 2px solid var(--slate);
   font-size: var(--t-small); color: var(--ink-soft); max-width: 52ch;
 }
@@ -331,13 +355,13 @@
 /* ── Numbered — an ordered argument ─────────────────────────────────────── */
 .numbered { margin-top: var(--gap-block); border-top: 1px solid var(--line); }
 .numbered__item {
-  display: grid; grid-template-columns: 4rem 1fr; gap: 1.5rem;
+  display: grid; grid-template-columns: 4rem 1fr; gap: var(--s-6);
   padding: 2.2rem 0; border-bottom: 1px solid var(--hair);
 }
 .numbered__item:last-child { border-bottom: 0; }
-.numbered__n { padding-top: .45rem; color: var(--gold-deep); }
+.numbered__n { padding-top: var(--s-2); color: var(--gold-deep); }
 .is-dark .numbered__n { color: var(--gold); }
-.numbered__h { font-size: var(--t-sub); line-height: 1.2; margin-bottom: .5rem; }
+.numbered__h { font-size: var(--t-sub); line-height: 1.2; margin-bottom: var(--s-2); }
 
 
 /* ── FAQ ─────────────────────────────────────────────────────────────────
@@ -346,8 +370,8 @@
 .faq__item { border-bottom: 1px solid var(--hair); }
 
 .faq__q {
-  display: flex; align-items: center; justify-content: space-between; gap: 2rem;
-  padding: 1.6rem 0; min-height: 44px; cursor: pointer; list-style: none;
+  display: flex; align-items: center; justify-content: space-between; gap: var(--s-7);
+  padding: var(--s-6) 0; min-height: 44px; cursor: pointer; list-style: none;
   font-family: var(--display); font-size: var(--t-sub); font-weight: 400;
   line-height: 1.25; color: var(--ink);
   transition: color var(--dur-micro) var(--ease);
@@ -366,7 +390,7 @@
 .faq__item[open] .faq__mark::after { transform: rotate(90deg); opacity: 0; }
 
 .faq__a { padding: 0 0 1.8rem; max-width: 62ch; }
-.faq__a p + p { margin-top: .9rem; }
+.faq__a p + p { margin-top: var(--s-4); }
 
 @media (prefers-reduced-motion: reduce) {
   .faq__mark::before, .faq__mark::after { transition: none; }
@@ -375,11 +399,11 @@
 
 @media (max-width: 900px) {
   .fit { grid-template-columns: 1fr; }
-  .fit__col, .fit__col--no { padding: 2rem 0 0; border-left: 0; }
-  .fit__col--no { border-top: 1px solid var(--hair); padding-top: 2rem; }
-  .numbered__item { grid-template-columns: 1fr; gap: .6rem; }
+  .fit__col, .fit__col--no { padding: var(--s-7) 0 0; border-left: 0; }
+  .fit__col--no { border-top: 1px solid var(--hair); padding-top: var(--s-7); }
+  .numbered__item { grid-template-columns: 1fr; gap: var(--s-2); }
   .numbered__n { padding-top: 0; }
-  .pagehead { padding-top: 8rem; }
+  .pagehead { padding-top: var(--s-13); }
 }
 
 
@@ -389,12 +413,12 @@
    diagram where a click is obviously wanted. */
 a.studio { text-decoration: none; }
 .studio__go {
-  margin-top: .4rem; font-size: var(--t-ui); letter-spacing: .04em; color: var(--gold);
+  margin-top: var(--s-2); font-size: var(--t-ui); letter-spacing: .04em; color: var(--gold);
 }
 
 /* A step whose marker is an em dash is not a sequence, it is a set of notes —
    so the marker stays quiet rather than pretending to be an ordinal. */
-.numbered__go { margin-top: .7rem; font-size: var(--t-ui); }
+.numbered__go { margin-top: var(--s-3); font-size: var(--t-ui); }
 .numbered__go a { color: var(--copper-text); border-bottom: 1px solid var(--line);
   display: inline-flex; align-items: center; min-height: 44px; }
 .numbered__go .is-planned { display: inline-flex; align-items: center; min-height: 44px; }
@@ -409,13 +433,13 @@ a.studio { text-decoration: none; }
 
 .lf__wrap { max-width: 46rem; margin: 0 auto; }
 .lf__head { padding-bottom: var(--gap-block); border-bottom: 1px solid var(--line); }
-.lf__head .lede { color: var(--ink-soft); margin-top: 1.2rem; }
-.lf__date { display: block; margin-top: 1.6rem; color: var(--ink-faint); }
+.lf__head .lede { color: var(--ink-soft); margin-top: var(--s-5); }
+.lf__date { display: block; margin-top: var(--s-6); color: var(--ink-faint); }
 
 /* Scanned for one answer far more often than read straight through. */
-.lf__toc { margin-top: var(--gap-block); padding: 1.6rem 0 0; }
-.lf__toc-h { display: block; color: var(--ink-faint); margin-bottom: 1rem; }
-.lf__toc ol { display: flex; flex-wrap: wrap; gap: 0 2rem; counter-reset: toc; }
+.lf__toc { margin-top: var(--gap-block); padding: var(--s-6) 0 0; }
+.lf__toc-h { display: block; color: var(--ink-faint); margin-bottom: var(--s-4); }
+.lf__toc ol { display: flex; flex-wrap: wrap; gap: 0 var(--s-7); counter-reset: toc; }
 .lf__toc li { font-size: var(--t-small); }
 .lf__toc a {
   display: inline-flex; align-items: center; min-height: 44px;
@@ -423,7 +447,7 @@ a.studio { text-decoration: none; }
 }
 
 .lf__body { margin-top: var(--gap-block); }
-.lf__body > * + * { margin-top: 1.15rem; }
+.lf__body > * + * { margin-top: var(--s-5); }
 .lf__body p { color: var(--ink-soft); max-width: var(--measure-body); }
 .lf__lead { color: var(--ink-soft); max-width: 34ch; }
 .lf__body code {
@@ -434,25 +458,25 @@ a.studio { text-decoration: none; }
 
 .lf__h {
   font-size: var(--t-sub); font-weight: 400; line-height: 1.25;
-  margin-top: clamp(2.5rem, 6vh, 4rem); padding-bottom: .6rem;
+  margin-top: clamp(2.5rem, 6vh, 4rem); padding-bottom: var(--s-2);
   border-bottom: 1px solid var(--hair);
   /* Anchored from the contents list, so it must clear the fixed header. */
   scroll-margin-top: 7rem;
 }
-.lf__sub { font-size: var(--t-body); font-weight: 500; font-family: var(--body); margin-top: 2rem; }
+.lf__sub { font-size: var(--t-body); font-weight: 500; font-family: var(--body); margin-top: var(--s-7); }
 
-.lf__list { display: flex; flex-direction: column; gap: .85rem; }
+.lf__list { display: flex; flex-direction: column; gap: var(--s-3); }
 .lf__list li {
-  position: relative; padding-left: 1.6rem;
+  position: relative; padding-left: var(--s-6);
   color: var(--ink-soft); max-width: var(--measure-body);
 }
 .lf__list li::before { content: "—"; position: absolute; left: 0; color: var(--gold-deep); }
 
-.lf__defs { display: flex; flex-direction: column; gap: 1.2rem; }
-.lf__defs > div { display: grid; grid-template-columns: 11rem 1fr; gap: 1.5rem; }
+.lf__defs { display: flex; flex-direction: column; gap: var(--s-5); }
+.lf__defs > div { display: grid; grid-template-columns: 11rem 1fr; gap: var(--s-6); }
 .lf__defs dt {
   font-family: var(--mono); font-size: var(--t-meta); letter-spacing: .16em;
-  text-transform: uppercase; color: var(--ink-faint); padding-top: .3rem;
+  text-transform: uppercase; color: var(--ink-faint); padding-top: var(--s-1);
 }
 .lf__defs dd { color: var(--ink-soft); }
 
@@ -460,7 +484,7 @@ a.studio { text-decoration: none; }
    of the service is being stated — the two places where a reader skipping a
    paragraph is a real cost rather than an inconvenience. */
 .lf__callout {
-  margin-top: 2.5rem; padding: 1.9rem 2.1rem;
+  margin-top: var(--s-8); padding: var(--s-7) var(--s-7);
   border: 1px solid rgba(161, 100, 52, .38);
   border-radius: var(--r-sm);
   background: rgba(178, 110, 58, .05);
@@ -471,15 +495,15 @@ a.studio { text-decoration: none; }
 /* A routing item where the whole card is the door. */
 .path.is-link { padding: 0; }
 .path.is-link > a {
-  display: block; padding: 2.2rem 2.5rem 2.2rem 0;
+  display: block; padding: 2.2rem var(--s-8) 2.2rem 0;
   transition: color var(--dur-micro) var(--ease);
 }
-.path.is-link:nth-child(odd) > a  { padding-right: 3rem; }
-.path.is-link:nth-child(even) > a { padding-left: 3rem; }
-.path__go { display: block; margin-top: .9rem; font-size: var(--t-ui); color: var(--copper-text); }
+.path.is-link:nth-child(odd) > a  { padding-right: var(--s-9); }
+.path.is-link:nth-child(even) > a { padding-left: var(--s-9); }
+.path__go { display: block; margin-top: var(--s-4); font-size: var(--t-ui); color: var(--copper-text); }
 
 @media (max-width: 900px) {
-  .lf__defs > div { grid-template-columns: 1fr; gap: .4rem; }
+  .lf__defs > div { grid-template-columns: 1fr; gap: var(--s-2); }
   .lf__defs dt { padding-top: 0; }
   .lf__toc ol { flex-direction: column; gap: 0; }
   .path.is-link > a,
@@ -573,7 +597,7 @@ a.studio { text-decoration: none; }
     padding: 2.2rem 0 0 0;
     max-width: 34ch;
   }
-  [data-pinned] .stages--pin .stage__h { font-size: var(--t-m); margin-bottom: .7rem; }
+  [data-pinned] .stages--pin .stage__h { font-size: var(--t-m); margin-bottom: var(--s-3); }
 }
 
 

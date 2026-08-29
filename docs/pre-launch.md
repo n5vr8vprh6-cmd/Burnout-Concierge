@@ -6,7 +6,7 @@ than in a message.
 
 **Status key** — ☐ not started · ◐ in progress · ☑ done · ⚠ needs a decision from Duncan
 
-Last updated: 29 August 2026 (scroll hijacking reversed for the cinematic tier)
+Last updated: 29 August 2026 (spacing scale + homepage design pass)
 
 ---
 
@@ -63,6 +63,8 @@ Last updated: 29 August 2026 (scroll hijacking reversed for the cinematic tier)
 | ☐ | **The glide tested on real trackpads** | Wheel smoothing is the one thing a headless check cannot judge. Needs a Mac trackpad, a Windows precision trackpad and a notched mouse wheel. If it reads as lag rather than weight, lower `GLIDE` in `js/scroll.js` — it is one constant. |
 | ☐ | **The pinned section walked on a real phone** | The pin rides native scroll so it should behave, but `svh` and browser chrome interact in ways only a device shows. One pinned section: `#journey` on `/`. |
 | ☐ | **Kling video** | 1 hero loop + 6 section motifs. ≤2.5 MB each, ≤8 MB total, `preload="none"` behind poster frames. The section schema already has the `video` field. |
+| ☐ | **Four off-scale spacing values decided with eyes on the page** | `1.75rem`, `1.8rem` (x7), `2.2rem` (x8), `2.25rem` are the only literals left in a margin, padding or gap. Snapping them to `--s-7` / `--s-8` moves things 3-8px rather than 1-2, so it needs looking at rather than calculating. `.rung`, `.stage`, `.track`, `.path`, `.acts`. |
+| ☐ | **Other pages spot-checked after the spacing pass** | The scale was applied across `site.css` and `chrome.css`, so all 22 pages shifted by up to 2px per value. Verified on `/` only: document height moved 4px in 17,479. Worth a look at `/for-advisors` and an intake before launch. |
 | ☐ | **`og-home.jpg` reviewed** | Social card is a crop of the hero. Fine, but worth a look. |
 
 ## 5 · The wider integration (after the site is live)

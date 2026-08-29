@@ -228,7 +228,10 @@ module.exports = {
         { step: '04', head: 'Integrate',
           body: 'Return planning and reflection. The part most travel forgets, and the part that decides whether any of it holds.' }
       ],
-      primary: { label: 'Work With a Concierge', href: '/work-with-a-concierge' }
+      /* Part 3 §J: ONE label per intent, repeated. This pointed at the same
+         route and fired the same event as the hero and the final routing, so
+         a second name for it made three names for one door. */
+      primary: { label: 'Find Your Recovery Path', href: '/work-with-a-concierge' }
     },
 
     /* ── 6 · THE ADVISOR PATHWAY ─────────────────────────────────────────

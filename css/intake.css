@@ -1,0 +1,230 @@
+/* ============================================================================
+   INTAKE & DOCUMENTS
+   ----------------------------------------------------------------------------
+   The concierge form, its confirmation, and the prepared documents.
+   ========================================================================== */
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   INTAKE
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.intake { min-height: 100svh; display: flex; align-items: center; }
+.intake__wrap { width: 100%; max-width: 720px; }
+
+.intake__head { margin-bottom: clamp(2.5rem, 6vh, 4rem); }
+.intake__head .meta { display: block; color: var(--gold-deep); margin-bottom: 1.1rem; }
+.intake__head .lede { color: var(--ink-soft); max-width: 46ch; }
+
+/* The step count is a quiet line of text, never a bar. A progress bar turns
+   three questions into a chore to endure, and silently invites the count to
+   creep upward because there is a widget to justify. */
+/* Shown only to a visitor who arrived from that part of the ecosystem. Present
+   in the markup, so there is no layout shift and no flash — simply absent for
+   everybody else. */
+.intake__context { display: none; }
+:root[data-context="eclipse"] .intake__context[data-for-context="eclipse"] {
+  display: block;
+  margin-top: 1.5rem; padding-left: 1rem;
+  border-left: 2px solid var(--slate);
+  font-size: var(--t-small); color: var(--ink-soft); max-width: 46ch;
+}
+
+.intake__count {
+  display: block; margin-top: 1.6rem; color: var(--ink-faint);
+}
+/* Without scripting every step is visible at once, so a per-step counter would
+   be a lie. It only appears once the engine has taken over. */
+.intake__form:not([data-enhanced]) .intake__count { display: none; }
+
+.step-q { border: 0; padding: 0; margin: 0 0 2.5rem; min-inline-size: 0; }
+.intake__form[data-enhanced] .step-q { margin-bottom: 0; }
+
+.q {
+  font-family: var(--display); font-size: var(--t-m); font-weight: 300;
+  line-height: 1.15; letter-spacing: -.018em; padding: 0; margin: 0 0 .6rem;
+  color: var(--ink);
+}
+.q__note { font-size: var(--t-small); color: var(--ink-faint); margin: 0 0 2rem; max-width: 46ch; }
+.q + .opts, .q + .fields, .q + .field { margin-top: 2rem; }
+
+/* Crossfade in, never slide. A carousel of questions feels like a form; a
+   question replacing a question feels like a conversation. */
+.intake__form[data-enhanced] .step-q.is-entering {
+  animation: bc-step-in 460ms var(--ease) both;
+}
+@keyframes bc-step-in { from { opacity: 0; transform: translateY(10px); } }
+@media (prefers-reduced-motion: reduce) {
+  .intake__form[data-enhanced] .step-q.is-entering { animation: none; }
+}
+
+/* ── Options ─────────────────────────────────────────────────────────────
+   A real radio, visually replaced. Keeping the input means keyboard, screen
+   reader and form semantics all work without being rebuilt by hand. */
+.opts { display: flex; flex-direction: column; gap: .7rem; max-width: 34rem; }
+
+.opt {
+  position: relative; display: flex; align-items: center; gap: 1rem;
+  padding: 1.15rem 1.35rem; min-height: 56px; cursor: pointer;
+  border: 1px solid rgba(26, 24, 21, .16); border-radius: var(--r-sm);
+  transition: border-color var(--dur-micro) var(--ease),
+              background var(--dur-micro) var(--ease);
+}
+.opt:hover { border-color: var(--gold); }
+.opt input {
+  position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0;
+}
+.opt__label { flex: 1; font-size: var(--t-body); }
+.opt__tick { color: var(--copper-dark); opacity: 0; transition: opacity var(--dur-micro) var(--ease); }
+
+.opt:has(input:checked) { border-color: var(--copper-deep); background: rgba(178, 110, 58, .06); }
+.opt:has(input:checked) .opt__tick { opacity: 1; }
+.opt:has(input:focus-visible) { outline: 2px solid var(--copper-deep); outline-offset: 3px; }
+
+/* :has() is well supported now, but a browser without it must still show the
+   selection — otherwise the form is unusable rather than merely plainer. */
+@supports not selector(:has(*)) {
+  .opt input { opacity: 1; width: auto; height: auto; position: static; accent-color: var(--copper-deep); }
+  .opt__tick { display: none; }
+}
+
+/* ── Fields ──────────────────────────────────────────────────────────────
+   Underline, not a box. A boxed input on an editorial page reads as software. */
+.fields { display: flex; flex-direction: column; gap: 1.75rem; max-width: 28rem; }
+.field { margin: 0; display: flex; flex-direction: column; gap: .5rem; max-width: 28rem; }
+.field__label {
+  font-family: var(--mono); font-size: var(--t-meta); letter-spacing: .18em;
+  text-transform: uppercase; color: var(--ink-faint);
+}
+.field__input {
+  border: 0; border-bottom: 1px solid rgba(26, 24, 21, .28); background: transparent;
+  padding: .7rem 0; min-height: 44px;
+  font-family: var(--body); font-size: var(--t-body); font-weight: 300; color: var(--ink);
+  transition: border-color var(--dur-micro) var(--ease);
+}
+.field__input::placeholder { color: var(--ink-faint); opacity: .7; }
+.field__input:focus { outline: 0; border-bottom-color: var(--copper-deep); border-bottom-width: 2px; }
+.field__input:focus-visible { outline: 2px solid var(--copper-deep); outline-offset: 6px; }
+
+.intake__acts {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.75rem;
+  margin-top: clamp(2.5rem, 5vh, 3.5rem);
+}
+.intake__acts .btn--quiet { order: -1; }
+.btn[disabled] { opacity: .55; cursor: default; }
+
+
+/* ── Confirmation ────────────────────────────────────────────────────────
+   Confirms that a person is preparing something. It is not a result, it does
+   not score anybody, and there is nothing here to interpret. */
+.confirm { max-width: 40rem; }
+.confirm > svg { color: var(--gold); margin-bottom: 2rem; }
+.confirm__head { margin-bottom: 1rem; }
+.confirm .lede { color: var(--ink-soft); max-width: 44ch; }
+
+.confirm__next { margin: clamp(2rem, 5vh, 3rem) 0 0; padding: 0; }
+.confirm__next li {
+  display: flex; gap: 1.5rem; padding: 1.1rem 0;
+  border-top: 1px solid var(--hair); font-size: var(--t-body); color: var(--ink-soft);
+}
+.confirm__next .meta { color: var(--gold-deep); flex: none; width: 6.5rem; padding-top: .25rem; }
+
+.confirm__boundary {
+  margin-top: clamp(2rem, 5vh, 3rem); padding-top: 1.25rem;
+  border-top: 1px solid var(--hair);
+  font-size: var(--t-small); color: var(--ink-soft); max-width: 62ch;
+}
+
+@media (max-width: 640px) {
+  .confirm__next li { flex-direction: column; gap: .35rem; }
+  .confirm__next .meta { width: auto; padding-top: 0; }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   DOCUMENTS
+   ──────────────────────────────────────────────────────────────────────────
+   A prepared document, not a web page about one. No site chrome — see the
+   `document` layout in lib/page.js — so the print stylesheet has almost
+   nothing to strip.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.layout--document body, .doc { background: var(--ivory); }
+.doc__wrap { max-width: 46rem; margin: 0 auto; padding: clamp(3rem, 9vh, 7rem) var(--pad-x) clamp(4rem, 10vh, 8rem); }
+
+.doc__cover { padding-bottom: clamp(2.5rem, 6vh, 4rem); border-bottom: 1px solid var(--line); }
+.doc__cover > svg { color: var(--gold); margin-bottom: 2rem; }
+.doc__cover .meta { display: block; color: var(--gold-deep); margin-bottom: 1.5rem; }
+.doc__title { margin: 0 0 1.2rem; }
+.doc__cover .lede { color: var(--ink-soft); }
+
+.doc__body { padding-top: clamp(2.5rem, 6vh, 4rem); }
+.doc__body > * + * { margin-top: 1.2rem; }
+.doc__lead { color: var(--ink-soft); max-width: 34ch; }
+.doc__h {
+  font-size: var(--t-sub); font-weight: 400; margin-top: clamp(2.5rem, 6vh, 4rem);
+  padding-bottom: .6rem; border-bottom: 1px solid var(--hair);
+}
+.doc__body p { color: var(--ink-soft); }
+.doc__note { font-size: var(--t-small); color: var(--ink-faint); }
+
+.entry {
+  display: grid; grid-template-columns: 1fr 15rem; gap: 1.5rem 2.5rem;
+  padding: 1.8rem 0; border-bottom: 1px solid var(--hair);
+  margin-top: 0 !important;
+}
+.entry__head { grid-column: 1 / -1; }
+.entry__dest { display: block; color: var(--ink-faint); margin-bottom: .4rem; }
+.entry__name { font-size: var(--t-sub); font-weight: 400; }
+.entry__meta { display: flex; flex-direction: column; gap: .8rem; }
+.entry__meta > div { display: flex; flex-direction: column; gap: .2rem; }
+.entry__meta dt {
+  font-family: var(--mono); font-size: var(--t-meta); letter-spacing: .18em;
+  text-transform: uppercase; color: var(--ink-faint);
+}
+.entry__meta dd { font-size: var(--t-small); color: var(--ink-soft); }
+.entry__meta dd.is-status { color: var(--gold-deep); }
+
+.doc__foot { margin-top: clamp(3rem, 8vh, 5rem); padding-top: 1.5rem; border-top: 1px solid var(--line); }
+
+@media (max-width: 700px) { .entry { grid-template-columns: 1fr; } }
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   PRINT
+   ──────────────────────────────────────────────────────────────────────────
+   The documents are typeset to print specification so they save to PDF from
+   any browser with correct margins and no chrome. That is why they are pages
+   rather than generated PDFs: they stay in version control, update with the
+   site, remain linkable and accessible, and cost no dependency.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+@page { size: A4; margin: 20mm 18mm; }
+
+@media print {
+  html, body { background: #fff !important; color: #000; }
+  .nav, .foot, .rail, .rail__label, .threshold, .skip, .intake__acts { display: none !important; }
+
+  /* Nothing may be hidden by a transition that print will never run. */
+  [data-reveal], [data-wipe], .line > i {
+    opacity: 1 !important; transform: none !important; clip-path: none !important;
+  }
+
+  .doc__wrap { max-width: none; padding: 0; }
+  .doc__cover { border-bottom: 1px solid #999; padding-bottom: 8mm; }
+  .doc__cover > svg { height: 14mm !important; }
+
+  .doc__title { font-size: 28pt; }
+  .doc__body, .doc__cover .lede { font-size: 11pt; }
+  .doc__h { font-size: 14pt; break-after: avoid; }
+  .entry { break-inside: avoid; }
+  .doc__body p, .doc__note { color: #333; }
+  .entry__meta dd.is-status, .doc__cover .meta, .entry__dest { color: #000; }
+
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; color: #555; }
+}

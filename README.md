@@ -27,6 +27,16 @@ assets/         self-hosted fonts, responsive images, the marks
 
 Adding a page is a new `content/*.js` module and one line in `build.js`.
 
+## The intake
+
+Six intakes, one engine. `content/intakes.js` is the single definition of what
+each form may ask; `js/intake.js` shows one question at a time; `api/intake.js`
+validates against the same spec and sends two emails.
+
+Set `RESEND_API_KEY` to send for real — see `.env.example`. Without it the
+endpoint validates, logs the payload and reports success, so the whole flow can
+be walked locally without a mail provider.
+
 ## Conventions worth knowing before you change anything
 
 **The ecosystem route table** (`lib/brand.js`) is the only place that knows
@@ -60,3 +70,19 @@ designed rather than assembled.
 
 **Fonts are self-hosted** because a font request is a disclosure. All three
 faces are SIL OFL 1.1; see `assets/fonts/OFL.txt`.
+
+**The intake never scores anybody.** No quiz, no profile, no readiness rating,
+no result screen — the confirmation says a person is preparing something. The
+advisor intake decides Inlet A or B and shows the advisor none of it.
+
+**No question may ask about symptoms.** §14 forbids collecting health or
+emotional history through a marketing form. There are no textareas anywhere in
+the intake and no open "tell us what you're experiencing" field, and the
+endpoint drops any field the spec did not ask for — so a forged payload cannot
+put a medical history in the inbox either. If a new question cannot be answered
+by a calendar, a map, or a yes/no, it probably does not belong.
+
+**Documents are HTML, not PDFs.** They are typeset to print specification and
+save to PDF from any browser. Making the build depend on Puppeteer would add
+~300 MB of Chromium for a document most people read on a phone. `npm run pdf`
+is there for a physical run, and installs Puppeteer only when you ask for it.

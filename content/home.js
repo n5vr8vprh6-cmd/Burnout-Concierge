@@ -52,7 +52,7 @@ module.exports = {
       eyebrow: 'Burnout recovery travel',
       headline: "Burnout doesn't heal<br>where it happened.",
       lead: 'We design and guide recovery journeys for people who have run out of room to recover where they are — and we plan the whole of it, so you don’t have to.',
-      primary:   { label: 'Find Your Recovery Path', href: '#offer' },
+      primary:   { label: 'Find Your Recovery Path', href: '/work-with-a-concierge' },
       secondary: { label: 'Explore the Retreat Collection', href: '#collection' },
       tertiary:  { label: 'I’m a travel advisor →', href: '#advisors' },
       scrollCue: 'Scroll',
@@ -114,25 +114,25 @@ module.exports = {
           head: 'The Recovery Collection',
           body: 'The five journeys in full: the intention behind each, how it runs, and who it tends to suit.',
           cta: 'Request the Collection',
-          href: '#offer'
+          href: '/work-with-a-concierge?intent=collection'
         },
         {
           step: '02 — Prepared for you',
           head: 'A Personal Recommendation',
           body: 'Tell us a little about your circumstances and timing. We prepare a recommendation and send it to you.',
           cta: 'Request a Recommendation',
-          href: '#offer'
+          href: '/work-with-a-concierge?intent=recommendation'
         },
         {
           step: '03 — Conversation',
           head: 'A Private Conversation',
           body: 'A calm conversation with a concierge. No pressure, no commitment, and no need to have decided anything.',
           cta: 'Begin a Conversation',
-          href: '#offer'
+          href: '/work-with-a-concierge?intent=conversation'
         }
       ],
-      primary:   { label: 'Find Your Recovery Path', href: '#offer' },
-      secondary: { label: 'Or request the Collection first', href: '#offer' }
+      primary:   { label: 'Find Your Recovery Path', href: '/work-with-a-concierge' },
+      secondary: { label: 'Or request the Collection first', href: '/work-with-a-concierge?intent=collection' }
     },
 
     /* ── 4 · THE COLLECTION ──────────────────────────────────────────────
@@ -157,7 +157,7 @@ module.exports = {
           name: 'Awaken', destination: 'Los Cabos, Mexico',
           intention: 'Quiet luxury and somatic renewal, for when the volume has to come down before anything else can happen.',
           format: 'Seven nights, small group', suits: 'A first recovery journey',
-          status: 'Now accepting inquiries', href: '#offer',
+          status: 'Now accepting inquiries', href: '/work-with-a-concierge?intent=recommendation',
           img: { base: '/assets/images/journey-awaken', widths: [760, 1100],
                  src: '/assets/images/journey-awaken-1100.webp', w: 1100, h: 1400,
                  alt: 'Sunrise over calm water on the Baja east cape' }
@@ -166,7 +166,7 @@ module.exports = {
           name: 'Nagi', destination: 'Kyoto, Japan',
           intention: 'Stillness and Japanese philosophy. The slowest journey in the collection, and deliberately so.',
           format: 'Ten nights, six guests', suits: 'Returning travellers',
-          status: 'Private dates available', href: '#offer',
+          status: 'Private dates available', href: '/work-with-a-concierge?intent=recommendation',
           img: { base: '/assets/images/journey-nagi', widths: [760, 1100],
                  src: '/assets/images/journey-nagi-1100.webp', w: 1100, h: 1400,
                  alt: 'A Kyoto ryokan interior in natural wood, with a private bath' }
@@ -175,7 +175,7 @@ module.exports = {
           name: 'Transcend', destination: 'Puerto Vallarta, Mexico',
           intention: 'Emotional release and reconnection, held by practitioners who have done this a long time.',
           format: 'Seven nights, small group', suits: 'Those ready for depth',
-          status: 'Upcoming cohort', href: '#offer',
+          status: 'Upcoming cohort', href: '/work-with-a-concierge?intent=recommendation',
           img: { base: '/assets/images/journey-transcend', widths: [760, 1100],
                  src: '/assets/images/journey-transcend-1100.webp', w: 1100, h: 1400,
                  alt: 'Sunrise over the Pacific at Puerto Vallarta' }
@@ -184,7 +184,7 @@ module.exports = {
           name: 'Revo', destination: 'Toronto, Canada',
           intention: 'An urban nervous-system reset for people who cannot leave for a fortnight.',
           format: 'Three evenings, in the city', suits: 'No room to travel far',
-          status: 'In development', href: '#offer',
+          status: 'In development', href: '/work-with-a-concierge?intent=recommendation',
           img: { base: '/assets/images/journey-revo', widths: [760, 1100],
                  src: '/assets/images/journey-revo-1100.webp', w: 1100, h: 1400,
                  alt: 'An intimate modern gathering space arranged for a small group' }
@@ -224,7 +224,7 @@ module.exports = {
         { step: '04', head: 'Integrate',
           body: 'Return planning and reflection. The part most travel forgets, and the part that decides whether any of it holds.' }
       ],
-      primary: { label: 'Work With a Concierge', href: '#offer' }
+      primary: { label: 'Work With a Concierge', href: '/work-with-a-concierge' }
     },
 
     /* ── 6 · THE ADVISOR PATHWAY ─────────────────────────────────────────
@@ -376,8 +376,8 @@ module.exports = {
       eyebrow: 'When you’re ready',
       headline: 'A calm conversation<br>is the first step.',
       lead: 'No pressure. No commitment. And no need to have worked out what you need before you speak to us.',
-      primary:   { label: 'Find Your Recovery Path', href: '#offer' },
-      secondary: { label: 'Request the Collection', href: '#offer' },
+      primary:   { label: 'Find Your Recovery Path', href: '/work-with-a-concierge' },
+      secondary: { label: 'Request the Collection', href: '/work-with-a-concierge?intent=collection' },
       note: 'Burnout Concierge provides guided recovery travel. It is designed to complement, rather than replace, medical or mental-health support. Outcomes vary by individual.',
       img: {
         base: '/assets/images/final-horizon', widths: [960, 1440, 1920],

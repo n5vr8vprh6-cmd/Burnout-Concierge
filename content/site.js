@@ -24,7 +24,7 @@ module.exports = {
   legal:
     'Burnout Concierge provides guided recovery travel. It is designed to complement, rather than replace, medical or mental-health support. Outcomes vary by individual.',
 
-  primaryCta: { label: 'Find Your Recovery Path', href: '/#offer' },
+  primaryCta: { label: 'Find Your Recovery Path', href: '/work-with-a-concierge' },
 
   nav: [
     { label: 'Journeys',      href: '/#collection' },
@@ -38,8 +38,8 @@ module.exports = {
     {
       head: 'Journeys',
       links: [
-        { label: 'The Recovery Collection', href: '/#collection' },
-        { label: 'Work with a concierge',   href: '/#offer' },
+        { label: 'The Recovery Collection', href: '/collection' },
+        { label: 'Work with a concierge',   href: '/work-with-a-concierge' },
         { label: 'The concierge journey',   href: '/#journey' }
       ]
     },

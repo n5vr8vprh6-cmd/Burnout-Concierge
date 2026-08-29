@@ -23,9 +23,14 @@ const DIST = path.join(ROOT, 'dist');
 
 /* ── The page registry ────────────────────────────────────────────────────
    Add a page here and it builds. Each module declares its own path.       */
+/* A module may export one page or several — content/concierge.js is three
+   rungs of the same relationship and belongs in one file. */
 const PAGES = [
-  require('./content/home.js')
-];
+  require('./content/home.js'),
+  require('./content/concierge.js'),
+  require('./content/collection-doc.js'),
+  require('./content/thank-you.js')
+].flat();
 
 /* Static trees copied verbatim into dist/. */
 const COPY = ['assets', 'css', 'js'];

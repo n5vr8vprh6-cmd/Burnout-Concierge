@@ -58,10 +58,18 @@ reduced motion, or for an automated agent, the attribute is never `full` and
 nothing is ever hidden. If the observer fails to fire anyway, a failsafe snaps
 everything visible after 2.5s. Keep this property.
 
-**Two colours have text-only variants.** Copper on white measures 3.84:1 and
-gold on ivory 2.27:1, so `--copper-deep` and `--gold-deep` exist for text. The
-Brand Manual's own values are unchanged and still used everywhere they are not
-carrying text. See the note at the top of `css/tokens.css`.
+**Assets are versioned by content hash.** `build.js` appends `?v=<hash>` to
+every stylesheet and script. Without it a returning visitor keeps whatever
+their browser cached, so a CSS change reaches new visitors and not the people
+who already came once — exactly backwards. The hash changes when the file does
+and not otherwise.
+
+**Three brand colours have text-only variants.** Copper on white is 3.84:1,
+gold on ivory 2.27:1 and olive on ivory 3.35:1, so `--copper-deep`,
+`--gold-deep` and `--olive-deep` exist for text. The Brand Manual's own values
+are unchanged and still used wherever they are not carrying text — rules,
+icons, decorative marks, and every use on obsidian. See the note at the top of
+`css/tokens.css`.
 
 **The type scale has nine steps and a deliberate gap.** Nothing sits between
 17px body and 24px sub — the lead is the smallest *display* size, set in the

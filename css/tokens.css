@@ -25,6 +25,10 @@
        · Burnished Gold #C89D5A on Warm Ivory is 2.27:1, which rules it out
          for eyebrows, labels and any small text on a light ground.
 
+     Olive is the third: #7C8A6C on ivory is 3.35:1, which rules it out for the
+     small labels it was reached for. On obsidian it measures 5.23:1 and is
+     used unchanged.
+
      So each gains a text-only variant. The manual's own values are unchanged
      and still used everywhere they are NOT carrying text: rules, icons,
      decorative marks, and every use on obsidian, where gold measures 7.73:1.
@@ -48,6 +52,7 @@
 
   /* Pathway colours — which audience a section belongs to */
   --olive:          #7C8A6C;   /* consumer and recovery pathways             */
+  --olive-deep:     #636E56;   /* olive as small text on light    4.91:1     */
   --slate:          #26424B;   /* destination, partner, organization         */
 
   /* Neutrals — warm-biased, never a flat grey */

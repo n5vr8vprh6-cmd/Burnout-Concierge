@@ -28,7 +28,7 @@ module.exports = {
 
   nav: [
     { label: 'Journeys',      href: '/#collection' },
-    { label: 'For Advisors',  href: '/#advisors' },
+    { label: 'For Advisors',  href: '/for-advisors' },
     { label: 'Organizations', href: '/#organizations' },
     { label: 'Saint Lucia WELL', route: 'dsw.home' },
     { label: 'About',         href: '/#founder' }
@@ -46,7 +46,7 @@ module.exports = {
     {
       head: 'Advisors',
       links: [
-        { label: 'The advisor pathway',   href: '/#advisors' },
+        { label: 'The advisor pathway',   href: '/for-advisors' },
         { label: 'Category introduction', route: 'dsw.intro' },
         { label: 'Foundations',           route: 'dsw.foundations' },
         { label: 'Immersion',             route: 'dsw.immersion' }

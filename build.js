@@ -13,6 +13,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 const SITE = require('./content/site.js');
 const { render } = require('./lib/page.js');
@@ -29,6 +30,8 @@ const PAGES = [
   require('./content/home.js'),
   require('./content/concierge.js'),
   require('./content/collection-doc.js'),
+  require('./content/advisors.js'),
+  require('./content/advisor-prospectus.js'),
   require('./content/thank-you.js')
 ].flat();
 
@@ -57,16 +60,45 @@ function outputPath(routePath) {
 }
 
 
+/* ── Cache busting ────────────────────────────────────────────────────────
+   Stylesheets and scripts ship as /css/site.css with no version in the URL,
+   which means a returning visitor keeps whatever their browser cached until it
+   decides otherwise. A deploy that changes the CSS then reaches new visitors
+   and not the people who already came once — which is exactly backwards.
+
+   So each file gets a short content hash appended as a query string. Same
+   bytes, same URL, and it changes the moment the file does. A query string
+   rather than a renamed file because it needs no rewriting of references
+   inside the CSS itself.                                                   */
+function assetVersions(root) {
+  const map = {};
+  for (const dir of ['css', 'js']) {
+    const from = path.join(root, dir);
+    if (!fs.existsSync(from)) continue;
+    for (const name of fs.readdirSync(from)) {
+      if (!/\.(css|js)$/.test(name)) continue;
+      const hash = crypto.createHash('sha1')
+        .update(fs.readFileSync(path.join(from, name)))
+        .digest('hex').slice(0, 8);
+      map[`/${dir}/${name}`] = hash;
+    }
+  }
+  return map;
+}
+
+
 function build() {
   const clean = process.argv.includes('--clean');
   if (clean) rm(DIST);
   fs.mkdirSync(DIST, { recursive: true });
 
+  const versions = assetVersions(ROOT);
+
   /* Pages */
   const built = [];
   for (const page of PAGES) {
     const body = renderSections(page.sections);
-    const html = render(page, SITE, body);
+    const html = render(page, SITE, body, versions);
     const out = outputPath(page.path);
     fs.mkdirSync(path.dirname(out), { recursive: true });
     fs.writeFileSync(out, html, 'utf8');

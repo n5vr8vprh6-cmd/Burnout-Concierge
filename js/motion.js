@@ -69,7 +69,9 @@
     if (group) {
       var sibs = Array.prototype.slice.call(group.querySelectorAll('[data-reveal], [data-line]'));
       var idx = sibs.indexOf(el);
-      if (idx > 0) el.style.transitionDelay = (idx * 0.09).toFixed(2) + 's';
+      /* 60ms. Emil's range is 30-80: longer than that and the last item in a row
+         arrives late enough to read as lag rather than as cascade. */
+      if (idx > 0) el.style.transitionDelay = (idx * 0.06).toFixed(2) + 's';
     }
     io.observe(el);
   }

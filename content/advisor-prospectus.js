@@ -59,7 +59,7 @@ module.exports = [
           { type: 'lead', text: 'Burnout is the most differentiated part of wellness travel and the least well served. This is what the specialty involves, who it suits, and how to enter it.' },
 
           { type: 'h', text: 'The category' },
-          { type: 'p', text: 'Rest stops the drain. Wellness travel is designed around what a property offers. Guided recovery is designed around a person’s circumstances, the environment that suits them, and the return home — and it begins with a conversation rather than a catalogue.' },
+          { type: 'p', text: 'Rest stops the drain. Wellness travel is designed around what a property offers. Guided recovery is designed around a person’s circumstances, the environment that suits them, and the return home, and it begins with a conversation rather than a catalogue.' },
           { type: 'p', text: 'That third thing is a specialty rather than a segment. It cannot be sold from a rate sheet, which is precisely why it has not been commoditised.' },
 
           { type: 'h', text: 'What the specialty involves' },
@@ -87,10 +87,10 @@ module.exports = [
           { type: 'p', text: 'We publish no income figures, projections or averages. Nobody can support them honestly in a category this young.' },
 
           { type: 'h', text: 'The boundary' },
-          { type: 'p', text: 'Advisors design and coordinate travel. Practitioners and licensed professionals do clinical work. The line between those is firm, and a meaningful part of the training is about recognising when somebody needs something other than a journey — and how to say so well.' },
+          { type: 'p', text: 'Advisors design and coordinate travel. Practitioners and licensed professionals do clinical work. The line between those is firm, and a meaningful part of the training is about recognising when somebody needs something other than a journey, and how to say so well.' },
 
           { type: 'h', text: 'Where to start' },
-          { type: 'p', text: 'If wellness travel is new to you, begin with the Saint Lucia WELL introduction. If it is already your specialty, begin with us. If you have completed the Saint Lucia immersion, you have met the category already — Eclipse is itself a burnout retreat — and you start further along.' },
+          { type: 'p', text: 'If wellness travel is new to you, begin with the Saint Lucia WELL introduction. If it is already your specialty, begin with us. If you have completed the Saint Lucia immersion, you have met the category already — Eclipse is itself a burnout retreat, and you start further along.' },
 
           { type: 'note', text: 'Prepared for you by Burnout Concierge. Not for distribution.' }
         ]

@@ -75,7 +75,6 @@
   transition: border-color var(--dur-micro) var(--ease),
               background var(--dur-micro) var(--ease);
 }
-.opt:hover { border-color: var(--gold); }
 .opt input {
   position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0;
 }
@@ -227,4 +226,11 @@
   .entry__meta dd.is-status, .doc__cover .meta, .entry__dest { color: #000; }
 
   a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; color: #555; }
+}
+
+/* Hover, gated behind a fine pointer. A touch device fires :hover on tap and
+   leaves it stuck, so a tapped card would keep its hover state for the rest
+   of the visit. See css/chrome.css for the same treatment on buttons. */
+@media (hover: hover) and (pointer: fine) {
+  .opt:hover { border-color: var(--gold); }
 }

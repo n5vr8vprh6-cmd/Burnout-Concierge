@@ -98,7 +98,6 @@
   font-size: var(--t-ui); letter-spacing: .03em; color: var(--copper-text);
   margin-top: .4rem; display: inline-flex; align-items: center; min-height: 44px;
 }
-.rung__go:hover { color: var(--copper-dark); }
 
 
 /* ── 4 · Collection — full-bleed alternating panels ──────────────────────── */
@@ -178,7 +177,6 @@
   min-height: 44px;
   transition: border-color var(--dur-micro) var(--ease), background var(--dur-micro) var(--ease);
 }
-a.step:hover { border-color: var(--gold); background: rgba(200, 157, 90, .07); }
 .step__t { font-size: var(--t-small); color: var(--ivory); line-height: 1.3; }
 .step__s {
   font-family: var(--mono); font-size: var(--t-meta);
@@ -217,7 +215,6 @@ a.step:hover { border-color: var(--gold); background: rgba(200, 157, 90, .07); }
 .node__role { display: block; margin-bottom: .9rem; }
 .node__h { font-size: var(--t-sub); margin-bottom: .55rem; }
 .node__h a { border-bottom: 1px solid var(--line); display: inline-flex; align-items: center; min-height: 44px; }
-.node__h a:hover { border-bottom-color: var(--gold); }
 /* The self node is stated, not decorated — it is simply where you already are. */
 .node.is-self .node__h { color: var(--gold); }
 
@@ -356,7 +353,6 @@ a.step:hover { border-color: var(--gold); background: rgba(200, 157, 90, .07); }
   transition: color var(--dur-micro) var(--ease);
 }
 .faq__q::-webkit-details-marker { display: none; }
-.faq__q:hover { color: var(--copper-dark); }
 .faq__item:focus-within .faq__q { outline: 2px solid var(--copper-deep); outline-offset: 4px; }
 
 /* A rule that becomes a plus, and back. Two lines, no icon font, no library. */
@@ -392,8 +388,6 @@ a.step:hover { border-color: var(--gold); background: rgba(200, 157, 90, .07); }
    go there. It is the terminus of both inlets, so it is the one place on the
    diagram where a click is obviously wanted. */
 a.studio { text-decoration: none; }
-a.studio:hover { border-color: var(--gold); background:
-  linear-gradient(180deg, rgba(200,157,90,.20), rgba(200,157,90,.06)); }
 .studio__go {
   margin-top: .4rem; font-size: var(--t-ui); letter-spacing: .04em; color: var(--gold);
 }
@@ -403,7 +397,6 @@ a.studio:hover { border-color: var(--gold); background:
 .numbered__go { margin-top: .7rem; font-size: var(--t-ui); }
 .numbered__go a { color: var(--copper-text); border-bottom: 1px solid var(--line);
   display: inline-flex; align-items: center; min-height: 44px; }
-.numbered__go a:hover { color: var(--copper-dark); }
 .numbered__go .is-planned { display: inline-flex; align-items: center; min-height: 44px; }
 
 
@@ -428,7 +421,6 @@ a.studio:hover { border-color: var(--gold); background:
   display: inline-flex; align-items: center; min-height: 44px;
   color: var(--copper-text); border-bottom: 1px solid transparent;
 }
-.lf__toc a:hover { border-bottom-color: var(--line); }
 
 .lf__body { margin-top: var(--gap-block); }
 .lf__body > * + * { margin-top: 1.15rem; }
@@ -439,7 +431,6 @@ a.studio:hover { border-color: var(--gold); background:
   background: var(--ivory-dim); padding: .1em .35em; border-radius: var(--r-sm);
 }
 .lf__body a { color: var(--copper-text); border-bottom: 1px solid var(--line); }
-.lf__body a:hover { color: var(--copper-dark); }
 
 .lf__h {
   font-size: var(--t-sub); font-weight: 400; line-height: 1.25;
@@ -469,11 +460,12 @@ a.studio:hover { border-color: var(--gold); background:
    of the service is being stated — the two places where a reader skipping a
    paragraph is a real cost rather than an inconvenience. */
 .lf__callout {
-  margin-top: 2rem; padding: 1.6rem 1.8rem;
-  border-left: 3px solid var(--copper-deep);
-  background: rgba(178, 110, 58, .06);
+  margin-top: 2.5rem; padding: 1.9rem 2.1rem;
+  border: 1px solid rgba(161, 100, 52, .38);
+  border-radius: var(--r-sm);
+  background: rgba(178, 110, 58, .05);
 }
-.lf__callout p { color: var(--ink); max-width: none; margin: 0; }
+.lf__callout p { color: var(--ink); max-width: 62ch; margin: 0; font-size: var(--t-body); }
 .lf__callout strong { font-weight: 500; }
 
 /* A routing item where the whole card is the door. */
@@ -485,8 +477,6 @@ a.studio:hover { border-color: var(--gold); background:
 .path.is-link:nth-child(odd) > a  { padding-right: 3rem; }
 .path.is-link:nth-child(even) > a { padding-left: 3rem; }
 .path__go { display: block; margin-top: .9rem; font-size: var(--t-ui); color: var(--copper-text); }
-.path.is-link > a:hover .path__h { color: var(--copper-dark); }
-.path.is-link > a:hover .path__go { color: var(--copper-dark); }
 
 @media (max-width: 900px) {
   .lf__defs > div { grid-template-columns: 1fr; gap: .4rem; }
@@ -495,4 +485,21 @@ a.studio:hover { border-color: var(--gold); background:
   .path.is-link > a,
   .path.is-link:nth-child(odd) > a,
   .path.is-link:nth-child(even) > a { padding: 1.8rem 0; }
+}
+
+/* Hover, gated behind a fine pointer. A touch device fires :hover on tap and
+   leaves it stuck, so a tapped card would keep its hover state for the rest
+   of the visit. See css/chrome.css for the same treatment on buttons. */
+@media (hover: hover) and (pointer: fine) {
+  .rung__go:hover { color: var(--copper-dark); }
+  a.step:hover { border-color: var(--gold); background: rgba(200, 157, 90, .07); }
+  .node__h a:hover { border-bottom-color: var(--gold); }
+  .faq__q:hover { color: var(--copper-dark); }
+  a.studio:hover { border-color: var(--gold); background:
+  linear-gradient(180deg, rgba(200,157,90,.20), rgba(200,157,90,.06)); }
+  .numbered__go a:hover { color: var(--copper-dark); }
+  .lf__toc a:hover { border-bottom-color: var(--line); }
+  .lf__body a:hover { color: var(--copper-dark); }
+  .path.is-link > a:hover .path__h { color: var(--copper-dark); }
+  .path.is-link > a:hover .path__go { color: var(--copper-dark); }
 }

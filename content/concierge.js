@@ -65,7 +65,7 @@ module.exports = RUNGS.map((r) => ({
       intake: r.intake,
       contextNotes: {
         eclipse:
-          'You’ve travelled with Eclipse. Integration support is what we hold after a journey — so answer only what still applies, and we’ll pick up from where you are.'
+          'You’ve travelled with Eclipse. Integration support is what we hold after a journey, so answer only what still applies, and we’ll pick up from where you are.'
       }
     }
   ]

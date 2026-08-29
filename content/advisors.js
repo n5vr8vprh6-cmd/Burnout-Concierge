@@ -68,12 +68,11 @@ module.exports = {
       skin: 'light',
       id: 'who',
       label: 'Who this is for',
-      eyebrow: 'Who this is for',
       headline: 'A specialty, not a starting point.',
-      lead: 'This works best on top of something. If wellness travel is new to you, the Saint Lucia WELL pathway builds the base first — and that is genuinely the better route, not a consolation.',
+      lead: 'This works best on top of something. If wellness travel is new to you, the Saint Lucia WELL pathway builds the base first, and that is genuinely the better route, not a consolation.',
       contextNotes: {
         'dsw-immersion':
-          'You’ve come from the Saint Lucia WELL immersion, so you have already walked the first pathway — and Eclipse is itself a burnout retreat. Skip to the direct ladder below.'
+          'You’ve come from the Saint Lucia WELL immersion, so you have already walked the first pathway, and Eclipse is itself a burnout retreat. Skip to the direct ladder below.'
       },
       forWhom: {
         label: 'This fits you if',
@@ -106,7 +105,6 @@ module.exports = {
       skin: 'light',
       id: 'problem',
       label: 'The problem',
-      eyebrow: 'Why this is hard',
       headline: 'Wellness is broad. Burnout is specific.',
       lead: 'Three things make this category difficult to sell well, and none of them are solved by knowing more destinations.',
       items: [
@@ -131,7 +129,6 @@ module.exports = {
       skin: 'light',
       id: 'learn',
       label: 'What you learn',
-      eyebrow: 'What the specialty gives you',
       headline: 'Discovery, design, and the return.',
       lead: 'The skills are unglamorous and they are what the category is short of.',
       pathways: [
@@ -200,7 +197,6 @@ module.exports = {
       skin: 'light',
       id: 'commercial',
       label: 'The commercial case',
-      eyebrow: 'What it changes',
       headline: 'What a specialty does to a practice.',
       lead: 'We do not publish income figures, projections or averages. Nobody can support them honestly in a category this young, and an advisor serious enough for this work would not believe them anyway.',
       items: [
@@ -232,17 +228,16 @@ module.exports = {
       skin: 'light',
       id: 'questions',
       label: 'Questions',
-      eyebrow: 'Before you ask',
       headline: 'The questions advisors actually ask.',
       items: [
         {
           q: 'Who owns the client?',
-          a: ['You do. An advisor-referred client remains yours throughout — we work through you rather than around you, and the concierge relationship sits alongside yours rather than replacing it.',
+          a: ['You do. An advisor-referred client remains yours throughout. We work through you rather than around you, and the concierge relationship sits alongside yours rather than replacing it.',
               'Referral attribution travels with the link you send, across both this site and Saint Lucia WELL, and the first referral recorded is the one that holds. A later untagged visit cannot reassign a client you introduced.']
         },
         {
           q: 'How does commission work?',
-          a: ['It depends on the journey and on whether it is ours or a partner’s, so it is set per journey rather than as a blanket rate — and it is agreed in writing before anything is sold, never after.',
+          a: ['It depends on the journey and on whether it is ours or a partner’s, so it is set per journey rather than as a blanket rate, and it is agreed in writing before anything is sold, never after.',
               'We publish the structure in the Advisor Prospectus rather than on a public page, because the honest answer has conditions and a number without them would be misleading.']
         },
         {
@@ -267,7 +262,7 @@ module.exports = {
         },
         {
           q: 'Do I have to start at the beginning?',
-          a: ['Not if you have already done the equivalent elsewhere. An advisor who has completed the Saint Lucia WELL immersion has met the category — Eclipse is itself a burnout retreat — and starts further along.',
+          a: ['Not if you have already done the equivalent elsewhere. An advisor who has completed the Saint Lucia WELL immersion has met the category — Eclipse is itself a burnout retreat, and starts further along.',
               'Tell us where you are when you request the Prospectus and the pathway we send back reflects it.']
         }
       ]
@@ -278,7 +273,6 @@ module.exports = {
       type: 'finalCta',
       id: 'begin',
       label: 'Begin',
-      eyebrow: 'The next step',
       headline: 'Start with the Prospectus.',
       lead: 'Three questions, so the pathway we send back is the one that actually fits your practice. Then a conversation, if it looks like a fit from both sides.',
       primary:   { label: 'Request the Advisor Prospectus', href: '/for-advisors/prospectus' },

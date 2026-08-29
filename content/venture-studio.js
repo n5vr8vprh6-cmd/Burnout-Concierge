@@ -65,7 +65,6 @@ module.exports = [
         skin: 'light',
         id: 'gap',
         label: 'The gap',
-        eyebrow: 'Why training is not enough',
         headline: 'Knowing the category<br>is not the same as having a practice.',
         lead: 'Three things reliably do not follow from a credential, and all three are what actually determine whether the specialty becomes a business.',
         items: [
@@ -92,7 +91,6 @@ module.exports = [
         skin: 'light',
         id: 'builds',
         label: 'What it builds',
-        eyebrow: 'What you leave with',
         headline: 'A practice, not a portfolio of notes.',
         lead: 'The Studio is a build rather than a curriculum. What follows is what exists at the end of it that did not exist at the start.',
         pathways: [
@@ -105,7 +103,7 @@ module.exports = [
           { head: 'A portfolio you can sell from',
             body: 'Journeys, partners and destinations you actually know, presented so a client can choose rather than be persuaded.' },
           { head: 'Messaging and the assets to carry it',
-            body: 'Language that holds up under scrutiny, and the handful of pieces that carry it — because most of this work is saying the same true thing consistently.' },
+            body: 'Language that holds up under scrutiny, and the handful of pieces that carry it, because most of this work is saying the same true thing consistently.' },
           { head: 'Workflows, systems and activation',
             body: 'The operational spine, including Concierge OS where it fits, and a plan for the first ninety days that is specific enough to follow.' }
         ],
@@ -122,7 +120,6 @@ module.exports = [
         skin: 'light',
         id: 'definition',
         label: 'What it is',
-        eyebrow: 'Plainly',
         headline: 'What the Studio is,<br>and what it is not.',
         lead: 'The second column matters more than the first. Each of these is something people reasonably assume, and every wrong assumption wastes a conversation.',
         forWhom: {
@@ -130,7 +127,7 @@ module.exports = [
           items: [
             'A build. You leave with a positioned practice, not a set of notes',
             'Selective, by interview, and small enough that the work is specific to you',
-            'Advisory — you are doing the building, with someone who has done it beside you',
+            'Advisory. You are doing the building, with someone who has done it beside you',
             'Connected to a real network of journeys, practitioners and destinations',
             'Finite. It has an end, and the end is an activated practice'
           ]
@@ -153,7 +150,6 @@ module.exports = [
         skin: 'light',
         id: 'model',
         label: 'How it runs',
-        eyebrow: 'How it runs',
         headline: 'Interview, build, activate.',
         lead: 'The shape is deliberately unglamorous. Most of the value is in doing the work with someone who will tell you when it is not good enough yet.',
         items: [
@@ -190,7 +186,6 @@ module.exports = [
         skin: 'light',
         id: 'admission',
         label: 'Getting in',
-        eyebrow: 'The route in',
         headline: 'How advisors reach the Studio.',
         lead: 'Both inlets end here. Which rungs you have already climbed changes where the conversation starts, not whether you can have it.',
         items: [
@@ -266,9 +261,8 @@ module.exports = [
         type: 'finalCta',
         id: 'begin',
         label: 'Begin',
-        eyebrow: 'If this is yours',
         headline: 'Start with a conversation.',
-        lead: 'Four questions, then a conversation about your practice — and an honest answer either way, with a reason attached to it.',
+        lead: 'Four questions, then a conversation about your practice, and an honest answer either way, with a reason attached to it.',
         primary:   { label: 'Request a Studio Conversation', href: '/venture-studio/conversation' },
         secondary: { label: 'Or start with the Prospectus', href: '/for-advisors/prospectus' },
         note: 'The Concierge Venture Studio is a business-building programme for travel advisors. It is not a certification, and it confers no clinical qualification of any kind.',

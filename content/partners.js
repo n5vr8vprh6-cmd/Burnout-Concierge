@@ -50,7 +50,7 @@ module.exports = [
         label: 'Partners',
         eyebrow: 'For destinations, properties and networks',
         headline: 'Recovery-ready is a design brief,<br>not an amenity list.',
-        lead: 'For the people building environments that hold guests rather than simply hosting them — and for the networks bringing this specialty to their advisors.',
+        lead: 'For the people building environments that hold guests rather than simply hosting them, and for the networks bringing this specialty to their advisors.',
         primary:   { label: 'Propose a Collaboration', href: '/partners/collaboration' },
         primaryEvent: 'partnership_inquiry',
         secondary: { label: 'What recovery-ready means', href: '#substance' }
@@ -65,7 +65,6 @@ module.exports = [
         skin: 'light',
         id: 'substance',
         label: 'What it means',
-        eyebrow: 'The substance',
         headline: 'Mostly it is about what you leave out.',
         lead: 'Recovery-ready is not a treatment menu or a spa upgrade. Four things matter more than any facility, and three of them cost nothing to build.',
         items: [
@@ -94,12 +93,11 @@ module.exports = [
         skin: 'light',
         id: 'models',
         label: 'How we work together',
-        eyebrow: 'Partnership models',
         headline: 'Six ways this usually starts.',
         lead: 'Most partnerships begin narrow and specific rather than as a framework agreement.',
         pathways: [
           { head: 'Recovery journey development',
-            body: 'Designing a journey at your property — the arc, the practitioners, the pacing — and bringing guests to it.' },
+            body: 'Designing a journey at your property — the arc, the practitioners, the pacing, and bringing guests to it.' },
           { head: 'Recovery-ready review',
             body: 'An assessment of an existing property against what recovery guests actually need, with what to change and what to leave alone.' },
           { head: 'Destination development',
@@ -123,7 +121,7 @@ module.exports = [
         label: 'Two routes',
         eyebrow: 'Which one are you',
         headline: 'Two different conversations.',
-        lead: 'These are genuinely different partnerships and they start in different places. Take whichever fits — and if it is both, take the first.',
+        lead: 'These are genuinely different partnerships and they start in different places. Take whichever fits, and if it is both, take the first.',
         forWhom: {
           label: 'Properties, destinations, practitioners',
           items: [
@@ -148,7 +146,6 @@ module.exports = [
         type: 'finalCta',
         id: 'begin',
         label: 'Begin',
-        eyebrow: 'The next step',
         headline: 'Propose a collaboration.',
         lead: 'Three questions, then the Brief and a conversation about what it would actually involve at your property.',
         primary:   { label: 'Propose a Collaboration', href: '/partners/collaboration' },
@@ -213,7 +210,7 @@ module.exports = [
             format: 'Site visit and written review', suits: 'Established properties', status: 'Available' },
 
           { type: 'entry', name: 'Recovery journey development', destination: 'At your property',
-            body: 'Designing a journey with you — the arc, the practitioners, the pacing — and bringing guests to it.',
+            body: 'Designing a journey with you — the arc, the practitioners, the pacing, and bringing guests to it.',
             format: 'Design and distribution', suits: 'Properties ready to host', status: 'By conversation' },
 
           { type: 'entry', name: 'Practitioner collaboration', destination: 'Inside a journey',

@@ -312,7 +312,7 @@ const INTAKES = {
     ],
     confirm: {
       head: 'We’ll be in touch about a conversation.',
-      lead: 'Duncan reads these himself. If it looks like a fit from both sides, the next step is a conversation rather than an enrolment — and if it does not, he will say so plainly and point you somewhere better.',
+      lead: 'Duncan reads these himself. If it looks like a fit from both sides, the next step is a conversation rather than an enrolment, and if it does not, he will say so plainly and point you somewhere better.',
       next: [
         { when: '2 days',     what: 'A reply, and honestly either way.' },
         { when: 'If it fits', what: 'A conversation about your practice, not a sales call.' },

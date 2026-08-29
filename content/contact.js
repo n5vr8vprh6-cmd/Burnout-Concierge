@@ -71,7 +71,6 @@ module.exports = {
       skin: 'light',
       id: 'routes',
       label: 'Which door',
-      eyebrow: 'Which door',
       headline: 'Four ways in.',
       lead: 'Each of these starts with a few questions so the reply is about your situation rather than a template.',
       pathways: [
@@ -104,13 +103,12 @@ module.exports = {
       skin: 'light',
       id: 'details',
       label: 'Details',
-      eyebrow: 'The details',
       headline: 'Everything else.',
       reviewed: '29 August 2026',
       blocks: [
         { type: 'h', id: 'email', text: 'Email' },
         { type: 'p', text: 'General enquiries: <a href="mailto:hello@burnoutconcierge.co">hello@burnoutconcierge.co</a>. Media and speaking: the same address, and please say so in the subject line.' },
-        { type: 'p', text: 'If you have already used one of the forms above, there is no need to email as well — it reaches the same person.' },
+        { type: 'p', text: 'If you have already used one of the forms above, there is no need to email as well. It reaches the same person.' },
 
         { type: 'h', id: 'replies', text: 'What to expect' },
         { type: 'defs', items: [

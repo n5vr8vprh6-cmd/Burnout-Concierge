@@ -44,7 +44,7 @@ module.exports = {
       label: 'About',
       eyebrow: 'Why this exists',
       headline: 'Recovery should not be another journey<br>you navigate alone.',
-      lead: 'Burnout Concierge designs and accompanies recovery journeys — and is deliberately a specialist rather than an agency.',
+      lead: 'Burnout Concierge designs and accompanies recovery journeys, and is deliberately a specialist rather than an agency.',
       primary:   { label: 'Begin a Private Conversation', href: '/work-with-a-concierge/conversation' },
       primaryEvent: 'concierge_intake_start',
       secondary: { label: 'See the journeys', href: '/#collection' }
@@ -56,7 +56,6 @@ module.exports = {
       skin: 'light',
       id: 'story',
       label: 'The founder',
-      eyebrow: 'Duncan So',
       headline: 'From education, to travel, to a specialty.',
       body: [
         'Burnout Concierge grew out of a decade of work on burnout — first inside organizations as education and advisory, then in the recovery travel that kept proving more effective than anything that happened at a desk.',
@@ -73,7 +72,6 @@ module.exports = {
       skin: 'light',
       id: 'values',
       label: 'How we work',
-      eyebrow: 'How we work',
       headline: 'Six things we try to be.',
       lead: 'These are operating values rather than marketing ones — each is a decision we make repeatedly, and each has a version of itself we are trying to avoid.',
       pathways: [
@@ -98,7 +96,6 @@ module.exports = {
       skin: 'dark',
       id: 'ecosystem',
       label: 'The ecosystem',
-      eyebrow: 'Where this sits',
       headline: 'A specialist inside wellness travel.',
       lead: 'Burnout Concierge works alongside the destinations and programmes below rather than above them. Saying that plainly is more useful than implying a hub that does not exist.',
       nodes: [
@@ -118,13 +115,12 @@ module.exports = {
       skin: 'light',
       id: 'scope',
       label: 'Scope',
-      eyebrow: 'Plainly',
       headline: 'What we are,<br>and what we are not.',
       lead: 'The second column matters. If what you need is in it, we would rather you knew now.',
       forWhom: {
         label: 'What we are',
         items: [
-          'A travel specialty — we design and coordinate recovery journeys',
+          'A travel specialty. We design and coordinate recovery journeys',
           'A concierge relationship that continues through the journey and the return',
           'A partner to travel advisors, working through them rather than around them',
           'Nervous-system-informed in how journeys are paced and designed',
@@ -183,7 +179,6 @@ module.exports = {
       type: 'finalCta',
       id: 'begin',
       label: 'Begin',
-      eyebrow: 'When you’re ready',
       headline: 'A calm conversation<br>is the first step.',
       lead: 'No pressure, no commitment, and no need to have worked out what you need beforehand.',
       primary:   { label: 'Begin a Private Conversation', href: '/work-with-a-concierge/conversation' },

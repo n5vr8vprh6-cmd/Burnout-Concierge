@@ -77,12 +77,18 @@ li { list-style: none; }
   border: 1px solid transparent; border-radius: var(--r-sm);
   transition: background var(--dur-micro) var(--ease),
               border-color var(--dur-micro) var(--ease),
-              color var(--dur-micro) var(--ease);
+              color var(--dur-micro) var(--ease),
+              transform 120ms var(--ease);
 }
+
+/* Pressed state. Without it a button is a picture of a button: the interface
+   gives no sign it heard you until the page changes. 0.98 is small enough to
+   read as pressure rather than as a bounce, which would be wrong for a brand
+   whose whole argument is calm. */
+.btn:active { transform: scale(.98); }
 
 /* Copper is spent once per page. This is the only element that gets it. */
 .btn--primary { background: var(--copper-deep); color: #FFF8EE; border-color: var(--copper-deep); }
-.btn--primary:hover { background: var(--copper-dark); border-color: var(--copper-dark); }
 
 .btn--quiet {
   padding: 0; min-height: 44px; border: 0; border-radius: 0;
@@ -90,9 +96,18 @@ li { list-style: none; }
   border-bottom: 1px solid var(--line);
   align-items: center;
 }
-.btn--quiet:hover { color: var(--ink); border-bottom-color: currentColor; }
 .is-dark .btn--quiet, .hero .btn--quiet, .final .btn--quiet { color: var(--gold); }
-.is-dark .btn--quiet:hover, .hero .btn--quiet:hover, .final .btn--quiet:hover { color: var(--ivory); }
+
+/* ── Hover, gated ────────────────────────────────────────────────────────
+   A touch device fires :hover on tap and leaves it stuck until you tap
+   elsewhere, so every hover state below is behind a fine-pointer query.
+   Without it, a phone user taps a button and it stays in its hover colour
+   for the rest of the visit. */
+@media (hover: hover) and (pointer: fine) {
+  .btn--primary:hover { background: var(--copper-dark); border-color: var(--copper-dark); }
+  .btn--quiet:hover { color: var(--ink); border-bottom-color: currentColor; }
+  .is-dark .btn--quiet:hover, .hero .btn--quiet:hover, .final .btn--quiet:hover { color: var(--ivory); }
+}
 
 .acts { display: flex; flex-wrap: wrap; align-items: center; gap: 1.1rem 1.75rem; margin-top: var(--gap-block); }
 
@@ -146,7 +161,9 @@ li { list-style: none; }
   display: inline-flex; align-items: center; min-height: 44px;
   transition: color var(--dur-micro) var(--ease);
 }
-.nav__link:hover { color: var(--gold); }
+@media (hover: hover) and (pointer: fine) {
+  .nav__link:hover { color: var(--gold); }
+}
 
 .nav__right { display: flex; align-items: center; gap: 1rem; flex: none; }
 .nav__cta { padding: .78rem 1.35rem; min-height: 40px; }
@@ -293,7 +310,9 @@ li { list-style: none; }
   color: var(--stone); display: inline-flex; align-items: center; min-height: 44px;
   transition: color var(--dur-micro) var(--ease);
 }
-.foot__col a:hover { color: var(--ivory); }
+@media (hover: hover) and (pointer: fine) {
+  .foot__col a:hover { color: var(--ivory); }
+}
 .foot__base {
   max-width: var(--wrap); margin: 0 auto; padding-top: 2rem;
   display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem 2rem;

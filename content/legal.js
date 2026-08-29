@@ -81,7 +81,7 @@ module.exports = [
           { term: 'Ecosystem context', def: 'Whether you arrived from a specific part of the wider ecosystem, such as a Saint Lucia WELL programme, so a page can acknowledge it rather than start from zero.' },
           { term: 'Landing page and referrer', def: 'The first page you saw and where you came from, recorded once.' }
         ]},
-        { type: 'p', text: 'None of that identifies you. It is not sent anywhere by itself — it is attached to a form only if and when you choose to submit one. The advisor value is also added to links you click within our own sites, so a referral survives moving between them.' },
+        { type: 'p', text: 'None of that identifies you. It is not sent anywhere by itself. It is attached to a form only if and when you choose to submit one. The advisor value is also added to links you click within our own sites, so a referral survives moving between them.' },
 
         { type: 'h', id: 'forms', text: 'What happens when you use a form' },
         { type: 'p', text: 'Every form on this site sends its answers to us by email and nothing else. There is no database, no CRM, and no marketing platform behind them. What arrives is: your answers, your name and email address, and the attribution described above.' },
@@ -219,7 +219,7 @@ module.exports = [
         ]},
 
         { type: 'h', id: 'report', text: 'If something does not work' },
-        { type: 'p', text: 'Please tell us — it is the fastest way for this list to get shorter. Write to <a href="mailto:hello@burnoutconcierge.co">hello@burnoutconcierge.co</a> with what you were trying to do and what happened. We will reply within two working days, and if something is genuinely blocking you we will help you do it another way while we fix it.' }
+        { type: 'p', text: 'Please tell us. It is the fastest way for this list to get shorter. Write to <a href="mailto:hello@burnoutconcierge.co">hello@burnoutconcierge.co</a> with what you were trying to do and what happened. We will reply within two working days, and if something is genuinely blocking you we will help you do it another way while we fix it.' }
       ]
     }]
   }

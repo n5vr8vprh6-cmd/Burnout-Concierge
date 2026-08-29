@@ -61,7 +61,6 @@ module.exports = [
         skin: 'light',
         id: 'problem',
         label: 'The problem',
-        eyebrow: 'Why leave alone fails',
         headline: 'Time off is not a plan.',
         lead: 'Three patterns show up in almost every organization that has tried to solve this with leave policy alone.',
         items: [
@@ -86,7 +85,6 @@ module.exports = [
         skin: 'light',
         id: 'pathways',
         label: 'The four pathways',
-        eyebrow: 'What we build',
         headline: 'Four pathways, one principle.',
         lead: 'Recovery is designed backwards from the return. Each of these can run on its own or as part of a wider programme.',
         pathways: [
@@ -142,7 +140,6 @@ module.exports = [
         skin: 'light',
         id: 'how',
         label: 'How it runs',
-        eyebrow: 'How it runs',
         headline: 'Briefing, design, journey, return.',
         items: [
           {
@@ -172,7 +169,6 @@ module.exports = [
         skin: 'light',
         id: 'questions',
         label: 'Questions',
-        eyebrow: 'Before you ask',
         headline: 'The questions that decide it.',
         items: [
           {
@@ -197,7 +193,7 @@ module.exports = [
           },
           {
             q: 'What does it cost?',
-            a: ['It depends on the pathway, the journey and the number of people, so it is quoted per engagement rather than as a rate card — and always in writing before anything is agreed.',
+            a: ['It depends on the pathway, the journey and the number of people, so it is quoted per engagement rather than as a rate card, and always in writing before anything is agreed.',
                 'The Infrastructure Brief sets out how engagements are structured. We publish no case-study return-on-investment figures, because the honest ones have too many variables to generalise from.']
           },
           {
@@ -211,7 +207,6 @@ module.exports = [
         type: 'finalCta',
         id: 'begin',
         label: 'Begin',
-        eyebrow: 'The next step',
         headline: 'Start with a briefing.',
         lead: 'Three questions, then the Infrastructure Brief and a conversation about the specific situation you have in mind.',
         primary:   { label: 'Request an Executive Briefing', href: '/organizations/briefing' },
@@ -263,7 +258,7 @@ module.exports = [
           { type: 'lead', text: 'This is written to be forwarded. If it reached you from a colleague and you were not part of the original conversation, it should still make sense on its own.' },
 
           { type: 'h', text: 'The problem it addresses' },
-          { type: 'p', text: 'Organizations that take burnout seriously usually reach for leave: more of it, or better protected. It is the right instinct and it is rarely sufficient. People return to an unchanged workload, having spent unstructured time badly, into a return nobody designed — and the recovery is spent within a fortnight.' },
+          { type: 'p', text: 'Organizations that take burnout seriously usually reach for leave: more of it, or better protected. It is the right instinct and it is rarely sufficient. People return to an unchanged workload, having spent unstructured time badly, into a return nobody designed, and the recovery is spent within a fortnight.' },
           { type: 'p', text: 'Recovery infrastructure is the set of things that make extended leave actually work: structure while away, a designed return, and somebody accountable for both.' },
 
           { type: 'h', text: 'The four pathways' },
@@ -285,7 +280,7 @@ module.exports = [
             format: 'Via your travel supplier', suits: 'Established travel programmes', status: 'Available' },
 
           { type: 'h', text: 'Confidentiality' },
-          { type: 'p', text: 'The organization is the customer; the person travelling is the client. You are told that the journey happened, that it is complete, and whatever you need for scheduling. You are not told what somebody worked through or how they seemed. Sponsoring a recovery journey does not buy visibility into it — and an arrangement that did would not be used.' },
+          { type: 'p', text: 'The organization is the customer; the person travelling is the client. You are told that the journey happened, that it is complete, and whatever you need for scheduling. You are not told what somebody worked through or how they seemed. Sponsoring a recovery journey does not buy visibility into it, and an arrangement that did would not be used.' },
 
           { type: 'h', text: 'Scope, and the clinical boundary' },
           { type: 'p', text: 'Burnout Concierge designs and coordinates travel. Practitioners on a journey work within their own scope and licensing. We do not diagnose, treat, or provide therapy or counselling, and this is not an employee assistance programme. It is designed to complement medical and mental-health support, not to replace it.' },

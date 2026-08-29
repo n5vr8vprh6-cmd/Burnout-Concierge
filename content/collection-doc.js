@@ -45,7 +45,7 @@ module.exports = {
       lead: 'Five guided journeys, and how to know which one is yours.',
       boundary: BOUNDARY,
       blocks: [
-        { type: 'lead', text: 'Each journey is built around a single intention. The right one is usually obvious once the intention is named — which is why the first conversation is about your circumstances rather than a catalogue.' },
+        { type: 'lead', text: 'Each journey is built around a single intention. The right one is usually obvious once the intention is named, which is why the first conversation is about your circumstances rather than a catalogue.' },
 
         { type: 'h', text: 'How to read this' },
         { type: 'p', text: 'Every entry states its format, who it tends to suit, and — plainly — where it currently stands. A journey marked <em>in development</em> is exactly that. We would rather tell you a thing is not ready than imply a permanent availability we cannot hold.' },
@@ -80,7 +80,7 @@ module.exports = {
           status: 'Advisor-led access' },
 
         { type: 'h', text: 'What happens next' },
-        { type: 'p', text: 'If one of these stands out, reply to the email this arrived with. If none of them quite does — which is common, and not a problem — say so, and we will work backwards from your circumstances instead.' },
+        { type: 'p', text: 'If one of these stands out, reply to the email this arrived with. If none of them quite does, which is common and not a problem, say so and we will work backwards from your circumstances instead.' },
         { type: 'note', text: 'Prepared for you by Burnout Concierge. Not for distribution.' }
       ]
     }

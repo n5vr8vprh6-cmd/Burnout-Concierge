@@ -51,11 +51,10 @@ module.exports = {
       label: 'Arrival',
       eyebrow: 'Burnout recovery travel',
       headline: "Burnout doesn't heal<br>where it happened.",
-      lead: 'We design and guide recovery journeys for people who have run out of room to recover where they are — and we plan the whole of it, so you don’t have to.',
+      lead: 'We design and guide recovery journeys for people who have run out of room to recover where they are, and we plan the whole of it, so you don’t have to.',
       primary:   { label: 'Find Your Recovery Path', href: '/work-with-a-concierge' },
       secondary: { label: 'Explore the Retreat Collection', href: '#collection' },
       tertiary:  { label: 'I’m a travel advisor →', href: '/for-advisors' },
-      scrollCue: 'Scroll',
       img: {
         base: '/assets/images/hero-courtyard', widths: [960, 1440, 1920],
         src: '/assets/images/hero-courtyard-1440.webp', w: 1920, h: 1080,
@@ -73,9 +72,8 @@ module.exports = {
       skin: 'light',
       id: 'difference',
       label: 'The difference',
-      eyebrow: 'The difference',
       headline: 'Rest, wellness travel and guided recovery<br>are not the same thing.',
-      lead: 'Most people book one when they needed another. The distinction is not luxury or price — it is where the design starts.',
+      lead: 'Most people book one when they needed another. The distinction is not luxury or price. It is where the design starts.',
       columns: [
         {
           label: 'Rest',
@@ -85,7 +83,7 @@ module.exports = {
         {
           label: 'Wellness travel',
           head: 'It begins with a property',
-          body: 'Designed around treatments, facilities and setting. Excellent, and broad — but the starting point is what a property happens to offer.'
+          body: 'Designed around treatments, facilities and setting. Excellent, and broad, but the starting point is what a property happens to offer.'
         },
         {
           label: 'Guided recovery',
@@ -105,9 +103,8 @@ module.exports = {
       skin: 'light',
       id: 'offer',
       label: 'How this works',
-      eyebrow: 'How this works',
       headline: 'You do not need to work this out on your own.',
-      lead: 'Most people arrive unsure whether they need a week away, a month, or something else entirely. That is the normal place to begin — and each of these leads to a person, not a form.',
+      lead: 'Most people arrive unsure whether they need a week away, a month, or something else entirely. That is the normal place to begin, and each of these leads to a person, not a form.',
       rungs: [
         {
           step: '01 — Request',
@@ -149,7 +146,6 @@ module.exports = {
       skin: 'light',
       id: 'collection',
       label: 'The collection',
-      eyebrow: 'The collection',
       headline: 'Five recovery journeys.',
       lead: 'Filtered by intention rather than by tier. Each states plainly where it currently stands.',
       journeys: [
@@ -212,7 +208,6 @@ module.exports = {
       skin: 'dark',
       id: 'journey',
       label: 'The journey',
-      eyebrow: 'The concierge journey',
       headline: 'Four stages, and a person at each one.',
       stages: [
         { step: '01', head: 'Connect',
@@ -282,7 +277,6 @@ module.exports = {
       skin: 'light',
       id: 'organizations',
       label: 'Organizations',
-      eyebrow: 'For organizations',
       headline: 'When rest is not enough,<br>recovery needs structure.',
       lead: 'Four pathways for employers, founders and executive sponsors who have discovered that time off, on its own, does not bring people back.',
       pathways: [
@@ -307,7 +301,6 @@ module.exports = {
       skin: 'light',
       id: 'partners',
       label: 'Partners',
-      eyebrow: 'For destinations and properties',
       headline: 'Recovery-ready is a design brief,<br>not an amenity list.',
       lead: 'For hospitality leaders, destinations and practitioners building environments that hold people rather than simply host them.',
       pathways: [
@@ -335,7 +328,6 @@ module.exports = {
       skin: 'dark',
       id: 'ecosystem',
       label: 'The ecosystem',
-      eyebrow: 'Where this sits',
       headline: 'A specialist inside wellness travel.',
       lead: 'Burnout is the most differentiated part of the wellness travel category. Burnout Concierge is the specialist within it, working alongside the destinations and programmes below rather than above them.',
       nodes: [
@@ -358,7 +350,6 @@ module.exports = {
       skin: 'light',
       id: 'founder',
       label: 'The founder',
-      eyebrow: 'Why this exists',
       headline: 'Recovery should not be another journey you have to navigate alone.',
       body: [
         'Burnout Concierge grew out of a decade of work on burnout — first inside organizations, then in the recovery travel that kept proving more effective than anything that happened at a desk.',
@@ -375,7 +366,6 @@ module.exports = {
       type: 'finalCta',
       id: 'begin',
       label: 'Begin',
-      eyebrow: 'When you’re ready',
       headline: 'A calm conversation<br>is the first step.',
       lead: 'No pressure. No commitment. And no need to have worked out what you need before you speak to us.',
       primary:   { label: 'Find Your Recovery Path', href: '/work-with-a-concierge' },

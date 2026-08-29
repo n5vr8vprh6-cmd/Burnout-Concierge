@@ -35,6 +35,14 @@ module.exports = {
   key: 'home',
   path: '/',
   surface: 'consumer',
+
+  /* Cinematic tier. Scroll becomes a timeline here: js/scroll.js is loaded, the
+     hero departs on scroll, and two sections pin. Brand Manual §15 banned this
+     outright; the ban was lifted for browsing surfaces only. The advisor
+     gateway, the intakes, organizations and legal stay on native scroll,
+     because taking scroll from somebody mid-task reads as being trapped
+     rather than as being carried. */
+  tier: 'cinematic',
   title: 'Burnout Concierge — guided burnout recovery travel',
   description:
     'Burnout does not heal where it happened. Burnout Concierge designs and accompanies recovery journeys for people who have run out of room to recover where they are.',
@@ -70,6 +78,7 @@ module.exports = {
     {
       type: 'columns',
       skin: 'light',
+      pin: true,
       id: 'difference',
       label: 'The difference',
       headline: 'Rest, wellness travel and guided recovery<br>are not the same thing.',
@@ -206,6 +215,7 @@ module.exports = {
     {
       type: 'stages',
       skin: 'dark',
+      pin: true,
       id: 'journey',
       label: 'The journey',
       headline: 'Four stages, and a person at each one.',

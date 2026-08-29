@@ -65,7 +65,16 @@
     var target = document.getElementById(id);
     if (!target) return;
     e.preventDefault();
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    /* On a cinematic page the glide owns scroll position. Letting the browser
+       run its own smooth scroll here would put two animations on the same
+       property, and the glide would win halfway through and snap. */
+    if (window.bcGlideTo) {
+      window.bcGlideTo(window.scrollY + target.getBoundingClientRect().top);
+    } else {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
     target.setAttribute('tabindex', '-1');
     target.focus({ preventScroll: true });
     history.replaceState(null, '', '#' + id);

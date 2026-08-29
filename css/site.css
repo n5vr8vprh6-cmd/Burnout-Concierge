@@ -503,3 +503,104 @@ a.studio { text-decoration: none; }
   .path.is-link > a:hover .path__h { color: var(--copper-dark); }
   .path.is-link > a:hover .path__go { color: var(--copper-dark); }
 }
+
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   THE CINEMATIC TIER — the glide, and the pins
+   ──────────────────────────────────────────────────────────────────────────
+   Brand Manual §15 banned scroll hijacking. That was reversed deliberately for
+   the browsing surfaces only; the header of js/scroll.js carries the reasoning
+   and describes how each mechanism degrades.
+
+   EVERY RULE HERE IS GATED ON [data-pinned] OR [data-glide], and js/scroll.js
+   sets those only once its engine is running. That gate is the whole safety
+   story: without scripting, under reduced motion, with ?flat=1, or if scroll.js
+   fails to parse, none of this matches. The sections are then ordinary height,
+   every child is visible, and the page is the one that existed before any of
+   this was written.
+
+   Nothing below hides content on its own. [data-state] is set only from JS.
+
+   A PIN IS GATED ON VIEWPORT HEIGHT, NOT JUST WIDTH
+     The stage is exactly one viewport tall and it does not scroll internally,
+     so content taller than the stage would simply be cut off. Width alone does
+     not predict that — a wide, short laptop window is the case that breaks. So
+     each mode declares the room it actually needs, measured against its real
+     content, and below that it is an ordinary band with the ordinary stagger
+     reveal. Losing the effect is nothing. Losing the bottom of the argument is
+     not.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* The glide writes scroll position every frame; smooth anchor behaviour would
+   run its own animation against it. */
+[data-glide] { scroll-behavior: auto; }
+
+/* How much scrolling each step is given. Enough that a step is read rather than
+   flicked past, short enough that the section is not a corridor. */
+:root { --pin-step: 64vh; }
+@media (max-width: 700px) { :root { --pin-step: 56vh; } }
+
+
+/* ── Shared scaffolding, inert until a mode below activates it ───────────── */
+
+[data-pinned] .band--pin .pin__stage > .wrap { width: 100%; }
+[data-pinned] [data-step] { transition: opacity .7s var(--ease), transform .7s var(--ease); }
+
+
+/* The activation mixin, written out per mode because CSS has no such thing.
+
+   svh, not vh. On mobile vh is the LARGE viewport, so a 100vh stage is taller
+   than what is visible while the browser chrome shows, and its bottom is cut. */
+@media (min-height: 620px) {
+  [data-pinned] [data-pin-mode="replace"].band--pin { padding-top: 0; padding-bottom: 0; }
+  [data-pinned] [data-pin-mode="replace"] .pin__track { height: calc(100svh + var(--steps, 3) * var(--pin-step)); }
+  [data-pinned] [data-pin-mode="replace"] .pin__stage {
+    position: sticky; top: 0; height: 100svh;
+    display: flex; align-items: center;
+    padding-block: clamp(2.5rem, 6vh, 5.5rem);
+  }
+  [data-pinned] [data-pin-mode="replace"] [data-step][data-state="future"] { opacity: 0; transform: translateY(24px); }
+  [data-pinned] [data-pin-mode="replace"] [data-step][data-state="past"]   { opacity: 0; transform: translateY(-24px); }
+  [data-pinned] [data-pin-mode="replace"] [data-step][data-state="active"] { opacity: 1; transform: none; }
+
+  /* One stage at a time, held at reading size. The four steps carry no links,
+     so clearing three of them from view strands nobody in the tab order — the
+     precondition every pin has to meet. The call to action lives outside the
+     group and stays reachable throughout. */
+  [data-pinned] .stages--pin { grid-template-columns: 1fr; border-top: none; min-height: 15rem; }
+  [data-pinned] .stages--pin .stage {
+    grid-area: 1 / 1;               /* all four share one cell and cross-fade */
+    padding: 2.2rem 0 0 0;
+    max-width: 34ch;
+  }
+  [data-pinned] .stages--pin .stage__h { font-size: var(--t-m); margin-bottom: .7rem; }
+}
+
+
+/* Rest, then wellness travel, then guided recovery — each arriving and STAYING,
+   so the distinction is built rather than flashed. It ends with all three on
+   screen together, which is the comparison the section is making.
+
+   The tallest stage on the site: a headline, a lede and three columns. Measured
+   at 581px of content, so it needs a genuinely tall window and it asks for one
+   rather than clipping. */
+@media (min-width: 1000px) and (min-height: 780px) {
+  [data-pinned] [data-pin-mode="accumulate"].band--pin { padding-top: 0; padding-bottom: 0; }
+  [data-pinned] [data-pin-mode="accumulate"] .pin__track { height: calc(100svh + var(--steps, 3) * var(--pin-step)); }
+  [data-pinned] [data-pin-mode="accumulate"] .pin__stage {
+    position: sticky; top: 0; height: 100svh;
+    display: flex; align-items: center;
+    padding-block: clamp(2.5rem, 6vh, 5.5rem);
+  }
+  [data-pinned] [data-pin-mode="accumulate"] [data-step] { transition-duration: .8s; }
+  [data-pinned] [data-pin-mode="accumulate"] [data-step][data-state="future"] { opacity: 0; transform: translateY(24px); }
+  [data-pinned] [data-pin-mode="accumulate"] [data-step][data-state="active"] { opacity: 1; transform: none; }
+  [data-pinned] .cols--pin { align-items: start; }
+}
+
+
+/* ── The hero's departure ────────────────────────────────────────────────────
+   Scroll-linked, set from JS. Declared here only so the transform has a sane
+   origin and does not fight the stagger reveal on first paint. */
+[data-pinned] [data-hero] .hero__inner { transform-origin: 50% 40%; will-change: transform, opacity; }

@@ -6,7 +6,7 @@ than in a message.
 
 **Status key** — ☐ not started · ◐ in progress · ☑ done · ⚠ needs a decision from Duncan
 
-Last updated: 29 August 2026 (design pass applied)
+Last updated: 29 August 2026 (scroll hijacking reversed for the cinematic tier)
 
 ---
 
@@ -60,6 +60,8 @@ Last updated: 29 August 2026 (design pass applied)
 | ☐ | **axe DevTools clean pass** | Automated checks only; not a substitute for item below. |
 | ☐ | **Assistive-technology testing with disabled users** | Listed as outstanding on `/accessibility`. The honest gap. |
 | ☐ | **200% zoom verified** | Every page, every breakpoint. Also listed as outstanding. |
+| ☐ | **The glide tested on real trackpads** | Wheel smoothing is the one thing a headless check cannot judge. Needs a Mac trackpad, a Windows precision trackpad and a notched mouse wheel. If it reads as lag rather than weight, lower `GLIDE` in `js/scroll.js` — it is one constant. |
+| ☐ | **Pinned sections walked on a real phone** | The pin rides native scroll so it should behave, but `svh` and browser chrome interact in ways only a device shows. `/` sections `#journey` (pins) and `#difference` (falls back under 1000×780). |
 | ☐ | **Kling video** | 1 hero loop + 6 section motifs. ≤2.5 MB each, ≤8 MB total, `preload="none"` behind poster frames. The section schema already has the `video` field. |
 | ☐ | **`og-home.jpg` reviewed** | Social card is a crop of the hero. Fine, but worth a look. |
 
@@ -75,7 +77,33 @@ Last updated: 29 August 2026 (design pass applied)
 
 ## 6 · Design-pass notes, for whoever picks this up next
 
-Two conventions were deliberately kept against skill guidance, with reasons:
+### Scroll hijacking is permitted, on the cinematic tier only
+
+Brand Manual §15 banned it. **The ban was reversed on 29 August 2026** for home,
+`/journeys`, `/retreats` and the Collection. It stays banned on the advisor
+gateway, the intakes, organizations and legal — and that is enforced by
+structure, not discipline: `js/scroll.js` ships only where a page declares
+`tier: 'cinematic'`, so a functional page cannot acquire it by accident.
+
+The line is what the visitor is doing. Being carried through a page you are
+browsing is the concierge proposition. Being carried through a form you are
+trying to finish is being trapped.
+
+Three conditions hold it up. Breaking any of them means the reversal has gone
+wrong, and each is cheap to re-check:
+
+| Condition | How to verify |
+|---|---|
+| Reduced motion exits to native scroll completely | Load `/?flat=1` — same code path. `data-pinned` absent, sections ordinary height, zero elements below full opacity. |
+| The no-JS floor holds | The tall-section CSS is gated on `<html data-pinned>`, set by `js/scroll.js` only after its engine runs. Delete that attribute in devtools: the page must become the pre-cinema page, not a broken one. |
+| Nothing focusable is pinned out of view | Both pinned sections carry no links inside their advancing children. **Any new pin must clear the same bar.** Tab through it. |
+
+A pin is gated on viewport **height**, not just width. The stage is one viewport
+tall and does not scroll internally, so a wide short window is what clips —
+`#difference` needs 1000×780 and falls back below it. If you add content to a
+pinned section, re-measure the fit before assuming it still works.
+
+### Two conventions kept against skill guidance, with reasons
 
 | Item | Why it stays |
 |---|---|

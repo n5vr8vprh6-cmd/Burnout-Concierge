@@ -29,7 +29,7 @@ module.exports = {
   nav: [
     { label: 'Journeys',      href: '/#collection' },
     { label: 'For Advisors',  href: '/for-advisors' },
-    { label: 'Organizations', href: '/#organizations' },
+    { label: 'Organizations', href: '/organizations' },
     { label: 'Saint Lucia WELL', route: 'dsw.home' },
     { label: 'About',         href: '/#founder' }
   ],
@@ -64,8 +64,10 @@ module.exports = {
     {
       head: 'Organizations',
       links: [
-        { label: 'Recovery infrastructure', href: '/#organizations' },
-        { label: 'Partner with us',         href: '/#partners' }
+        { label: 'Recovery infrastructure', href: '/organizations' },
+        { label: 'The Infrastructure Brief', href: '/infrastructure-brief' },
+        { label: 'Partner with us',         href: '/partners' },
+        { label: 'The Property Brief',      href: '/property-brief' }
       ]
     }
   ]

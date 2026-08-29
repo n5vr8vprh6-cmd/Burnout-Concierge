@@ -33,6 +33,8 @@ const PAGES = [
   require('./content/advisors.js'),
   require('./content/advisor-prospectus.js'),
   require('./content/venture-studio.js'),
+  require('./content/organizations.js'),
+  require('./content/partners.js'),
   require('./content/thank-you.js')
 ].flat();
 
@@ -88,8 +90,36 @@ function assetVersions(root) {
 }
 
 
+/* ── Promised documents must exist ────────────────────────────────────────
+   Every intake that names a `document` sends the visitor an email linking to
+   it. Two of those links pointed at pages that had not been built yet, which
+   nothing caught because nothing connected the two facts.
+
+   Failing the build is the right severity: a confirmation email linking to a
+   404 arrives at the exact moment somebody has finished trusting you.       */
+function assertDocumentsExist(pages) {
+  const { INTAKES } = require('./content/intakes.js');
+  const DOCS = {
+    collection: '/collection', prospectus: '/advisor-prospectus',
+    infrastructure: '/infrastructure-brief', property: '/property-brief'
+  };
+  const built = new Set(pages.map((p) => p.path));
+  const missing = [];
+  for (const [key, spec] of Object.entries(INTAKES)) {
+    if (!spec.document) continue;
+    const path = DOCS[spec.document];
+    if (!path) missing.push(`intake "${key}" names unknown document "${spec.document}"`);
+    else if (!built.has(path)) missing.push(`intake "${key}" promises ${path}, which no page builds`);
+  }
+  if (missing.length) {
+    throw new Error('Promised documents are missing:\n  - ' + missing.join('\n  - '));
+  }
+}
+
+
 function build() {
   const clean = process.argv.includes('--clean');
+  assertDocumentsExist(PAGES);
   if (clean) rm(DIST);
   fs.mkdirSync(DIST, { recursive: true });
 
@@ -112,8 +142,11 @@ function build() {
     if (fs.existsSync(src)) copyDir(src, path.join(DIST, dir));
   }
 
-  /* robots + sitemap, generated from the registry so they cannot drift */
-  const urls = PAGES.map((p) =>
+  /* robots + sitemap, generated from the registry so they cannot drift.
+     A noindex page listed in the sitemap tells a crawler "here is a page" and
+     "do not index it" in the same breath, so it is excluded rather than
+     contradicted. */
+  const urls = PAGES.filter((p) => !p.noindex).map((p) =>
     `  <url><loc>${SITE.origin}${p.path === '/' ? '/' : p.path}</loc></url>`).join('\n');
   fs.writeFileSync(path.join(DIST, 'sitemap.xml'),
     `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);

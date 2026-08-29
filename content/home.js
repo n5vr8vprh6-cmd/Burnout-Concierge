@@ -295,7 +295,7 @@ module.exports = {
         { head: 'Advisor-supported recovery travel',
           body: 'Coordination through your existing travel programme, with the specialty layered on top.' }
       ],
-      primary: { label: 'Discuss an Organizational Pathway', href: '#organizations' },
+      primary: { label: 'Discuss an Organizational Pathway', href: '/organizations' },
       event: 'organization_inquiry'
     },
 
@@ -320,7 +320,7 @@ module.exports = {
         { head: 'Advisor networks and consortia',
           body: 'Bringing the specialty to a membership that is already selling wellness travel.' }
       ],
-      primary: { label: 'Propose a Collaboration', href: '#partners' },
+      primary: { label: 'Propose a Collaboration', href: '/partners' },
       event: 'partnership_inquiry'
     },
 

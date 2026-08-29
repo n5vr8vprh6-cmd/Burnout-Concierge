@@ -312,7 +312,13 @@
   padding-top: max(calc(var(--pad-y) * .75), var(--s-14));
 }
 .pagehead__inner { max-width: var(--wrap); margin: 0 auto; }
-.pagehead h1 { color: var(--ivory); max-width: 18ch; margin: .3em 0 .5em; }
+/* Interior pages have no hero, so their h1 used --t-l and came out byte for
+   byte identical to every h2 beneath it: same size, weight, line-height and
+   tracking, separated only by the obsidian ground. A page title that does not
+   outrank its own sections gives the reader no top-level entry point. One step
+   between --t-l and the homepage's --t-xl fixes it without borrowing the
+   hero's scale. */
+.pagehead h1 { font-size: var(--t-page); color: var(--ivory); max-width: 18ch; margin: .3em 0 .5em; }
 .pagehead .lede { color: rgba(247, 244, 237, .82); max-width: 44ch; }
 .pagehead .meta { color: var(--gold); }
 
@@ -359,6 +365,24 @@
   padding: 2.2rem 0; border-bottom: 1px solid var(--hair);
 }
 .numbered__item:last-child { border-bottom: 0; }
+
+/* Unordered variant. A number that does not encode order is decoration, and
+   decoration holding a 4rem gutter open on every row is expensive. Where the
+   items are parallel rather than sequential — four things a specialty does,
+   not four steps — the rail comes off and they pair into a grid.
+
+   That also stops two list sections on one page reading as the same section,
+   which is what they did: identical renderer, identical shape, 1,100px apart. */
+.numbered--plain {
+  display: grid; grid-template-columns: 1fr 1fr;
+  column-gap: clamp(2.5rem, 5vw, 5rem);
+}
+.numbered--plain .numbered__item { display: block; padding: var(--s-7) 0; }
+.numbered--plain .numbered__item:nth-last-child(-n+2) { border-bottom: 0; }
+@media (max-width: 900px) {
+  .numbered--plain { grid-template-columns: 1fr; }
+  .numbered--plain .numbered__item:nth-last-child(-n+2):not(:last-child) { border-bottom: 1px solid var(--hair); }
+}
 .numbered__n { padding-top: var(--s-2); color: var(--gold-deep); }
 .is-dark .numbered__n { color: var(--gold); }
 .numbered__h { font-size: var(--t-sub); line-height: 1.2; margin-bottom: var(--s-2); }

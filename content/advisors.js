@@ -194,6 +194,10 @@ module.exports = {
        persuasive to a serious advisor than a number would be. */
     {
       type: 'numbered',
+      /* Not a sequence. These four are parallel — you could shuffle them and
+         lose nothing — so numbering them was decoration, and it made this
+         section the visual twin of #problem further up the page. */
+      ordered: false,
       skin: 'light',
       id: 'commercial',
       label: 'The commercial case',

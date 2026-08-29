@@ -6,7 +6,7 @@ than in a message.
 
 **Status key** — ☐ not started · ◐ in progress · ☑ done · ⚠ needs a decision from Duncan
 
-Last updated: 29 August 2026 (spacing scale + homepage design pass)
+Last updated: 29 August 2026 (design pass: homepage + advisor gateway)
 
 ---
 
@@ -65,6 +65,8 @@ Last updated: 29 August 2026 (spacing scale + homepage design pass)
 | ☐ | **Kling video** | 1 hero loop + 6 section motifs. ≤2.5 MB each, ≤8 MB total, `preload="none"` behind poster frames. The section schema already has the `video` field. |
 | ☐ | **Four off-scale spacing values decided with eyes on the page** | `1.75rem`, `1.8rem` (x7), `2.2rem` (x8), `2.25rem` are the only literals left in a margin, padding or gap. Snapping them to `--s-7` / `--s-8` moves things 3-8px rather than 1-2, so it needs looking at rather than calculating. `.rung`, `.stage`, `.track`, `.path`, `.acts`. |
 | ☐ | **Other pages spot-checked after the spacing pass** | The scale was applied across `site.css` and `chrome.css`, so all 22 pages shifted by up to 2px per value. Verified on `/` only: document height moved 4px in 17,479. Worth a look at `/for-advisors` and an intake before launch. |
+| ☐ | **`/venture-studio` list repetition** | It carries **four** ordered `numbered` lists on one page — the same problem found and fixed on the advisor gateway, further along. Check whether each is genuinely a sequence; `ordered: false` is available for the ones that are not. |
+| ☐ | **Advisor gateway imagery** | 8,670px of page, one image, in the final CTA. Defensible for a functional-tier page, but the plan already flags the library as thin on *advisor conversations, journey mapping, small-group learning*. A content gap, not something to invent. |
 | ☐ | **`og-home.jpg` reviewed** | Social card is a crop of the hero. Fine, but worth a look. |
 
 ## 5 · The wider integration (after the site is live)

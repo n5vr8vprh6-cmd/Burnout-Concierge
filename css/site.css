@@ -377,11 +377,20 @@
   display: grid; grid-template-columns: 1fr 1fr;
   column-gap: clamp(2.5rem, 5vw, 5rem);
 }
-.numbered--plain .numbered__item { display: block; padding: var(--s-7) 0; }
-.numbered--plain .numbered__item:nth-last-child(-n+2) { border-bottom: 0; }
+/* A rule ABOVE each item, not below it. Bottom borders break on odd counts in
+   a two-column grid: with three items the left cell of the last row keeps its
+   rule while the right cell has none, and the list ends ragged. A top rule is
+   consistent per row at any count — the first row simply defers to the rule
+   the container already draws. */
+.numbered--plain .numbered__item {
+  display: block; padding: var(--s-6) 0 var(--s-7);
+  border-bottom: 0; border-top: 1px solid var(--hair);
+}
+.numbered--plain .numbered__item:nth-child(-n+2) { border-top: 0; }
 @media (max-width: 900px) {
   .numbered--plain { grid-template-columns: 1fr; }
-  .numbered--plain .numbered__item:nth-last-child(-n+2):not(:last-child) { border-bottom: 1px solid var(--hair); }
+  /* One column, so only the true first item sits under the container rule. */
+  .numbered--plain .numbered__item:nth-child(2) { border-top: 1px solid var(--hair); }
 }
 .numbered__n { padding-top: var(--s-2); color: var(--gold-deep); }
 .is-dark .numbered__n { color: var(--gold); }
@@ -445,6 +454,11 @@ a.studio { text-decoration: none; }
 .numbered__go { margin-top: var(--s-3); font-size: var(--t-ui); }
 .numbered__go a { color: var(--copper-text); border-bottom: 1px solid var(--line);
   display: inline-flex; align-items: center; min-height: 44px; }
+/* Copper is a light-ground colour. On obsidian --copper-text measures 3.86:1
+   against 13px text, under the 4.5 AA floor — so a numbered list on a dark
+   band takes gold instead, which the palette audit puts at 7.73:1. The rule
+   under it needs the light hairline for the same reason. */
+.is-dark .numbered__go a { color: var(--gold); border-bottom-color: var(--hair-light); }
 .numbered__go .is-planned { display: inline-flex; align-items: center; min-height: 44px; }
 
 
@@ -546,6 +560,7 @@ a.studio { text-decoration: none; }
   a.studio:hover { border-color: var(--gold); background:
   linear-gradient(180deg, rgba(200,157,90,.20), rgba(200,157,90,.06)); }
   .numbered__go a:hover { color: var(--copper-dark); }
+  .is-dark .numbered__go a:hover { color: var(--ivory); }
   .lf__toc a:hover { border-bottom-color: var(--line); }
   .lf__body a:hover { color: var(--copper-dark); }
   .path.is-link > a:hover .path__h { color: var(--copper-dark); }

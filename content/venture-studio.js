@@ -62,6 +62,9 @@ module.exports = [
          Studio legible as an answer rather than an upsell. */
       {
         type: 'numbered',
+        /* Three parallel observations, not three steps. Numbering them implied
+           a sequence that the lead sentence explicitly does not claim. */
+        ordered: false,
         skin: 'light',
         id: 'gap',
         label: 'The gap',
@@ -183,7 +186,15 @@ module.exports = [
          elsewhere does not need to be taught the category from scratch. */
       {
         type: 'numbered',
-        skin: 'light',
+        /* Genuinely ordered — five rungs, with the first three living on Saint
+           Lucia WELL. Numbers stay.
+
+           Dark, though. It sits between two other numbered lists in a run of
+           six consecutive ivory sections, and it is the same kind of object as
+           the advisor ladders on the homepage and /for-advisors, both of which
+           are obsidian. Giving it that ground separates the three lists and
+           matches how a ladder is treated everywhere else. */
+        skin: 'dark',
         id: 'admission',
         label: 'Getting in',
         headline: 'How advisors reach the Studio.',
@@ -231,6 +242,10 @@ module.exports = [
          evasion to precisely the person this page is for. */
       {
         type: 'numbered',
+        /* Three reasons, in no order. The em-dash markers these carried were an
+           admission that numbering was wrong — but a dash holding a four-rem
+           gutter open is still decoration. */
+        ordered: false,
         skin: 'light',
         id: 'pricing',
         label: 'On cost',
@@ -239,17 +254,14 @@ module.exports = [
         lead: 'That is deliberate, and here is the reason rather than a silence where the number should be.',
         items: [
           {
-            marker: '—',
             head: 'The offer is still being fixed',
             body: 'Admission model, phases and deliverables are settled enough to describe and not yet settled enough to price. Publishing a figure now would mean revising it, and a price that moves is worse than a price that waits.'
           },
           {
-            marker: '—',
             head: 'What happens instead',
             body: 'Cost is discussed in the conversation, in full, before anything is agreed. Nobody is asked to commit to a number they have not seen written down, and there is no urgency attached to it.'
           },
           {
-            marker: '—',
             head: 'What we will not do',
             body: 'No income projections, no earnings claims, and no return-on-investment arithmetic. Nobody can support those honestly in a category this young, and an advisor serious enough for the Studio would not believe them anyway.'
           }

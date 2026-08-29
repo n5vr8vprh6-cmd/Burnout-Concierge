@@ -405,3 +405,94 @@ a.studio:hover { border-color: var(--gold); background:
   display: inline-flex; align-items: center; min-height: 44px; }
 .numbered__go a:hover { color: var(--copper-dark); }
 .numbered__go .is-planned { display: inline-flex; align-items: center; min-height: 44px; }
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   LONGFORM — legal and policy pages
+   ──────────────────────────────────────────────────────────────────────────
+   Site chrome kept, unlike the prepared documents: somebody reading a privacy
+   policy should be one click from everything else.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.lf__wrap { max-width: 46rem; margin: 0 auto; }
+.lf__head { padding-bottom: var(--gap-block); border-bottom: 1px solid var(--line); }
+.lf__head .lede { color: var(--ink-soft); margin-top: 1.2rem; }
+.lf__date { display: block; margin-top: 1.6rem; color: var(--ink-faint); }
+
+/* Scanned for one answer far more often than read straight through. */
+.lf__toc { margin-top: var(--gap-block); padding: 1.6rem 0 0; }
+.lf__toc-h { display: block; color: var(--ink-faint); margin-bottom: 1rem; }
+.lf__toc ol { display: flex; flex-wrap: wrap; gap: 0 2rem; counter-reset: toc; }
+.lf__toc li { font-size: var(--t-small); }
+.lf__toc a {
+  display: inline-flex; align-items: center; min-height: 44px;
+  color: var(--copper-text); border-bottom: 1px solid transparent;
+}
+.lf__toc a:hover { border-bottom-color: var(--line); }
+
+.lf__body { margin-top: var(--gap-block); }
+.lf__body > * + * { margin-top: 1.15rem; }
+.lf__body p { color: var(--ink-soft); max-width: var(--measure-body); }
+.lf__lead { color: var(--ink-soft); max-width: 34ch; }
+.lf__body code {
+  font-family: var(--mono); font-size: .88em;
+  background: var(--ivory-dim); padding: .1em .35em; border-radius: var(--r-sm);
+}
+.lf__body a { color: var(--copper-text); border-bottom: 1px solid var(--line); }
+.lf__body a:hover { color: var(--copper-dark); }
+
+.lf__h {
+  font-size: var(--t-sub); font-weight: 400; line-height: 1.25;
+  margin-top: clamp(2.5rem, 6vh, 4rem); padding-bottom: .6rem;
+  border-bottom: 1px solid var(--hair);
+  /* Anchored from the contents list, so it must clear the fixed header. */
+  scroll-margin-top: 7rem;
+}
+.lf__sub { font-size: var(--t-body); font-weight: 500; font-family: var(--body); margin-top: 2rem; }
+
+.lf__list { display: flex; flex-direction: column; gap: .85rem; }
+.lf__list li {
+  position: relative; padding-left: 1.6rem;
+  color: var(--ink-soft); max-width: var(--measure-body);
+}
+.lf__list li::before { content: "—"; position: absolute; left: 0; color: var(--gold-deep); }
+
+.lf__defs { display: flex; flex-direction: column; gap: 1.2rem; }
+.lf__defs > div { display: grid; grid-template-columns: 11rem 1fr; gap: 1.5rem; }
+.lf__defs dt {
+  font-family: var(--mono); font-size: var(--t-meta); letter-spacing: .16em;
+  text-transform: uppercase; color: var(--ink-faint); padding-top: .3rem;
+}
+.lf__defs dd { color: var(--ink-soft); }
+
+/* Impossible to skim past. Used for the crisis signpost and anywhere a limit
+   of the service is being stated — the two places where a reader skipping a
+   paragraph is a real cost rather than an inconvenience. */
+.lf__callout {
+  margin-top: 2rem; padding: 1.6rem 1.8rem;
+  border-left: 3px solid var(--copper-deep);
+  background: rgba(178, 110, 58, .06);
+}
+.lf__callout p { color: var(--ink); max-width: none; margin: 0; }
+.lf__callout strong { font-weight: 500; }
+
+/* A routing item where the whole card is the door. */
+.path.is-link { padding: 0; }
+.path.is-link > a {
+  display: block; padding: 2.2rem 2.5rem 2.2rem 0;
+  transition: color var(--dur-micro) var(--ease);
+}
+.path.is-link:nth-child(odd) > a  { padding-right: 3rem; }
+.path.is-link:nth-child(even) > a { padding-left: 3rem; }
+.path__go { display: block; margin-top: .9rem; font-size: var(--t-ui); color: var(--copper-text); }
+.path.is-link > a:hover .path__h { color: var(--copper-dark); }
+.path.is-link > a:hover .path__go { color: var(--copper-dark); }
+
+@media (max-width: 900px) {
+  .lf__defs > div { grid-template-columns: 1fr; gap: .4rem; }
+  .lf__defs dt { padding-top: 0; }
+  .lf__toc ol { flex-direction: column; gap: 0; }
+  .path.is-link > a,
+  .path.is-link:nth-child(odd) > a,
+  .path.is-link:nth-child(even) > a { padding: 1.8rem 0; }
+}

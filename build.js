@@ -35,6 +35,9 @@ const PAGES = [
   require('./content/venture-studio.js'),
   require('./content/organizations.js'),
   require('./content/partners.js'),
+  require('./content/about.js'),
+  require('./content/contact.js'),
+  require('./content/legal.js'),
   require('./content/thank-you.js')
 ].flat();
 

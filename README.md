@@ -37,6 +37,18 @@ Set `RESEND_API_KEY` to send for real — see `.env.example`. Without it the
 endpoint validates, logs the payload and reports success, so the whole flow can
 be walked locally without a mail provider.
 
+## Before this goes live
+
+Two things on `/terms` need a human, and are flagged on the page itself: the
+operating entity and registered address are unconfirmed, and **the page needs a
+qualified lawyer's review**. It is written to be accurate about what the
+service is; it is not a substitute for legal advice. Booking, cancellation and
+payment terms are deliberately absent rather than invented — nothing can be
+booked on the site, and every engagement is agreed separately in writing.
+
+`hello@burnoutconcierge.co` is used across the contact, privacy and
+accessibility pages and needs to exist before launch.
+
 ## Conventions worth knowing before you change anything
 
 **The ecosystem route table** (`lib/brand.js`) is the only place that knows
@@ -75,6 +87,18 @@ icons, decorative marks, and every use on obsidian. See the note at the top of
 17px body and 24px sub — the lead is the smallest *display* size, set in the
 serif. Adding a size in that gap undoes the thing that makes the page read as
 designed rather than assembled.
+
+**The privacy page describes what the code does, not what we would like it to
+do.** It was written by reading `js/attribution.js`, `js/analytics.js` and
+`api/intake.js`. Re-read it whenever any of those three change — the claims
+that there are no cookies, no third-party requests and no database are
+verifiable and currently true.
+
+**`/contact` opens with a crisis signpost, above the routing.** This is a
+burnout brand; some people arriving are in genuine distress, and a reply within
+two working days is worse than useless to them. It carries no specific hotline
+numbers on purpose — the audience is international and a wrong or out-of-date
+number is more dangerous than none.
 
 **Fonts are self-hosted** because a font request is a disclosure. All three
 faces are SIL OFL 1.1; see `assets/fonts/OFL.txt`.

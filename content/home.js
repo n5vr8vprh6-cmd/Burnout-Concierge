@@ -365,7 +365,7 @@ module.exports = {
         'What became obvious was that the travel industry could book a beautiful week almost anywhere, and had almost no way to tell whether that week was the right one. The environment, the pacing, the practitioners and the return home all matter, and none of them are on a rate sheet.',
         'So this is a specialty rather than an agency: the small, unglamorous work of understanding a person’s circumstances first, and designing backwards from what they will come home to.'
       ],
-      primary: { label: 'Meet Duncan So', href: '#founder' }
+      primary: { label: 'Meet Duncan So', href: '/about' }
     },
 
     /* ── 11 · FINAL ──────────────────────────────────────────────────────

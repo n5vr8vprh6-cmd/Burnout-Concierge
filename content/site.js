@@ -31,7 +31,7 @@ module.exports = {
     { label: 'For Advisors',  href: '/for-advisors' },
     { label: 'Organizations', href: '/organizations' },
     { label: 'Saint Lucia WELL', route: 'dsw.home' },
-    { label: 'About',         href: '/#founder' }
+    { label: 'About',         href: '/about' }
   ],
 
   footer: [
@@ -48,6 +48,7 @@ module.exports = {
       links: [
         { label: 'The advisor pathway',   href: '/for-advisors' },
         { label: 'The Venture Studio',    href: '/venture-studio' },
+        { label: 'The Advisor Prospectus', href: '/advisor-prospectus' },
         { label: 'Category introduction', route: 'dsw.intro' },
         { label: 'Foundations',           route: 'dsw.foundations' },
         { label: 'Immersion',             route: 'dsw.immersion' }
@@ -59,6 +60,16 @@ module.exports = {
         { label: 'Saint Lucia WELL', route: 'dsw.home' },
         { label: 'Eclipse',          route: 'dsw.eclipse' },
         { label: 'REV',              route: 'rev.home' }
+      ]
+    },
+    {
+      head: 'The company',
+      links: [
+        { label: 'About',         href: '/about' },
+        { label: 'Contact',       href: '/contact' },
+        { label: 'Privacy',       href: '/privacy' },
+        { label: 'Terms',         href: '/terms' },
+        { label: 'Accessibility', href: '/accessibility' }
       ]
     },
     {

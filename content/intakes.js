@@ -75,7 +75,7 @@ const INTAKES = {
       head: 'It’s on its way.',
       lead: 'The Collection is in your inbox now. Read it whenever suits — there is no follow-up sequence attached to it.',
       next: [
-        { when: 'Now',        what: 'The Recovery Collection arrives, with nothing else attached.' },
+        { when: 'Now',        what: 'The Recovery Collection arrives, and nothing else does.' },
         { when: 'Whenever',   what: 'If a journey stands out, reply to that email and we’ll talk about it.' }
       ],
       boundary: BOUNDARY
@@ -154,7 +154,7 @@ const INTAKES = {
       head: 'We’re preparing your recommendation.',
       lead: 'Duncan reads these himself and replies within two working days — with a specific journey, why it suits your circumstances, and what it would involve.',
       next: [
-        { when: 'Today',      what: 'A short confirmation arrives, with The Recovery Collection attached.' },
+        { when: 'Today',      what: 'A short confirmation arrives, and The Recovery Collection with it.' },
         { when: '2 days',     what: 'Your recommendation follows — written for your circumstances, not a template.' },
         { when: 'When ready', what: 'A private conversation, if and when you want one.' }
       ],

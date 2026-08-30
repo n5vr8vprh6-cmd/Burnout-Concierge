@@ -37,7 +37,9 @@ module.exports = {
       head: 'That’s reached us.',
       lead: 'A confirmation is on its way to your inbox, and Duncan will read what you sent himself.',
       next: [
-        { when: 'Today',      what: 'A confirmation email, with whatever you asked for attached.' },
+        /* Not 'attached'. visitorEmail() in api/intake.js sends a link, and
+           since the documents went noindex that link is the only way in. */
+        { when: 'Today',      what: 'A confirmation email, with whatever you asked for in it.' },
         { when: '2 days',     what: 'A reply written for your circumstances, not a template.' },
         { when: 'When ready', what: 'A conversation, if and when you want one.' }
       ],

@@ -59,6 +59,7 @@ Last updated: 29 August 2026 (design pass complete: all 22 pages)
 | ☐ | **Analytics destination** | `GTM_ID` is empty and nothing third-party fires. Either enable Vercel Analytics or set a GTM id. Events are already named and firing. |
 | ☐ | **Lighthouse on the real deployment** | Target ≥ 90 performance, 100 accessibility. LCP must be the hero poster image. |
 | ☐ | **axe DevTools clean pass** | Automated checks only; not a substitute for item below. |
+| ☐ | **Submit a form with JavaScript disabled, on the real deployment** | Fixed in markup and verified from the raw HTML, but the full native round trip — POST to `/api/intake`, 303, land on `/thank-you/<intake>` — has only been checked in pieces. Worth one real run once Resend is live. |
 | ☐ | **Assistive-technology testing with disabled users** | Listed as outstanding on `/accessibility`. The honest gap. |
 | ☐ | **200% zoom verified** | Every page, every breakpoint. Also listed as outstanding. |
 | ☐ | **The glide tested on real trackpads** | Wheel smoothing is the one thing a headless check cannot judge. Needs a Mac trackpad, a Windows precision trackpad and a notched mouse wheel. If it reads as lag rather than weight, lower `GLIDE` in `js/scroll.js` — it is one constant. |

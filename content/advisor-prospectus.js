@@ -75,17 +75,17 @@ module.exports = [
 
           { type: 'h', text: 'Two pathways' },
 
-          { type: 'entry', name: 'Inlet A — via the ecosystem', destination: 'Saint Lucia WELL',
+          { type: 'entry', name: 'Inlet A — via the ecosystem', venue: 'Hosted by Saint Lucia WELL',
             body: 'For the general advisor adding wellness. Introduction, Foundations and the Immersion are live now on discoversaintluciawell.com, and they build the destination base first. We link to them rather than duplicating a programme already in market.',
             format: 'Three rungs, externally hosted', suits: 'New to wellness travel',
             status: 'Live now' },
 
-          { type: 'entry', name: 'Inlet B — direct', destination: 'Burnout Concierge',
+          { type: 'entry', name: 'Inlet B — direct', venue: 'Ours, end to end',
             body: 'For the advisor whose wellness practice is already established. Burnout as a category, then specialist training, then a burnout retreat travelled rather than read about.',
             format: 'Three rungs, ours', suits: 'Wellness-credentialled advisors',
             status: 'Cohorts forming' },
 
-          { type: 'entry', name: 'The Concierge Venture Studio', destination: 'Where both converge',
+          { type: 'entry', name: 'The Concierge Venture Studio', venue: 'Where both pathways converge',
             body: 'A selective business-building environment for qualified advisors: positioning, offer, client journey, discovery process, portfolio, workflows and activation. It is not a course, a certification, a franchise or a lead programme, and admission is by interview.',
             format: 'Interview-based admission', suits: 'Demonstrated category commitment',
             status: 'Admission by conversation' },

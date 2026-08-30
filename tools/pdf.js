@@ -29,10 +29,38 @@ const DIST = path.join(__dirname, '..', 'dist');
 const OUT  = path.join(DIST, 'assets', 'documents');
 const PORT = 4399;
 
-/* The prepared documents. Add one here when a new document page is built. */
-const PAGES = [
-  { path: '/collection', file: 'the-recovery-collection.pdf' }
-];
+/* The prepared documents, DISCOVERED rather than listed.
+
+   This used to be a hand-kept array with one entry and a comment asking future
+   editors to add to it. Three more document pages were built after it was
+   written and none of them was ever added, so `npm run pdf` quietly produced
+   one PDF out of four and looked like it had succeeded.
+
+   A list that has to be maintained in parallel with the thing it describes
+   will drift, so this reads what the build actually produced: every page
+   carrying the document layout, named from its own title. */
+function documents() {
+  const found = [];
+  (function walk(dir) {
+    for (const name of fs.readdirSync(dir)) {
+      const full = path.join(dir, name);
+      if (fs.statSync(full).isDirectory()) { walk(full); continue; }
+      if (!name.endsWith('.html')) continue;
+      const html = fs.readFileSync(full, 'utf8');
+      if (!/class="[^"]*layout--document/.test(html)) continue;
+      const title = (html.match(/<title>([^<]*)<\/title>/) || [])[1] || name;
+      const route = '/' + path.relative(DIST, full)
+        .split(path.sep).join('/')
+        .replace(/index\.html$/, '')
+        .replace(/\/$/, '');
+      found.push({
+        path: route,
+        file: title.split(' — ')[0].toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') + '.pdf'
+      });
+    }
+  })(DIST);
+  return found.sort((a, b) => a.path.localeCompare(b.path));
+}
 
 const TYPES = {
   '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript',
@@ -74,6 +102,12 @@ function send(res, file) {
     process.exit(1);
   }
 
+  const PAGES = documents();
+  if (!PAGES.length) {
+    console.error('  No document-layout pages found in dist/.');
+    process.exit(1);
+  }
+
   fs.mkdirSync(OUT, { recursive: true });
   const server = serve();
   const browser = await puppeteer.launch();
@@ -90,7 +124,8 @@ function send(res, file) {
       preferCSSPageSize: true
     });
     await page.close();
-    console.log(`  ${doc.file}`);
+    const kb = (fs.statSync(path.join(OUT, doc.file)).size / 1024).toFixed(1);
+    console.log(`  ${doc.path.padEnd(24)} ${kb.padStart(7)} KB   ${doc.file}`);
   }
 
   await browser.close();

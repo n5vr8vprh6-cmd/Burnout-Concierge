@@ -232,19 +232,55 @@
 
      Printed scale, mirroring the screen: title, section, entry, body, note. */
   .doc__title { font-size: 28pt; break-after: avoid; }
-  .doc__body, .doc__cover .lede { font-size: 11pt; }
+  .doc__body { font-size: 11pt; }
+
+  /* Both leads sit BETWEEN body and section heading, which is what a lead is.
+     They were at opposite ends of wrong: the cover lead had been flattened to
+     body size, losing the emphasis it carries on screen, while the body lead
+     kept its screen clamp and printed at 18pt — larger than the 16pt section
+     headings it introduces. Neither was visible without rendering the PDF. */
+  .doc__cover .lede, .doc__lead { font-size: 13pt; }
   .doc__h { font-size: 16pt; break-after: avoid; }
   .entry__name { font-size: 12pt; }
   .doc__note, .entry__meta dd { font-size: 9.5pt; }
+  /* Real content, not a footnote, so it sits at body size — it had been 11.3pt
+     purely because --t-small was never overridden for paper. */
+  .partner { font-size: 11pt; }
   .entry { break-inside: avoid; }
 
   /* A single line of a paragraph stranded at the top or bottom of a page is
      the defect that makes a printed document look unset. Three lines either
      side is the typographic convention and costs nothing. */
-  .doc__body p, .doc__body li { orphans: 3; widows: 3; }
+  .doc__body p, .doc__body li, .doc__foot p { orphans: 3; widows: 3; }
 
   /* A heading is not a page footer. */
   .doc__cover { break-after: avoid; }
+
+  /* The closing note and the boundary statement are one gesture, so they move
+     together rather than one stranding without the other.
+
+     NOT break-before: avoid on the footer. That was tried and was worse: it
+     pulled the boundary up onto a page with no room for it, the browser gave
+     up on the constraint, and the paragraph split mid-sentence across the
+     page. Moving a block whole is always better than forcing it to stay.
+     Only rendering the PDF showed that; the stylesheet reads fine either way. */
+  .doc__body > .doc__note:last-child { break-after: avoid; }
+  .doc__foot, .doc__foot p { break-inside: avoid; }
+
+  /* Screen spacing is measured in viewport units and reads as roughly 80px of
+     air above the closing statement. On A4 that was the difference between a
+     document ending on page three and one that spilled a single sentence onto
+     page four. Paper wants millimetres, not viewport height. */
+  .doc__foot { margin-top: 10mm; padding-top: 4mm; }
+  .doc__body { padding-top: 8mm; }
+  .doc__cover { padding-bottom: 8mm; }
+
+  /* Block spacing too. On screen every block is separated by --s-5, which
+     carries into print as roughly 15pt between each of about twenty-five
+     blocks — most of a page given away to air that paper does not need in the
+     same measure as a scrolling column. */
+  .doc__body > * + * { margin-top: 4mm; }
+  .entry { padding: 4mm 0; }
   .doc__body p, .doc__note { color: #333; }
   .entry__meta dd.is-status, .doc__cover .meta, .entry__dest { color: #000; }
 

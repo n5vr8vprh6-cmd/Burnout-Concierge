@@ -150,61 +150,100 @@ module.exports = {
        burnout collection because it IS a burnout retreat — but the panel says
        whose it is and what our role in it actually is. */
     {
-      type: 'collection',
-      skin: 'light',
+      /* ── THE FOUR WORLDS ──────────────────────────────────────────────
+         Four pinned chapters, and the only place on the site where scroll is
+         genuinely a timeline. Each answers a different need rather than
+         advertising a different property, because matching a person to a place
+         IS the proposition — the photography is evidence for an argument, not
+         decoration around one.
+
+         Ordered by depth of demand: quieten, slow, put down, go deeper. That
+         gives the sequence a shape, so somebody who reaches Saint Lucia has
+         been led there rather than shown four parallel options.
+
+         The venues are named now that the relationships are confirmed in
+         writing. Nothing else from the old BRA retreats page travels: not the
+         97% statistic, not "clinically validated", not the testimonials.
+
+         `id: 'collection'` stays on the intro band so the hero's secondary
+         link still lands. */
+      type: 'chapters',
       id: 'collection',
       label: 'The collection',
-      headline: 'Five recovery journeys.',
-      lead: 'Filtered by intention rather than by tier. Each states plainly where it currently stands.',
-      journeys: [
+      eyebrow: 'Four worlds',
+      headline: 'Somewhere designed<br>around the thing you need.',
+      lead: 'Four journeys, four environments, and one question underneath all of them — what would actually help, and where does it happen? Come and look.',
+
+      chapters: [
         {
-          name: 'Awaken', destination: 'Los Cabos, Mexico',
-          intention: 'Quiet luxury and somatic renewal, for when the volume has to come down before anything else can happen.',
-          format: 'Seven nights, small group', suits: 'A first recovery journey',
-          status: 'Now accepting inquiries', href: '/work-with-a-concierge?intent=recommendation',
-          img: { base: '/assets/images/journey-awaken', widths: [760, 1100],
-                 src: '/assets/images/journey-awaken-1100.webp', w: 1100, h: 1400,
-                 alt: 'Sunrise over calm water on the Baja east cape' }
+          n: '01', place: 'Los Cabos', name: 'Awaken', tone: 'cabos',
+          id: 'awaken',
+          venue: 'Four Seasons Los Cabos at Costa Palmas',
+          img: { base: '/assets/images/chapter-cabos', widths: [960, 1440, 1920, 2560],
+                 src: '/assets/images/chapter-cabos-1440.webp', w: 2560, h: 1440, avif: true,
+                 alt: 'A beachfront villa terrace at Four Seasons Los Cabos, infinity pool open to the Sea of Cortez' },
+          beats: [
+            { head: 'Come here when the volume<br>has to come down first.',
+              body: 'Desert on one side, the Sea of Cortez on the other, and nothing on the schedule you have to explain your way out of. Awaken asks the least of you of any journey we run, which is usually why it is the right first one.' },
+            { head: 'Awaken Under the Stars.',
+              body: 'The night the desert goes quiet enough to hear yourself think. Breath, sound and starlight, and nobody asking afterwards how you found it.' }
+          ],
+          cta: { label: 'Talk to a concierge about Awaken', href: '/work-with-a-concierge?intent=recommendation' }
         },
         {
-          name: 'Nagi', destination: 'Kyoto, Japan',
-          intention: 'Stillness and Japanese philosophy. The slowest journey in the collection, and deliberately so.',
-          format: 'Ten nights, six guests', suits: 'Returning travellers',
-          status: 'Private dates available', href: '/work-with-a-concierge?intent=recommendation',
-          img: { base: '/assets/images/journey-nagi', widths: [760, 1100],
-                 src: '/assets/images/journey-nagi-1100.webp', w: 1100, h: 1400,
-                 alt: 'A Kyoto ryokan interior in natural wood, with a private bath' }
+          n: '02', place: 'Kyoto', name: 'Nagi', tone: 'kyoto',
+          id: 'nagi',
+          venue: 'Six Senses Kyoto',
+          img: { base: '/assets/images/chapter-kyoto', widths: [960],
+                 src: '/assets/images/chapter-kyoto-960.webp', w: 960, h: 540, avif: true,
+                 alt: 'A Kyoto interior in natural wood, opening onto quiet' },
+          beats: [
+            { head: 'Come here when the pace<br>is the point.',
+              body: 'Nagi is the slowest journey in the collection and deliberately so. In Kyoto the rhythm does the work: ritual, silence, and a day that asks nothing of you before you are ready to give it.' },
+            { head: 'The Dreamcatcher Sleep Ritual.',
+              body: 'Sleep treated as something you prepare for rather than something you keep failing at. Most people notice the difference on the third night.' }
+          ],
+          cta: { label: 'Talk to a concierge about Nagi', href: '/work-with-a-concierge?intent=recommendation' }
         },
         {
-          name: 'Transcend', destination: 'Puerto Vallarta, Mexico',
-          intention: 'Emotional release and reconnection, held by practitioners who have done this a long time.',
-          format: 'Seven nights, small group', suits: 'Those ready for depth',
-          status: 'Upcoming cohort', href: '/work-with-a-concierge?intent=recommendation',
-          img: { base: '/assets/images/journey-transcend', widths: [760, 1100],
-                 src: '/assets/images/journey-transcend-1100.webp', w: 1100, h: 1400,
-                 alt: 'Sunrise over the Pacific at Puerto Vallarta' }
+          n: '03', place: 'Puerto Vallarta', name: 'Transcend', tone: 'vallarta',
+          id: 'transcend',
+          venue: 'Maxwell Residences, Puerto Vallarta',
+          img: { base: '/assets/images/chapter-vallarta', widths: [960, 1440, 1920, 2560],
+                 src: '/assets/images/chapter-vallarta-1440.webp', w: 2560, h: 1440, avif: true,
+                 alt: 'A rooftop infinity pool at Maxwell Residences, Banderas Bay and the Sierra Madre beyond at dusk' },
+          beats: [
+            { head: 'Come here when there is<br>something to put down.',
+              body: 'Transcend is the most demanding of the journeys and not usually where anyone starts. Small, beachfront, and held by practitioners who have been doing this a long time.' },
+            { head: 'The Homecoming Walk.',
+              body: 'The Pacific at sunset, and a walk you take once, near the end, for the thing you came here to stop carrying.' }
+          ],
+          cta: { label: 'Talk to a concierge about Transcend', href: '/work-with-a-concierge?intent=recommendation' }
         },
         {
-          name: 'Revo', destination: 'Toronto, Canada',
-          intention: 'An urban nervous-system reset for people who cannot leave for a fortnight.',
-          format: 'Three evenings, in the city', suits: 'No room to travel far',
-          status: 'In development', href: '/work-with-a-concierge?intent=recommendation',
-          img: { base: '/assets/images/journey-revo', widths: [760, 1100],
-                 src: '/assets/images/journey-revo-1100.webp', w: 1100, h: 1400,
-                 alt: 'An intimate modern gathering space arranged for a small group' }
-        },
-        {
-          name: 'Eclipse', destination: 'Saint Lucia',
-          intention: 'When rest alone is no longer enough — six phases, from arrival through to the return home.',
-          format: 'Six phases, practitioner-led', suits: 'The overextended achiever',
-          status: 'Advisor-led access',
-          partner: 'A Saint Lucia WELL journey. Burnout Concierge holds the ninety-day integration.',
-          route: 'dsw.eclipse', cta: 'See Eclipse',
-          img: { base: '/assets/images/journey-eclipse', widths: [760, 1100],
-                 src: '/assets/images/journey-eclipse-1100.webp', w: 1100, h: 1400,
-                 alt: 'Calm ocean meeting a jungle coastline from above' }
+          n: '04', place: 'Saint Lucia', name: 'Eclipse', tone: 'saintlucia',
+          id: 'eclipse',
+          venue: 'A Saint Lucia WELL journey',
+          img: { base: '/assets/images/chapter-saintlucia', widths: [960],
+                 src: '/assets/images/chapter-saintlucia-960.webp', w: 960, h: 540, avif: true,
+                 alt: 'A jungle coastline meeting still water from above' },
+          beats: [
+            { head: 'Come here when rest alone<br>has stopped working.',
+              body: 'Eclipse is not ours. It belongs to Saint Lucia WELL — six phases, practitioner-led, from arrival through to the return home. We hold the ninety days that follow it, which is the half almost nobody designs.' },
+            { head: 'The part that happens after.',
+              body: 'A journey that works and a return that does not is a journey that did not work. That is the whole reason we stay involved past the airport.' }
+          ],
+          cta: { label: 'See Eclipse on Saint Lucia WELL', href: 'https://www.discoversaintluciawell.com/eclipse' }
         }
-      ]
+      ],
+
+      coda: {
+        label: 'Also in the collection',
+        mark: '05 — Toronto',
+        head: 'Revo, for when you cannot leave at all.',
+        body: 'Three evenings in the city, built around the constraint rather than apologising for it. It is still in development, which is why it does not get a chapter yet — we would rather tell you a thing is not ready than imply an availability we cannot hold.',
+        cta: { label: 'Request The Recovery Collection', href: '/work-with-a-concierge/collection' }
+      }
     },
 
     /* ── 5 · THE CONCIERGE JOURNEY ───────────────────────────────────────

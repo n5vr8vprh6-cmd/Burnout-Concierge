@@ -660,3 +660,115 @@ a.studio { text-decoration: none; }
    Scroll-linked, set from JS. Declared here only so the transform has a sane
    origin and does not fight the stagger reveal on first paint. */
 [data-pinned] [data-hero] .hero__inner { transform-origin: 50% 40%; will-change: transform, opacity; }
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   THE FOUR WORLDS — cinematic chapters
+   ──────────────────────────────────────────────────────────────────────────
+   The unpinned state is written FIRST and is the one that has to be right.
+   Without js/scroll.js a chapter is an ordinary editorial section: an image,
+   then a heading, then text, all of it visible and in document order. Every
+   rule that makes it cinematic is gated on [data-pinned], which that file sets
+   only once its engine is running.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.chapter { padding: 0; }
+.chapter .ch__media picture { display: contents; }
+.chapter .ch__media img { display: block; width: 100%; height: auto; }
+.chapter .ch__scrim { display: none; }
+.chapter .ch__body { padding: var(--s-9) var(--pad-x) var(--s-10); max-width: var(--wrap); margin-inline: auto; }
+
+.ch__mark { display: block; color: var(--gold); }
+.ch__beats { display: grid; gap: var(--s-8); margin-top: var(--s-6); }
+/* Both are capped so the text stays in the half of the frame the scrim
+   actually carries. The heading had no cap and ran to 78% of the viewport,
+   out into bright sky where no reasonable scrim reaches. */
+.ch__h { font-size: var(--t-m); line-height: 1.1; margin-bottom: var(--s-3); max-width: var(--measure-display); }
+.ch__p { color: var(--stone); max-width: 34ch; }
+
+.ch__foot {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3) var(--s-7);
+  margin-top: var(--s-8); padding-top: var(--s-5); border-top: 1px solid var(--hair-light);
+}
+.ch__venue { color: var(--stone); }
+
+
+/* ── Pinned ──────────────────────────────────────────────────────────────── */
+
+[data-pinned] .chapter .ch__media { position: absolute; inset: 0; overflow: hidden; }
+[data-pinned] .chapter .ch__media img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  /* The scrub. --p is written onto this section by js/scroll.js and inherits
+     down, so the zoom needs no JavaScript of its own and simply does not
+     happen when the engine is not running.
+
+     NOT data-drift. js/motion.js writes transform directly onto those, and
+     two systems owning one property is how an element ends up stuttering. */
+  transform: scale(calc(1 + var(--p, 0) * .10));
+  transform-origin: 50% 55%;
+  will-change: transform;
+}
+
+/* The scrim earns the contrast rather than assuming it. Text sits left, so the
+   left side is carried furthest — measured against the composite, not guessed
+   from the photograph. */
+[data-pinned] .chapter .ch__scrim {
+  display: block; position: absolute; inset: 0;
+  /* Measured, not guessed. The first version was a stop weaker at every point
+     and the Awaken chapter failed AA on three elements: its photograph is white
+     sand under a bright sky, which is the hardest ground on the site to put
+     text on. Sampled against the real pixels with the scrim composited over
+     them, the heading came out at 2.75:1 where it needed 3.
+
+     Held further across, and darker where the text actually sits. */
+  background:
+    linear-gradient(90deg, rgba(15, 14, 16, .94) 0%, rgba(15, 14, 16, .86) 40%,
+                           rgba(15, 14, 16, .55) 65%, rgba(15, 14, 16, .25) 100%),
+    linear-gradient(180deg, rgba(15, 14, 16, .45) 0%, rgba(15, 14, 16, .10) 34%,
+                            rgba(15, 14, 16, .38) 100%),
+    linear-gradient(180deg, rgba(var(--tone, 15, 14, 16), .18), rgba(var(--tone, 15, 14, 16), 0));
+}
+
+/* A wash per destination, so the ground travels with the place rather than
+   four photographs sharing one grade. */
+.ch--cabos      { --tone: 200, 157, 90; }
+.ch--kyoto      { --tone: 124, 138, 108; }
+.ch--vallarta   { --tone: 38, 66, 75; }
+.ch--saintlucia { --tone: 20, 40, 30; }
+
+[data-pinned] .chapter .ch__body { position: relative; padding: 0 var(--pad-x); width: 100%; }
+[data-pinned] .chapter .ch__beats { min-height: 13rem; gap: 0; }
+[data-pinned] .chapter .ch__beat { grid-area: 1 / 1; }   /* stacked, cross-fading */
+[data-pinned] .chapter .ch__foot { border-top-color: rgba(247, 244, 237, .22); }
+
+/* Over a photograph, stone is not enough. On a flat obsidian band it reads as
+   a quiet secondary; composited over bright sand it measured 4.31:1 against a
+   4.5 floor. Ivory on the pinned chapters only — the unpinned fallback keeps
+   the quieter colour because there it sits on the ground, not on an image. */
+[data-pinned] .chapter .ch__p,
+[data-pinned] .chapter .ch__venue { color: var(--ivory); }
+
+/* A horizontal scrim is the wrong instrument once the text spans the frame.
+   On a phone the heading reaches 94% of the viewport, out where the desktop
+   gradient has thinned to about a third — measured, and it failed. Narrow
+   screens get a vertical scrim instead, dark through the middle band where the
+   text actually sits rather than dark down one side. */
+@media (max-width: 900px) {
+  [data-pinned] .chapter .ch__scrim {
+    background:
+      linear-gradient(180deg, rgba(15, 14, 16, .70) 0%, rgba(15, 14, 16, .88) 40%,
+                              rgba(15, 14, 16, .92) 100%),
+      linear-gradient(180deg, rgba(var(--tone, 15, 14, 16), .18), rgba(var(--tone, 15, 14, 16), 0));
+  }
+}
+
+/* Short viewports keep the photograph but drop the pin, for the same reason
+   every other pin on this site does: a fixed-height stage cannot scroll and
+   would simply cut the beats off. */
+@media (max-height: 619px) {
+  [data-pinned] .chapter .ch__media { position: relative; inset: auto; }
+  [data-pinned] .chapter .ch__media img { position: relative; height: auto; transform: none; }
+  [data-pinned] .chapter .ch__scrim { display: none; }
+  [data-pinned] .chapter .ch__beats { gap: var(--s-8); }
+  [data-pinned] .chapter .ch__beat { grid-area: auto; opacity: 1; transform: none; }
+}

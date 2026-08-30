@@ -6,7 +6,7 @@ than in a message.
 
 **Status key** — ☐ not started · ◐ in progress · ☑ done · ⚠ needs a decision from Duncan
 
-Last updated: 29 August 2026 (design pass complete: all 22 pages)
+Last updated: 30 August 2026 (homepage rebuilt as the guided journey)
 
 ---
 
@@ -40,7 +40,9 @@ Last updated: 29 August 2026 (design pass complete: all 22 pages)
 
 | | Item | Notes |
 |---|---|---|
-| ⚠ | **Venue names** | Every journey currently shows destination and intention only. Which properties can be named in writing? |
+| ☑ | **Venue names** | Confirmed in writing and now on the homepage chapters: Four Seasons Los Cabos at Costa Palmas, Six Senses Kyoto, Maxwell Residences Puerto Vallarta. Eclipse is credited to Saint Lucia WELL. **Still to do:** the same names in `/collection` and the journey data, which have not been updated yet. |
+| ⚠ | **Kyoto and Saint Lucia photography** | Both chapters run on the old AI panels re-cropped to 16:9 at 960px — they will look soft on a wide screen. Midjourney prompts, written to match the real Los Cabos and Maxwell photography, are in the plan file. Generate, drop into `tools/images.js` MANIFEST, `npm run images`. |
+| ☐ | **Two Los Cabos gap shots** | Four Seasons has only six images above 1600px, which is thin for a chapter. Two prompts in the plan file would fill it. |
 | ⚠ | **Retreat statuses** | Awaken *accepting inquiries*, Nagi *private dates*, Transcend *upcoming cohort*, Revo *in development*, Eclipse *advisor-led*. All accurate? |
 | ⚠ | **Eclipse partnership** | The site names Burnout Concierge as holding Eclipse's 90-day integration. Confirmed with Saint Lucia WELL? |
 | ⚠ | **Reciprocal link on Saint Lucia WELL** | Their Eclipse page references an unnamed "concierge". Naming us there is the other half of a route this build creates. |
@@ -64,6 +66,7 @@ Last updated: 29 August 2026 (design pass complete: all 22 pages)
 | ☐ | **200% zoom verified** | Every page, every breakpoint. Also listed as outstanding. |
 | ☐ | **The glide tested on real trackpads** | Wheel smoothing is the one thing a headless check cannot judge. Needs a Mac trackpad, a Windows precision trackpad and a notched mouse wheel. If it reads as lag rather than weight, lower `GLIDE` in `js/scroll.js` — it is one constant. |
 | ☐ | **The pinned section walked on a real phone** | The pin rides native scroll so it should behave, but `svh` and browser chrome interact in ways only a device shows. One pinned section: `#journey` on `/`. |
+| ☐ | **The homepage is now 24.9 screens** | The four chapters roughly doubled its length. Deliberate and it is the brief, but worth walking on a real phone before launch to feel whether the sequence carries or sags. |
 | ☐ | **Kling video** | 1 hero loop + 6 section motifs. ≤2.5 MB each, ≤8 MB total, `preload="none"` behind poster frames. The section schema already has the `video` field. |
 | ☐ | **Four off-scale spacing values decided with eyes on the page** | `1.75rem`, `1.8rem` (x7), `2.2rem` (x8), `2.25rem` are the only literals left in a margin, padding or gap. Snapping them to `--s-7` / `--s-8` moves things 3-8px rather than 1-2, so it needs looking at rather than calculating. `.rung`, `.stage`, `.track`, `.path`, `.acts`. |
 | ☑ | **Other pages checked after the spacing pass** | Scale now covers `site.css`, `chrome.css` and `intake.css`. All 22 pages walked at 1440x900 and 375x812: no horizontal overflow, exactly one `h1` each, no skipped heading levels. |

@@ -91,6 +91,7 @@
   var sections = Array.prototype.slice.call(document.querySelectorAll('section[data-label]'));
 
   var lastY = 0;
+  var railDark = null;   /* null so the first pass always writes */
 
   function drift() {
     var vh = window.innerHeight;
@@ -117,6 +118,19 @@
     }
     var label = cur.getAttribute('data-label');
     if (railName.textContent !== label) railName.textContent = label;
+
+    /* The rail is fixed and travels the whole page, so its one colour has to
+       work over every ground it passes. Gold measures 7.73:1 on obsidian and
+       2.27:1 on ivory — unreadable for half the page, and more of the page now
+       that the chapters have made it longer.
+
+       We already know which section is current, because the label just used it.
+       Reading its ground costs nothing and lets the colour follow. */
+    var dark = cur.classList.contains('is-dark') || !!cur.querySelector('.is-dark');
+    if (dark !== railDark) {
+      railDark = dark;
+      railName.classList.toggle('is-over-dark', dark);
+    }
   }
 
   function chrome() {

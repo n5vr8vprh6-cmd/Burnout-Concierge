@@ -88,15 +88,26 @@
   --mono:    'DM Mono', 'SFMono-Regular', Consolas, monospace;
 
   --t-xl:    clamp(3.4rem,  8.5vw, 8.5rem);   /* hero only                   */
-  --t-page:  clamp(2.6rem,  6vw,   5.4rem);   /* interior page titles        */
-  --t-l:     clamp(2.4rem,  5vw,   4.25rem);  /* section headings            */
-  /* The floor is 2rem, not 1.75rem, because --t-sub below is a FIXED 1.5rem
+  --t-page:  clamp(2.85rem, 6vw,   5.4rem);   /* interior page titles        */
+  --t-l:     clamp(2.3rem,  5vw,   4.25rem);  /* section headings            */
+  /* THE MINIMUMS ARE A SCALE TOO, and for a while they were not. Each clamp's
+     floor had been picked for its own step, so at a phone width the display
+     sizes bunched: an interior page title landed 41.6px against section
+     headings at 38.4px — 1.08x, which is not a level, only a rounding error.
+     The maxima were never the problem; 86px over 68px reads fine.
+
+     Every adjacent pair now separates by at least 1.19x at the floor as well
+     as at the ceiling. --t-lede and --t-sub share 1.5rem deliberately: one is
+     a serif lead paragraph and the other a sub-heading, so they are different
+     roles rather than adjacent levels and never appear as a hierarchy.
+
+     The floor below is 1.9rem, not 1.75rem, because --t-sub is a FIXED 1.5rem
      while every other display step is fluid. At the old floor the two sat
      28px against 24px on a phone — 1.17x, which is not a level. Anywhere a
      .m heading leads --t-sub subheadings (the advisor ladder, the founder
      block, document section headings) they collapsed together on mobile and
      held apart only on desktop. */
-  --t-m:     clamp(2rem,    3vw,   2.6rem);   /* secondary headings          */
+  --t-m:     clamp(1.9rem,  3vw,   2.6rem);   /* secondary headings          */
   --t-lede:  clamp(1.5rem,  2.4vw, 2rem);     /* the lead — serif, not sans  */
   --t-sub:   1.5rem;                          /* sub-headings                */
   --t-body:  1.0625rem;                       /* the ONE body size           */

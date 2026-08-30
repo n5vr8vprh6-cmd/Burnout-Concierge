@@ -187,8 +187,13 @@
 .entry__dest { display: block; color: var(--ink-faint); margin-bottom: var(--s-2); }
 .entry__name { font-size: var(--t-sub); font-weight: 400; }
 /* The property sits with the name, not down in the practicalities — it is part
-   of what the journey IS, where format and status are how it runs. */
-.entry__venue { font-size: var(--t-small); color: var(--ink-faint); margin-top: var(--s-1); }
+   of what the journey IS, where format and status are how it runs.
+
+   Body size, explicitly, on screen as well as in print. --t-small is the size
+   the practicalities use, and having the venue there made it a footnote in the
+   one document where the properties are a reason to keep reading. The colour
+   stays quiet; it is the scale that was carrying the wrong meaning. */
+.entry__venue { font-size: var(--t-body); color: var(--ink-faint); margin-top: var(--s-1); }
 .entry__meta { display: flex; flex-direction: column; gap: var(--s-3); }
 .entry__meta > div { display: flex; flex-direction: column; gap: var(--s-1); }
 .entry__meta dt {

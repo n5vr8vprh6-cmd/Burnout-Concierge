@@ -245,7 +245,10 @@
   .doc__cover .lede, .doc__lead { font-size: 13pt; }
   .doc__h { font-size: 16pt; break-after: avoid; }
   .entry__name { font-size: 12pt; }
-  .entry__venue { font-size: 9.5pt; }
+  /* Body size, not footnote size. It had been grouped with the status line at
+     9.5pt, but where a journey happens is part of what it is rather than a
+     practicality about how it runs. */
+  .entry__venue { font-size: 11pt; }
   .doc__note, .entry__meta dd { font-size: 9.5pt; }
   /* Real content, not a footnote, so it sits at body size — it had been 11.3pt
      purely because --t-small was never overridden for paper. */

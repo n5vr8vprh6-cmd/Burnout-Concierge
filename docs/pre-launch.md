@@ -6,7 +6,7 @@ than in a message.
 
 **Status key** — ☐ not started · ◐ in progress · ☑ done · ⚠ needs a decision from Duncan
 
-Last updated: 30 August 2026 (homepage rebuilt as the guided journey)
+Last updated: 30 August 2026 (status audit — stale pin and page counts corrected)
 
 ---
 
@@ -65,12 +65,12 @@ Last updated: 30 August 2026 (homepage rebuilt as the guided journey)
 | ☐ | **Assistive-technology testing with disabled users** | Listed as outstanding on `/accessibility`. The honest gap. |
 | ☐ | **200% zoom verified** | Every page, every breakpoint. Also listed as outstanding. |
 | ☐ | **The glide tested on real trackpads** | Wheel smoothing is the one thing a headless check cannot judge. Needs a Mac trackpad, a Windows precision trackpad and a notched mouse wheel. If it reads as lag rather than weight, lower `GLIDE` in `js/scroll.js` — it is one constant. |
-| ☐ | **The pinned section walked on a real phone** | The pin rides native scroll so it should behave, but `svh` and browser chrome interact in ways only a device shows. One pinned section: `#journey` on `/`. |
+| ☐ | **The pinned sections walked on a real phone** | Pins ride native scroll so they should behave, but `svh` and browser chrome interact in ways only a device shows. **Five** now on `/`: the four chapters plus `#journey`. |
 | ⚠ | **Both build tools must be installed together** | `tools/pdf.js` and `tools/images.js` are deliberately not dependencies, so they are installed with `--no-save` — and a second `--no-save` install rewrites `node_modules` from `package.json` and **evicts the first**. Worse, `npm run pdf` then fails while npm still returns zero, so a shell `&&` reports success. Always `npm i --no-save puppeteer sharp`, and check the output file's timestamp rather than the exit code. |
 | ☐ | **The homepage is now 24.9 screens** | The four chapters roughly doubled its length. Deliberate and it is the brief, but worth walking on a real phone before launch to feel whether the sequence carries or sags. |
 | ☐ | **Kling video** | 1 hero loop + 6 section motifs. ≤2.5 MB each, ≤8 MB total, `preload="none"` behind poster frames. The section schema already has the `video` field. |
 | ☐ | **Four off-scale spacing values decided with eyes on the page** | `1.75rem`, `1.8rem` (x7), `2.2rem` (x8), `2.25rem` are the only literals left in a margin, padding or gap. Snapping them to `--s-7` / `--s-8` moves things 3-8px rather than 1-2, so it needs looking at rather than calculating. `.rung`, `.stage`, `.track`, `.path`, `.acts`. |
-| ☑ | **Other pages checked after the spacing pass** | Scale now covers `site.css`, `chrome.css` and `intake.css`. All 22 pages walked at 1440x900 and 375x812: no horizontal overflow, exactly one `h1` each, no skipped heading levels. |
+| ☑ | **Other pages checked after the spacing pass** | Scale now covers `site.css`, `chrome.css` and `intake.css`. All pages walked at 1440x900 and 375x812 — 29 of them now: no horizontal overflow, exactly one `h1` each, no skipped heading levels. |
 | ☑ | **Intake `h1` matches `<title>`** | Derived from the page title rather than restated, so the two cannot drift. `spec.title` still names the document for the section label and progress rail. |
 | ☑ | **`/venture-studio` list repetition** | Judged per list: `#model` and `#admission` are real sequences and keep their numbers; `#gap` and `#pricing` are parallel and lost them. `#admission` moved to obsidian to separate the two remaining ordered lists. |
 | ☐ | **`/venture-studio` reads as six ivory sections in a row** | The dark ground on `#admission` was tried and reverted, so `#model` and `#admission` are again two adjacent ordered lists of five inside a long ivory run. Not a defect, but the page's flattest stretch if it ever wants attention. |
@@ -110,7 +110,7 @@ wrong, and each is cheap to re-check:
 |---|---|
 | Reduced motion exits to native scroll completely | Load `/?flat=1` — same code path. `data-pinned` absent, sections ordinary height, zero elements below full opacity. |
 | The no-JS floor holds | The tall-section CSS is gated on `<html data-pinned>`, set by `js/scroll.js` only after its engine runs. Delete that attribute in devtools: the page must become the pre-cinema page, not a broken one. |
-| Nothing focusable is pinned out of view | The four journey stages carry no links. **Any new pin must clear the same bar.** Tab through it. |
+| Nothing focusable is pinned out of view | Neither the four journey stages nor any chapter beat carries a link — re-checked across all five pins. **Any new pin must clear the same bar.** Tab through it. |
 
 A pin is gated on viewport **height**, not just width. The stage is one viewport
 tall and does not scroll internally, so a wide short window is what clips. The
@@ -118,8 +118,12 @@ gate is `min-height: 620px`, measured against the real content of the one pinned
 section. **If that section gains content, re-measure before assuming it still
 fits.**
 
-There is one pin device, and that is deliberate. A second — three columns
-arriving and accumulating — was built and removed: it held the page for three
+Two pin devices now. The journey stages **replace** one another; the four
+homepage chapters hold a full-bleed photograph and scrub a zoom against `--p`
+while their beats replace. Both are the same engine and the same gate.
+
+A third was built and removed — three columns
+arriving and accumulating: it held the page for three
 screens to arrive at a layout almost identical to the unpinned one, which is
 scroll cost without a payoff. Pinning earns its keep where it genuinely
 transforms a section. A numbered process does; a comparison of three things

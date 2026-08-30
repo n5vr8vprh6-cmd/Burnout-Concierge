@@ -61,6 +61,11 @@ module.exports = [
          which is what makes infrastructure legible as the answer. */
       {
         type: 'numbered',
+        /* Three patterns that show up together, not three steps — the lead
+           counts them and does not order them. #how below stays numbered
+           because briefing, design, journey, return genuinely is a sequence,
+           and that difference is now visible rather than implied. */
+        ordered: false,
         skin: 'light',
         id: 'problem',
         label: 'The problem',

@@ -1,0 +1,10 @@
+{
+  "name": "bra-redirect",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Retirement redirect map for burnoutrecoveryaccelerator.com",
+  "scripts": {
+    "verify": "node verify.js"
+  },
+  "engines": { "node": ">=20" }
+}

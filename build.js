@@ -38,7 +38,8 @@ const PAGES = [
   require('./content/about.js'),
   require('./content/contact.js'),
   require('./content/legal.js'),
-  require('./content/thank-you.js')
+  require('./content/thank-you.js'),
+  require('./content/transition.js')
 ].flat();
 
 /* Static trees copied verbatim into dist/. */

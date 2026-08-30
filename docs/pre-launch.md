@@ -6,7 +6,7 @@ than in a message.
 
 **Status key** — ☐ not started · ◐ in progress · ☑ done · ⚠ needs a decision from Duncan
 
-Last updated: 30 August 2026 (status audit — stale pin and page counts corrected)
+Last updated: 30 August 2026 (BRA redirect project built)
 
 ---
 
@@ -28,13 +28,13 @@ Last updated: 30 August 2026 (status audit — stale pin and page counts correct
 
 | | Item | Notes |
 |---|---|---|
-| ☐ | **Redirect project deployed** | A separate minimal Vercel project holding only `next.config.js` redirects. Strikingly cannot serve a page-level 301 map. |
-| ☐ | **97-URL map implemented** | Three verdicts per URL — map to a real page, hold on BRA, or retire. Full breakdown in the plan file, Part 4. |
-| ☐ | **`burnoutrecoveryaccelerator.com` DNS pointed at it** | Keep the domain renewing indefinitely. It is a redirect asset now, not a brand. |
-| ☐ | **Verify with a script** | Curl all 97 URLs, assert expected status and destination. |
-| ☐ | **`/fsloscabos` checked specifically** | Must not redirect anywhere implying a Four Seasons relationship. |
-| ☐ | **16 `/blog/*` posts left live on BRA** | They move to `/insights` in Phase 2. Redirecting them now burns the authority we are preserving. |
-| ☐ | **`/transition` page reviewed** | The migration statement. Retire it ~6 months after launch. |
+| ☑ | **97-URL map implemented** | Built in `redirect/redirects.js` from the live sitemap. 20 × 301, 31 × 410, 46 × 302. Every URL has exactly one verdict; none unmapped. |
+| ☑ | **Verify with a script** | `redirect/verify.js`. Coverage mode reads the live sitemap; live mode requests all 97 against a deployment and checks status *and* `Location`. `redirect/dev.js` runs the real handler locally. |
+| ☑ | **`/fsloscabos` checked specifically** | Now goes to `/#awaken`. The constraint was about implying an unconfirmed Four Seasons relationship — it is confirmed and named on the site, so the chapter that names the property is the honest destination. |
+| ☑ | **`/transition` page built** | The migration statement. `noindex`, out of the sitemap, and where the old homepage lands. Retire ~6 months after cutover. |
+| ☐ | **Redirect project deployed** | New Vercel project, same repo, **Root Directory `redirect`**. Framework: Other, no build command. Verify against the preview URL before DNS. Steps in `redirect/README.md`. |
+| ⚠ | **46 `/blog/*` posts block cutover** | Not 16 as the plan said — 46, and they are the only accumulated authority the old domain has. Strikingly stops serving them the moment DNS moves. They are 302 to hold their identity, and `verify.js` **fails** while they are unmapped. **Do not cut over until `/insights` exists.** |
+| ☐ | **`burnoutrecoveryaccelerator.com` DNS pointed at it** | Blocked by the row above. Keep the domain renewing indefinitely — it is a redirect asset now, not a brand. |
 
 ## 3 · Content that needs Duncan's confirmation
 

@@ -120,9 +120,26 @@ function assertDocumentsExist(pages) {
 }
 
 
+/* Every intake redirects a scriptless submission to /thank-you/<key>. If an
+   intake is added without its confirmation page the redirect 404s at the worst
+   possible moment, so the build refuses rather than shipping it. Same shape as
+   assertDocumentsExist above, and for the same reason. */
+function assertConfirmationsExist(pages) {
+  const { INTAKES } = require('./content/intakes.js');
+  const built = new Set(pages.map((p) => p.path));
+  const missing = Object.keys(INTAKES)
+    .filter((key) => !built.has(`/thank-you/${key}`))
+    .map((key) => `intake "${key}" redirects to /thank-you/${key}, which no page builds`);
+  if (missing.length) {
+    throw new Error(['Missing confirmation pages:', ...missing].join('\n  - '));
+  }
+}
+
+
 function build() {
   const clean = process.argv.includes('--clean');
   assertDocumentsExist(PAGES);
+  assertConfirmationsExist(PAGES);
   if (clean) rm(DIST);
   fs.mkdirSync(DIST, { recursive: true });
 

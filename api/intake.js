@@ -155,11 +155,20 @@ function visitorEmail(spec, answers, doc) {
    or the front-end fetch fell back — gets a redirect to a real page, because
    raw JSON is a broken-looking end to something somebody just trusted you
    with. 303 so the redirect is followed as a GET and a refresh cannot resend. */
-function done(req, res, payload) {
+function done(req, res, payload, key) {
   const accept = (req.headers && req.headers.accept) || '';
   const wantsJson = accept.indexOf('application/json') !== -1;
   if (wantsJson) return res.status(200).json(payload);
-  res.setHeader('Location', '/thank-you');
+
+  /* Redirect to the confirmation for THIS intake, so somebody with scripting
+     off reads what actually happens next rather than the generic version.
+
+     The key was already checked against INTAKES before we got here, but this
+     is a redirect built from request data, so it is checked again against the
+     real object rather than trusted. An unknown key falls back to the generic
+     page instead of putting anything from the body into a Location header. */
+  const known = key && Object.prototype.hasOwnProperty.call(INTAKES, key);
+  res.setHeader('Location', known ? '/thank-you/' + key : '/thank-you');
   return res.status(303).end();
 }
 
@@ -193,7 +202,7 @@ module.exports = async function handler(req, res) {
      without silently pretending a real email went out. */
   if (!process.env.RESEND_API_KEY) {
     console.log('[intake] RESEND_API_KEY not set — not sending.', JSON.stringify({ key, answers, routing, attribution }, null, 2));
-    return done(req, res, { ok: true, delivered: false });
+    return done(req, res, { ok: true, delivered: false }, key);
   }
 
   try {
@@ -214,7 +223,7 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    return done(req, res, { ok: true, delivered: true });
+    return done(req, res, { ok: true, delivered: true }, key);
   } catch (err) {
     console.error('[intake] send failed', err);
     /* The visitor should not lose a submission to our mail provider. */

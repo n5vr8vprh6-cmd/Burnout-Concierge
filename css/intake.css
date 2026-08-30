@@ -186,6 +186,9 @@
 .entry__head { grid-column: 1 / -1; }
 .entry__dest { display: block; color: var(--ink-faint); margin-bottom: var(--s-2); }
 .entry__name { font-size: var(--t-sub); font-weight: 400; }
+/* The property sits with the name, not down in the practicalities — it is part
+   of what the journey IS, where format and status are how it runs. */
+.entry__venue { font-size: var(--t-small); color: var(--ink-faint); margin-top: var(--s-1); }
 .entry__meta { display: flex; flex-direction: column; gap: var(--s-3); }
 .entry__meta > div { display: flex; flex-direction: column; gap: var(--s-1); }
 .entry__meta dt {
@@ -242,6 +245,7 @@
   .doc__cover .lede, .doc__lead { font-size: 13pt; }
   .doc__h { font-size: 16pt; break-after: avoid; }
   .entry__name { font-size: 12pt; }
+  .entry__venue { font-size: 9.5pt; }
   .doc__note, .entry__meta dd { font-size: 9.5pt; }
   /* Real content, not a footnote, so it sits at body size — it had been 11.3pt
      purely because --t-small was never overridden for paper. */

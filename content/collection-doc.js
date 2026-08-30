@@ -18,9 +18,15 @@
      `npm run pdf` remains available for when a physical run is wanted; it
      installs Puppeteer on demand rather than carrying it permanently.
 
-   NO VENUE NAMES. Destination and intention only, until the property
-   relationships are confirmed in writing. The status line on each entry is
-   what keeps the collection honest about what is actually bookable.
+   VENUES ARE NAMED, as of 30 August 2026, because the relationships are
+   confirmed in writing. Before that this document carried destination and
+   intention only — the rule was never squeamishness, it was that naming a
+   property implies a commercial relationship to whoever reads it.
+
+   Revo has no venue line because it has no venue yet, and Eclipse has none
+   because it is not ours to name: its line credits Saint Lucia WELL instead.
+   The status on each entry is still what keeps the collection honest about
+   what is actually bookable.
    ========================================================================== */
 'use strict';
 
@@ -62,16 +68,19 @@ module.exports = {
         { type: 'h', text: 'The five journeys' },
 
         { type: 'entry', name: 'Awaken', destination: 'Los Cabos, Mexico',
+          venue: 'Four Seasons Los Cabos at Costa Palmas',
           body: 'Quiet luxury and somatic renewal, for when the volume has to come down before anything else can happen. The least demanding journey in the collection, and often the right first one.',
           format: 'Seven nights, small group', suits: 'A first recovery journey',
           status: 'Now accepting inquiries' },
 
         { type: 'entry', name: 'Nagi', destination: 'Kyoto, Japan',
+          venue: 'Six Senses Kyoto',
           body: 'Stillness and Japanese philosophy. The slowest journey we run, and deliberately so — the pace is the intervention rather than a setting for one.',
           format: 'Ten nights, six guests', suits: 'Returning travellers',
           status: 'Private dates available' },
 
         { type: 'entry', name: 'Transcend', destination: 'Puerto Vallarta, Mexico',
+          venue: 'Maxwell Residences, Puerto Vallarta',
           body: 'Emotional release and reconnection, held by practitioners who have done this a long time. The most demanding of the five, and not usually the place to start.',
           format: 'Seven nights, small group', suits: 'Those ready for depth',
           status: 'Upcoming cohort' },

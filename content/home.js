@@ -26,8 +26,11 @@
      help", "provides space for". Emotional conviction without medical
      certainty.
 
-   NO VENUE NAMES. Destinations and intentions only, until the property
-   relationships are confirmed in writing.
+   VENUES ARE NAMED, as of 30 August 2026, on the chapters below. The rule was
+   never squeamishness — naming a property implies a commercial relationship to
+   whoever reads it, so it waited until the relationships were agreed in
+   writing. Revo still has none because it has no venue yet, and Eclipse credits
+   Saint Lucia WELL rather than naming a property, because it is not ours.
    ========================================================================== */
 'use strict';
 

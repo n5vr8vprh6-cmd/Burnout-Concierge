@@ -163,7 +163,7 @@ module.exports = {
         },
         {
           head: 'No partner logos',
-          body: 'Only relationships confirmed in writing get named. That is why journeys here list a destination and an intention rather than a property — the destinations are real and several of the venue relationships are still being agreed.'
+          body: 'Only relationships confirmed in writing get named, and the properties named across this site are all agreed. What you will not find is their logos: a logo wall reads as endorsement, and being welcome to bring guests somewhere is a different thing from a brand standing behind you. Revo has no property named against it because it does not have one yet.'
         },
         {
           head: 'No photographs of people',
